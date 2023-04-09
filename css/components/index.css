@@ -1,19 +1,8 @@
-.header-index {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--primary);
-}
-
-.header__ul {
-  display: flex;
-  gap: 2em;
-}
-
 .index {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: 3rem;
 }
 
