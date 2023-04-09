@@ -1,0 +1,24 @@
+.header-index {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--primary);
+}
+
+.header__ul {
+  display: flex;
+  gap: 2em;
+}
+
+.index {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+.index__img {
+  width: 250px;
+  border-radius: 2rem;
+  background-color: var(--primary-light);
+}
