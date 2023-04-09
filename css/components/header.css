@@ -1,5 +1,5 @@
 .header {
-  height: 35px;
+  height: 50pxpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,7 +42,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    top: 35px;
+    top: 50px;
     background-color: var(--primary-light);
     border-bottom: 1px solid var(--primary);
     box-shadow: 0 0 0 100vmax rgba(0, 0, 1, 0.425);
