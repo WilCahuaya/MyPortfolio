@@ -1,0 +1,7 @@
+.ruby {
+  background-color: var(--background-dark);
+  display: flex;
+  gap: 5rem;
+  margin: 0 2rem 0 2rem;
+  padding: 1rem;
+}

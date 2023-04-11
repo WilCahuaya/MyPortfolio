@@ -1,5 +1,6 @@
 @import url("components/index.css");
 @import url("components/header.css");
 @import url("components/link.css");
-@import url("components/notes.css");
+@import url("components/notes/notes.css");
+@import url("components/notes/ruby.css");
 @import url("components/reminder.css");

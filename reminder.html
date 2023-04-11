@@ -1,80 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
-    <title>Reminder</title>
-  </head>
-  <body>
-    <header class="header container-lg">
-      <a href="/index.html" class="text-decoration-none color-text text-xl bold"
-        >WilCahuaya</a
-      >
-      <button class="nav__button-open" id="nav__button-open">
-        <img src="img/flecha-hacia-abajo.png" alt="Button flecha abajo" />
-      </button>
-      <button class="nav__button-close" id="nav__button-close">
-        <img src="img/flecha-hacia-arriba.png" alt="Button flecha abajo" />
-      </button>
-      <nav class="nav" id="nav">
-        <ul class="nav__list">
-          <li class="list-style-none">
-            <a
-              href="links.html"
-              class="text-decoration-none color-primary text-lg semibold"
-              >Links</a
-            >
-          </li>
-          <li class="list-style-none">
-            <a
-              href="notes.html"
-              class="text-decoration-none color-primary text-lg semibold"
-              >notes</a
-            >
-          </li>
-          <li class="list-style-none">
-            <a
-              href="reminder.html"
-              class="text-decoration-none color-primary text-lg semibold"
-              >reminder</a
-            >
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <main class="container-lg">
-      <section class="section-sm">
-        <h1 class="color-text">Reminder</h1>
-        <div class="link__list mb-4">
-          <h3 class="color-text">Codeable (Virtual Classroom)</h2>
-              <ul class="list-style-none p-0 m-0">
-                  <li><a class="color-text" href="https://campus.codeable.la/c10/full-stack-web-dev/modules/"
-                          target="_blank"><strong>Full-stack Web Development</strong></a>
-                      <p class="color-text">Ruby, HTML & CSS, Rails, JavaScript, React and Capstone</p>
-                  </li>
-                  <li><a class="color-text" href="https://campus.codeable.la/c10/english/modules/"
-                          target="_blank"><strong>English</strong></a>
-                      <p class="color-text">B1 Pre-intermediate and B2 Intermediate</p>
-                  </li>
-                  <li><a class="color-text" href="https://app.slack.com/client/TEH2PTB37/CEH2PTD3P"
-                          target="_blank"><strong>Slack</strong></a>
-                      <p class="color-text">Cohort-10</p>
-                  </li>
-                  <li><a class="color-text"
-                          href="https://www.notion.so/Quick-Note-e784f2e409214ebc90de9d1772f710d0"
-                          target="_blank"><strong>Notion</strong></a>
-                      <p class="color-text">Cohort-10</p>
-                  </li>
-                  <li><a class="color-text" href="https://airtable.com/shrOeCRHsXPvJ348c/tbl8x9PgdrLKF33up"
-                          target="_blank"><strong>Recorded Classes</strong></a>
-                      <p class="color-text">Cohort-10</p>
-                  </li>
-              </ul>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>Reminder</title>
+</head>
+
+<body>
+  <header class="header container-lg">
+    <a href="/index.html" class="text-decoration-none color-text text-xl bold">WilCahuaya</a>
+    <button class="nav__button-open" id="nav__button-open">
+      <img src="img/flecha-hacia-abajo.png" alt="Button flecha abajo" />
+    </button>
+    <button class="nav__button-close" id="nav__button-close">
+      <img src="img/flecha-hacia-arriba.png" alt="Button flecha abajo" />
+    </button>
+    <nav class="nav" id="nav">
+      <ul class="nav__list">
+        <li class="list-style-none">
+          <a href="links.html" class="text-decoration-none color-primary text-lg semibold">Links</a>
+        </li>
+        <li class="list-style-none">
+          <a href="notes.html" class="text-decoration-none color-primary text-lg semibold">notes</a>
+        </li>
+        <li class="list-style-none">
+          <a href="reminder.html" class="text-decoration-none color-primary text-lg semibold">reminder</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main class="container-lg">
+    <section class="section-sm">
+      <h1 class="color-text mb-4">Reminder</h1>
+      <div class="reminder__list mb-4">
+        <h3 class="color-text">Codeable</h2>
+          <ul class="list-style-none p-0 m-0">
+            <li class="reminder__list-completed">
+              <p class="color-text"><strong>Practice for technical interview</strong></p>
+              <div>
+                <label for="completed">Completed</label>
+                <input type="checkbox">
+              </div>
+            </li>
+            <li class="reminder__list-completed">
+              <p class="color-text"><strong>Make my ruby notes</strong></p>
+              <div>
+                <label for="completed">Completed</label>
+                <input type="checkbox">
+              </div>
+            </li>
+          </ul>
       </div>
-      </section>
-    </main>
-  </body>
-  <script src="js/header.js"></script>
+      <div class="reminder__list mb-4">
+        <h3 class="color-text">Thesis</h2>
+          <ul class="list-style-none p-0 m-0">
+            <li class="reminder__list-completed">
+              <p class="color-text"><strong>Make the thesis schedule</strong></p>
+              <div>
+                <label for="completed">Completed</label>
+                <input type="checkbox">
+              </div>
+            </li>
+            <li class="reminder__list-completed">
+              <p class="color-text"><strong>make the thesis database</strong></p>
+              <div>
+                <label for="completed">Completed</label>
+                <input type="checkbox">
+              </div>
+            </li>
+          </ul>
+      </div>
+    </section>
+  </main>
+</body>
+<script src="js/header.js"></script>
+
 </html>
