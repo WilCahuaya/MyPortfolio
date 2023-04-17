@@ -58,10 +58,265 @@
           >
         </div>
       </section>
-      <div id="content"></div>
+      <section class="section-sm">
+        <h1 id="critics---basic-models">Critics - Basic models</h1>
+        <h2 id="introduction"><strong>Introduction:</strong></h2>
+        <p>
+          One idea struck you like a thunderbolt in the middle of the night. A
+          brand new open-source video-game review platform called
+          &quot;Critics&quot;. The idea seems revolutionary to you but you need
+          to start with the basics. Quickly you drew a basic ERD: A collection
+          of Games that could receive some critics:
+        </p>
+        <p>
+          <img
+            src="https://p-vvf5mjm.t4.n0.cdn.getcloudapp.com/items/6quE2WyJ/e6b1bb38-bd8d-4337-9eda-957c1788ea53.jpg?source=viewer&v=400addfd5ddd4f457054df9dfc0d5993"
+            alt="https://p-vvf5mjm.t4.n0.cdn.getcloudapp.com/items/6quE2WyJ/e6b1bb38-bd8d-4337-9eda-957c1788ea53.jpg?source=viewer&amp;v=400addfd5ddd4f457054df9dfc0d5993"
+          />
+        </p>
+        <p>
+          You want to build a Rails application around your idea. The first step
+          would be to create the <strong>Models</strong>. You jump to the
+          <a href="https://guides.rubyonrails.org/index.html">Rails Guides</a>
+          looking for answers.
+        </p>
+        <hr />
+        <p>First, read the following 3 sections of the guides:</p>
+        <ul>
+          <li>
+            <a
+              href="https://guides.rubyonrails.org/active_record_basics.html#what-is-active-record-questionmark"
+              >1 What is Active Record?</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://guides.rubyonrails.org/active_record_basics.html#convention-over-configuration-in-active-record"
+              >2 Convention over Configuration in Active Record</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://guides.rubyonrails.org/active_record_basics.html#creating-active-record-models"
+              >3 Creating Active Record Models</a
+            >
+          </li>
+        </ul>
+        <h3 id="task-1-creating-the-critic-model">
+          Task 1: Creating the Critic model
+        </h3>
+        <p>
+          Before creating any model you will need a database and a table to be
+          mapped to. To create a new database for your Rails application just
+          run:
+        </p>
+        <pre><code class="language-bash">$ rails db:create
+Created database &#39;rails-basic-models_development&#39;
+Created database &#39;rails-basic-models_test&#39;
+</code></pre>
+        <aside>
+          💡 You can use `rails db:drop` to delete the databases as well.
+        </aside>
+
+        <p>
+          By default, Rails creates 2 databases:
+          <code>app_name_development</code> y <code>app_name_test</code>. This
+          doesn&#39;t change anything in your project (you can run git status to
+          be sure). Only creates the DBs interacting with your DBMS
+          (PostgreSQL).
+        </p>
+        <p>
+          If you enter your DBMS client (psql or PGAdmin) you will find the new
+          databases created.
+        </p>
+        <pre><code>$ psql -d postgres
+psql (14.1)
+Type &quot;help&quot; for help.
+
+postgres=# \list
+
+List of databases
+              Name         |  Owner         | Encoding |   Collate   |    Ctype    |   Access privileges
+---------------------------+----------------+----------+-------------+-------------+-----------------------
+rails-models_development   | [your_user]    | UTF8     | en_US.UTF-8 | en_US.UTF-8 |
+rails-models_test          | [your_user]    | UTF8     | en_US.UTF-8 | en_US.UTF-8 |
+</code></pre>
+        <p>
+          To create the table <code>games</code> on your database you will need
+          a <code>Migration</code>. Luckily the
+          <code>model generator</code> creates the migration alongside the model
+          file for you. The command to execute a model generator looks like
+          this:
+        </p>
+        <pre><code class="language-bash">$ rails generate model ModelNameInSingular column:data_type column:data_type ...
+</code></pre>
+        <p>Try to use the model generator to create the Game model.</p>
+        <p>
+          If you generate the model correctly, a migration file should be
+          created. It should be similar to:
+        </p>
+        <pre><code class="language-ruby"># 20201209083333_create_games.rb
+
+class CreateGames &lt; ActiveRecord::Migration[7.0]
+  def change
+    create_table :games do |t|
+      t.string :name
+      t.string :genre
+      t.integer :price
+      t.date :release_date
+
+      t.timestamps
+    end
+  end
+end
+</code></pre>
+        <p>Run the migration to make the changes on the database:</p>
+        <pre><code class="language-ruby">$ rails db:migrate
+</code></pre>
+        <p>
+          You should be ready now. To check if your model is working you can run
+          some queries (like <code>Game.all</code>) inside the Rails Console:
+        </p>
+        <pre><code class="language-ruby">$ rails console
+Loading development environment (Rails 7.0.1)
+irb(main):001:0&gt; Game.all
+  Game Load (0.5ms)  SELECT &quot;games&quot;.* FROM &quot;games&quot; LIMIT $1  [[&quot;LIMIT&quot;, 11]]
+=&gt; #&lt;ActiveRecord::Relation []&gt;
+irb(main):002:0&gt;
+</code></pre>
+        <p>
+          If you see the SQL query running and the response is
+          <code>#&lt;ActiveRecord::Relation []&gt;</code>, everything is right!.
+        </p>
+        <blockquote>
+          <p>
+            This is a good moment to commit your changes. Maybe with
+            &quot;Create Game model&quot;
+          </p>
+        </blockquote>
+        <hr />
+        <h3 id="perform-crud-operations">Perform CRUD operations</h3>
+        <p>
+          Jump to this section of the guide and read about how to
+          <strong>C</strong>reate, <strong>R</strong>ead,
+          <strong>U</strong>pdate and <strong>D</strong>elete records using
+          ActiveRecord. Then complete the remaining <strong>Tasks</strong>.
+        </p>
+        <ul>
+          <li>
+            <a
+              href="https://guides.rubyonrails.org/active_record_basics.html#crud-reading-and-writing-data"
+              ><strong>5 CRUD: Reading and Writing Data</strong></a
+            >
+          </li>
+        </ul>
+        <aside>
+          💡 The following tasks don't need to be committed to git (actually
+          they can't) because they are only interactions with your local
+          database.
+        </aside>
+
+        <h3 id="task-2-create-game-records">Task 2: Create Game records</h3>
+        <p>Enter to the Rails console and do the following</p>
+        <ul>
+          <li>
+            Using the <code>create</code> method, create a Game with:
+            <ul>
+              <li>name: Rune Factory 4 Special</li>
+              <li>genre: Role-playing (RPG)</li>
+              <li>price: 5999</li>
+              <li>release_date: 2019-07-25</li>
+            </ul>
+          </li>
+          <li>
+            Using the <code>new</code> and <code>save</code> methods, create a
+            Game with:
+            <ul>
+              <li>name: Borderlands 3</li>
+              <li>genre: Simulator</li>
+              <li>price: 5999</li>
+              <li>release_date: 2019-09-13</li>
+            </ul>
+          </li>
+          <li>
+            Use this array of games to <code>create</code> the records on your
+            database:
+          </li>
+        </ul>
+        <pre><code class="language-ruby">[ {:name=&gt;&quot;Zombie Driver: Immortal Edition&quot;, :genre=&gt;&quot;Racing&quot;, :price=&gt;5999, :release_date=&gt;&quot;2019-Jul-25&quot;},
+{:name=&gt;&quot;Remnant: From the Ashes&quot;, :genre=&gt;&quot;Shooter&quot;, :price=&gt;6999, :release_date=&gt;&quot;2019-Aug-20&quot;},
+{:name=&gt;&quot;Monster Hunter: World - Iceborne&quot;, :genre=&gt;&quot;Adventure&quot;, :price=&gt;6999, :release_date=&gt;&quot;2019-Sep-06&quot;},
+{:name=&gt;&quot;Cyberpunk 2077&quot;, :genre=&gt;&quot;Role-playing (RPG)&quot;, :price=&gt;4999, :release_date=&gt;&quot;2020-Sep-17&quot;},
+{:name=&gt;&quot;Pokémon Shield&quot;, :genre=&gt;&quot;Role-playing (RPG)&quot;, :price=&gt;5999, :release_date=&gt;&quot;2019-Nov-15&quot;},
+{:name=&gt;&quot;Children of Morta&quot;, :genre=&gt;&quot;Role-playing (RPG)&quot;, :price=&gt;6999, :release_date=&gt;&quot;2019-Sep-03&quot;} ]
+</code></pre>
+        <aside>
+          💡 Tip: Iterate through the array and for `each` game call
+          `Game.create` passing it the game. Since the hash is correctly
+          formatted you shouldn't have any problem.
+        </aside>
+
+        <hr />
+        <h3 id="task-3-accessing-game-data">
+          <strong>Task 3: Accessing Game data</strong>
+        </h3>
+        <p>Using your Rails console execute the right command to:</p>
+        <ul>
+          <li>Get <code>All</code> the games.</li>
+          <li><code>Find</code> the game with id 4</li>
+          <li>Find the game that was released on &quot;2019-Aug-20&quot;</li>
+          <li>Get the <code>first</code> game</li>
+          <li>Get the <code>last</code> game</li>
+          <li>
+            Get all the games <code>sorted</code> by release date (from newest
+            to oldest)
+          </li>
+          <li>Get all the games that cost $59.99 (5999 cents)</li>
+          <li>
+            Get all the games released on 2019 (google-search &quot;extract year
+            on ActiveRecord&quot; 👀)
+          </li>
+        </ul>
+        <hr />
+        <h3 id="task-4-updating-game-data">
+          <strong>Task 4: Updating Game data</strong>
+        </h3>
+        <ul>
+          <li>
+            <code>Find</code> the game named &quot;Borderlands 3&quot; and save
+            it on a variable. Then, set their <code>genre</code> attribute to
+            &quot;Shooter&quot;. Finally, <code>save</code> the updated record.
+          </li>
+          <li>
+            <code>Find</code> the game &quot;Pokémon Shield&quot; and use the
+            method <code>update</code> to change it price to 3999.
+          </li>
+          <li>
+            <code>Update all</code> the &quot;Role-playing (RPG)&quot; games to
+            have a price of 2999. (first you need to select the games you want
+            to update 👀).
+          </li>
+        </ul>
+        <hr />
+        <h3 id="task-5-deleting-game-records">
+          <strong>Task 5: Deleting Game records</strong>
+        </h3>
+        <ul>
+          <li>
+            <code>Find</code> the record with id 3 and <code>destroy</code> it.
+          </li>
+          <li>
+            <code>Destroy</code> all the records of the genre
+            &quot;Adventure&quot;
+          </li>
+          <li>Thinking again, <code>destroy_all</code> the games 😵</li>
+        </ul>
+      </section>
+      <!--<div id="content"></div>-->
     </main>
   </body>
-  <script src="js/header.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
-  <script src="js/md_convert.js"></script>
+  <script src="js/global/header.js"></script>
+  <!--<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="js/global/md_convert.js"></script>-->
+  <script src="/js/global/prism.js"></script>
 </html>

@@ -1,5 +1,6 @@
-@import url("global/reset.css");
-@import url("global/layouts.css");
-@import url("global/colors.css");
-@import url("global/util.css");
-@import url("global/typography.css");
+@import url(global/colors.css);
+@import url(global/layouts.css);
+@import url(global/prism.css);
+@import url(global/reset.css);
+@import url(global/typography.css);
+@import url(global/util.css);
