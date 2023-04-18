@@ -53,127 +53,33 @@
         <p>
           Documentation
           <a href="https://www.postgresql.org/docs/"><code>Click Here</code></a>
+          Pasos para instalar
+          <a
+            href="https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-20-04-quickstart#step-1-installing-postgresql"
+            >postgresql</a
+          >
+          PostgreSQL
+          <a
+            href="https://www.postgresqltutorial.com/wp-content/uploads/2018/03/PostgreSQL-Cheat-Sheet.pdf"
+            >Cheat Sheet</a
+          >
         </p>
-        <ul>
-          <li>For Mac (using Homebrew)</li>
-        </ul>
-        <pre><code class="language-bash">$ brew update
-$ brew install postgresql
-</code></pre>
-        <ul>
-          <li>For Linux (Ubuntu)</li>
-        </ul>
-        <pre><code class="language-bash">$ sudo apt update
-$ sudo apt install postgresql postgresql-contrib
-</code></pre>
-        <ul>
-          <li>Create user with the username of Linux.</li>
-        </ul>
-        <pre><code class="language-bash">$ sudo -u postgres createuser --interactive
-</code></pre>
-        <aside>
-          <p>
-            💡 When shows: &quot;Shall the new role be a superuser? (y/n)&quot;
-            Type <code>y</code>
-          </p>
-        </aside>
-
         <p>Start postgresql service:</p>
-        <ul>
-          <li>
-            For Linux (Ubuntu), must detail you can check
-            <a
-              href="https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-20-04-quickstart"
-              >this guide</a
-            >
-          </li>
-        </ul>
         <pre><code class="language-bash">$ sudo service postgresql start
 </code></pre>
-        <ul>
-          <li>For Mac (using Homebrew)</li>
-        </ul>
-        <pre><code class="language-bash">$ brew services start postgresql
-</code></pre>
-        <p>To check if your installation was successful you can run:</p>
-        <ul>
-          <li>For Mac</li>
-        </ul>
-        <pre><code class="language-bash">$ postgres --version
-postgres (PostgreSQL) 13.5
-</code></pre>
-        <ul>
-          <li>For Linux</li>
-        </ul>
-        <pre><code class="language-bash">$ psql --version
-psql (PostgreSQL) 12.10 (Ubuntu 12.10-0ubuntu0.20.04.1)
-</code></pre>
-        <p>
-          You can also try to connect to the default database created during the
-          installation (user = postgres, database = postgres)
-        </p>
-        <pre><code class="language-bash">$ sudo -u postgres psql
-psql (13.0, server 11.5)
-Type &quot;help&quot; for help.
-
-postgres=#
-</code></pre>
-        <aside>
-          💡 Type `exit` or `\q` to quit
-        </aside>
-
-        <hr />
-        <p>
-          This assignment consists of creating SQL queries that answer the
-          questions on <code>movielens-1.md</code>
-        </p>
-        <p>
-          To query the movielens database you will need to create it on your
-          local environment using the <code>movielens.sql</code> dump file.
-        </p>
-        <p>
-          After cloning the repo, navigate to it and just execute the following
-          script:
-        </p>
-        <pre><code class="language-bash">$ createdb movielens
-$ psql -d movielens &lt; movielens.sql
-</code></pre>
-        <p>The response should be something like this:</p>
-        <pre><code class="language-bash">BEGIN
-NOTICE:  table &quot;occupations&quot; does not exist, skipping
-DROP TABLE
-CREATE TABLE
-INSERT 0 21
-NOTICE:  table &quot;users&quot; does not exist, skipping
-DROP TABLE
-CREATE TABLE
-INSERT 0 943
-NOTICE:  table &quot;ratings&quot; does not exist, skipping
-DROP TABLE
-CREATE TABLE
-INSERT 0 100000
-NOTICE:  table &quot;movies&quot; does not exist, skipping
-DROP TABLE
-CREATE TABLE
-INSERT 0 1682
-NOTICE:  table &quot;genres&quot; does not exist, skipping
-DROP TABLE
-CREATE TABLE
-INSERT 0 18
-NOTICE:  table &quot;genres_movies&quot; does not exist, skipping
-DROP TABLE
-CREATE TABLE
-INSERT 0 2891
-COMMIT
-</code></pre>
         <p>Then you can connect using:</p>
-        <pre><code class="language-bash">$ psql -d movielens
+        <pre><code class="language-bash">$ psql -d db_name
 psql (13.0)
 Type &quot;help&quot; for help.
-movielens=#
+db_name=#
 </code></pre>
-        <p>From here you can start writing your queries:</p>
-        <pre><code class="language-bash">movielens=# SELECT * FROM genres;
+        <p>
+          From here you can start writing your
+          <a href="https://www.postgresqltutorial.com/postgresql-cheat-sheet/"
+            >queries</a
+          >:
+        </p>
+        <pre><code class="language-bash">movielens=# SELECT * FROM table_name;
  id |    name
 ----+-------------
   1 | Action
@@ -184,40 +90,7 @@ movielens=#
   6 | Crime
   7 | Documentary
   8 | Drama
-  9 | Fantasy
- 10 | Film-Noir
- 11 | Horror
- 12 | Musical
- 13 | Mystery
- 14 | Romance
- 15 | Sci-Fi
- 16 | Thriller
- 17 | War
- 18 | Western
-(18 rows)
-</code></pre>
-        <aside>
-          💡 Don't forget to end your query with a `;`
-        </aside>
-
-        <p>
-          If you want to use another management interface to interact with
-          postgresql, we recommend
-          <a href="https://www.pgadmin.org/download/">pgAdmin</a>. Feel free to
-          use the management interface of your preference.
-        </p>
-        <pre><code>MovieLens data sets were collected by the GroupLens Research Project
-at the University of Minnesota.
-
-This data set consists of:
-    * 100,000 ratings (1-5) from 943 users on 1682 movies.
-    * Each user has rated at least 20 movies.
-  * Simple demographic info for the users (age, gender, occupation, zip)
-
-F. Maxwell Harper and Joseph A. Konstan. 2015. The MovieLens Datasets:
-History and Context. ACM Transactions on Interactive Intelligent
-Systems (TiiS) 5, 4, Article 19 (December 2015), 19 pages.
-DOI=http://dx.doi.org/10.1145/2827872
+(8 rows)
 </code></pre>
       </section>
       <!--<div id="content"></div>-->
