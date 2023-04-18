@@ -2,8 +2,8 @@
 
 #### Links
 
-Documentation [`Click Here`](https://www.postgresql.org/docs/)
-Pasos para instalar [postgresql](https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-20-04-quickstart#step-1-installing-postgresql)
+Documentation [`Click Here`](https://www.postgresql.org/docs/)\
+Pasos para instalar [postgresql](https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-20-04-quickstart#step-1-installing-postgresql)\
 PostgreSQL [Cheat Sheet](https://www.postgresqltutorial.com/wp-content/uploads/2018/03/PostgreSQL-Cheat-Sheet.pdf)
 
 Start postgresql service:
