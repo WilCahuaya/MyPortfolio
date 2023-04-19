@@ -6,6 +6,117 @@
 
 ---
 
+## Rails CLI
+
+Create a Rails application from scratch and we added --skip-test to avoid using Minitest (the default test engine) and to be able to add RSpec later.
+
+```ruby
+$ rails new . --database postgresql --skip-test
+```
+
+Add the gem **rubocop-rails** to the Gemfile and create the file **.rubocop.yml.**
+
+```ruby
+# Gemfile
+
+group :development do
+  ...
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
+  ...
+end
+```
+
+```ruby
+# .rubocop.yml
+
+require: rubocop-rails
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - "db/**/*"
+    - "script/**/*"
+    - "bin/**/*"
+    - "node_modules/**/*"
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 20
+
+Metrics/AbcSize:
+  Max: 30
+
+Style/GlobalVars:
+  Enabled: false
+
+Style/WordArray:
+  MinSize: 10
+
+Style/ClassVars:
+  Enabled: false
+
+HasAndBelongsToMany:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 100
+  IgnoredPatterns: ['\s*#']
+
+Metrics/BlockLength:
+  Exclude:
+    - config/**/*
+    - spec/**/*
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - spec/**/*
+
+```
+
+Run **bundle install** and the **rubocop -A** to autocorrect minor offenses. Correct any extra offenses and commit your progress.
+
+```ruby
+$ git add .
+$ git commit -m "Initial commit"
+```
+
+Other CLI
+
+```ruby
+# Create a new rails app
+$ rails new project_name
+
+# Start the Rails server
+$ rails s
+
+# Rails console
+$ rails c
+
+# Install dependencies
+$ bundle install
+
+# View all routes
+$ rails routes
+
+# Toggle rails caching
+$ rails dev:cache
+```
+
+## Models
+
+## Controllers
+
+## views
+
 <!--
 ## Rails
 

@@ -50,8 +50,10 @@
         <blockquote>
           <p>
             Documentacion
-            <a href="https://guides.rubyonrails.org/">Click Here</a>
+            <a href="https://guides.rubyonrails.org/">Click Here</a>/
           </p>
+        </blockquote>
+        <blockquote>
           <p>
             <a
               href="https://dev.to/ericchapman/my-beloved-ruby-on-rails-cheat-sheet-50pi"
@@ -60,6 +62,109 @@
           </p>
         </blockquote>
         <hr />
+        <h2 id="rails-cli">Rails CLI</h2>
+        <p>
+          Create a Rails application from scratch and we added --skip-test to
+          avoid using Minitest (the default test engine) and to be able to add
+          RSpec later.
+        </p>
+        <pre><code class="language-ruby">$ rails new . --database postgresql --skip-test
+</code></pre>
+        <p>
+          Add the gem <strong>rubocop-rails</strong> to the Gemfile and create
+          the file <strong>.rubocop.yml.</strong>
+        </p>
+        <pre><code class="language-ruby"># Gemfile
+
+group :development do
+  ...
+  gem &#39;rubocop&#39;, require: false
+  gem &#39;rubocop-rails&#39;, require: false
+  ...
+end
+</code></pre>
+        <pre><code class="language-ruby"># .rubocop.yml
+
+require: rubocop-rails
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - &quot;db/**/*&quot;
+    - &quot;script/**/*&quot;
+    - &quot;bin/**/*&quot;
+    - &quot;node_modules/**/*&quot;
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 20
+
+Metrics/AbcSize:
+  Max: 30
+
+Style/GlobalVars:
+  Enabled: false
+
+Style/WordArray:
+  MinSize: 10
+
+Style/ClassVars:
+  Enabled: false
+
+HasAndBelongsToMany:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 100
+  IgnoredPatterns: [&#39;\s*#&#39;]
+
+Metrics/BlockLength:
+  Exclude:
+    - config/**/*
+    - spec/**/*
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - spec/**/*
+</code></pre>
+        <p>
+          Run <strong>bundle install</strong> and the
+          <strong>rubocop -A</strong> to autocorrect minor offenses. Correct any
+          extra offenses and commit your progress.
+        </p>
+        <pre><code class="language-ruby">$ git add .
+$ git commit -m &quot;Initial commit&quot;
+</code></pre>
+        <p>Other CLI</p>
+        <pre><code class="language-ruby"># Create a new rails app
+$ rails new project_name
+
+# Start the Rails server
+$ rails s
+
+# Rails console
+$ rails c
+
+# Install dependencies
+$ bundle install
+
+# View all routes
+$ rails routes
+
+# Toggle rails caching
+$ rails dev:cache
+</code></pre>
+        <h2 id="models">Models</h2>
+        <h2 id="controllers">Controllers</h2>
+        <h2 id="views">views</h2>
       </section>
     </main>
   </body>
