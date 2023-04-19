@@ -48,29 +48,38 @@
     <main class="container-lg">
       <!--md to html-->
       <section class="section-sm">
-        <h2 id="postgresql">PostgreSQL</h2>
-        <h4 id="links">Links</h4>
-        <p>
-          Documentation
-          <a href="https://www.postgresql.org/docs/"><code>Click Here</code></a
-          ><br />Pasos para instalar
-          <a
-            href="https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-20-04-quickstart#step-1-installing-postgresql"
-            >postgresql</a
-          ><br />PostgreSQL
-          <a
-            href="https://www.postgresqltutorial.com/wp-content/uploads/2018/03/PostgreSQL-Cheat-Sheet.pdf"
-            >Cheat Sheet</a
-          >
-        </p>
+        <h1 id="postgresql">PostgreSQL</h1>
+        <blockquote>
+          <p>
+            Documentation
+            <a href="https://www.postgresql.org/docs/"
+              ><code>Click Here</code></a
+            >
+          </p>
+          <p>
+            Pasos para instalar
+            <a
+              href="https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-20-04-quickstart#step-1-installing-postgresql"
+              >postgresql</a
+            >
+          </p>
+          <p>
+            PostgreSQL
+            <a
+              href="https://www.postgresqltutorial.com/wp-content/uploads/2018/03/PostgreSQL-Cheat-Sheet.pdf"
+              >Cheat Sheet</a
+            >
+          </p>
+        </blockquote>
+        <hr />
         <p>Start postgresql service:</p>
-        <pre><code class="language-bash">$ sudo service postgresql start
+        <pre><code class="lang-bash">$ sudo service postgresql <span class="hljs-literal">start</span>
 </code></pre>
         <p>Then you can connect using:</p>
-        <pre><code class="language-bash">$ psql -d db_name
+        <pre><code class="lang-bash">$ psql <span class="hljs-_">-d</span> db_name
 psql (13.0)
-Type &quot;help&quot; for help.
-db_name=#
+Type <span class="hljs-string">"help"</span> <span class="hljs-keyword">for</span> help.
+db_name=<span class="hljs-comment">#</span>
 </code></pre>
         <p>
           From here you can start writing your
@@ -78,18 +87,18 @@ db_name=#
             >queries</a
           >:
         </p>
-        <pre><code class="language-bash">movielens=# SELECT * FROM table_name;
- id |    name
+        <pre><code class="lang-bash">movielens=<span class="hljs-meta"># SELECT * FROM table_name;</span>
+ id <span class="hljs-string">|    name</span>
 ----+-------------
-  1 | Action
-  2 | Adventure
-  3 | Animation
-  4 | Childrens
-  5 | Comedy
-  6 | Crime
-  7 | Documentary
-  8 | Drama
-(8 rows)
+  <span class="hljs-number">1</span> <span class="hljs-string">| Action</span>
+  <span class="hljs-number">2</span> <span class="hljs-string">| Adventure</span>
+  <span class="hljs-number">3</span> <span class="hljs-string">| Animation</span>
+  <span class="hljs-number">4</span> <span class="hljs-string">| Childrens</span>
+  <span class="hljs-number">5</span> <span class="hljs-string">| Comedy</span>
+  <span class="hljs-number">6</span> <span class="hljs-string">| Crime</span>
+  <span class="hljs-number">7</span> <span class="hljs-string">| Documentary</span>
+  <span class="hljs-number">8</span> <span class="hljs-string">| Drama</span>
+(<span class="hljs-number">8</span> rows)
 </code></pre>
       </section>
       <!--<div id="content"></div>-->

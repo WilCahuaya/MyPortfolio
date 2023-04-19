@@ -105,3 +105,10 @@
 .mb-8 {
   margin-bottom: 2rem;
 }
+
+blockquote {
+  background-color: var(--background-dark);
+  border-left: 4px solid var(--primary);
+  padding: 0.5rem 0 0.5rem 1rem;
+  margin: 1rem 0 1rem 1rem;
+}

@@ -1,6 +1,7 @@
-## Ruby
+# Ruby
 
-#### Links
+> Documentation [`Click Here`](https://www.ruby-lang.org/es/documentation/)
 
-Documentation [`Click Here`](https://www.ruby-lang.org/es/documentation/)\
-Ruby [Cheat Sheet](https://overapi.com/ruby)
+> Ruby [Cheat Sheet](https://overapi.com/ruby)
+
+---
