@@ -26,7 +26,7 @@ First, read the following 3 sections of the guides:
 Before creating any model you will need a database and a table to be mapped to.
 To create a new database for your Rails application just run:
 
-```bash
+```bash:
 $ rails db:create
 Created database 'rails-basic-models_development'
 Created database 'rails-basic-models_test'
@@ -42,7 +42,7 @@ sure). Only creates the DBs interacting with your DBMS (PostgreSQL).
 
 If you enter your DBMS client (psql or PGAdmin) you will find the new databases created.
 
-```
+```sql
 $ psql -d postgres
 psql (14.1)
 Type "help" for help.
@@ -69,7 +69,7 @@ Try to use the model generator to create the Game model.
 If you generate the model correctly, a migration file should be created. It
 should be similar to:
 
-```ruby
+```ruby:
 # 20201209083333_create_games.rb
 
 class CreateGames < ActiveRecord::Migration[7.0]
@@ -96,12 +96,9 @@ You should be ready now. To check if your model is working you can run some
 queries (like `Game.all`) inside the Rails Console:
 
 ```ruby
-$ rails console
-Loading development environment (Rails 7.0.1)
-irb(main):001:0> Game.all
-  Game Load (0.5ms)  SELECT "games".* FROM "games" LIMIT $1  [["LIMIT", 11]]
-=> #<ActiveRecord::Relation []>
-irb(main):002:0>
+$ rails console Loading development environment (Rails 7.0.1) irb(main):001:0>
+Game.all Game Load (0.5ms) SELECT "games".* FROM "games" LIMIT $1 [["LIMIT",
+11]] => #<ActiveRecord::Relation []> irb(main):002:0></ActiveRecord::Relation>
 ```
 
 If you see the SQL query running and the response is
