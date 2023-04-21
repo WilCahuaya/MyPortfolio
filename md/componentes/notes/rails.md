@@ -10,13 +10,13 @@
 
 Create a Rails application from scratch and we added --skip-test to avoid using Minitest (the default test engine) and to be able to add RSpec later.
 
-```ruby
+```bash
 $ rails new . --database postgresql --skip-test
 ```
 
 Add the gem **rubocop-rails** to the Gemfile and create the file **.rubocop.yml.**
 
-```ruby
+```javascript
 # Gemfile
 
 group :development do
@@ -27,7 +27,7 @@ group :development do
 end
 ```
 
-```ruby
+```javascript
 # .rubocop.yml
 
 require: rubocop-rails
@@ -84,14 +84,14 @@ Lint/AmbiguousBlockAssociation:
 
 Run **bundle install** and the **rubocop -A** to autocorrect minor offenses. Correct any extra offenses and commit your progress.
 
-```ruby
+```bash
 $ git add .
 $ git commit -m "Initial commit"
 ```
 
 Other CLI
 
-```ruby
+```bash
 # Create a new rails app
 $ rails new project_name
 
@@ -112,6 +112,10 @@ $ rails dev:cache
 ```
 
 ## Models
+
+```javascript
+hola;
+```
 
 ## Controllers
 

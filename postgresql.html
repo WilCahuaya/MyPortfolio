@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
     <link rel="stylesheet" href="css/style.css" />
-    <title>PostgreSQL</title>
+    <link rel="stylesheet" href="convert/prism.css" />
+    <script src="convert/prism.js"></script>
+    <script src="   https://unpkg.com/showdown/dist/showdown.min.js"></script>
   </head>
-
-  <body>
+  <body onload="md_to_html('md/componentes/notes/postgresql.md')">
     <header class="header container-lg">
       <a href="/index.html" class="text-decoration-none color-text text-xl bold"
         >WilCahuaya</a
@@ -46,66 +46,10 @@
       </nav>
     </header>
     <main class="container-lg">
-      <!--md to html-->
       <section class="section-sm">
-        <h1 id="postgresql">PostgreSQL</h1>
-        <blockquote>
-          <p>
-            Documentation
-            <a href="https://www.postgresql.org/docs/"
-              ><code>Click Here</code></a
-            >
-          </p>
-          <p>
-            Pasos para instalar
-            <a
-              href="https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-20-04-quickstart#step-1-installing-postgresql"
-              >postgresql</a
-            >
-          </p>
-          <p>
-            PostgreSQL
-            <a
-              href="https://www.postgresqltutorial.com/wp-content/uploads/2018/03/PostgreSQL-Cheat-Sheet.pdf"
-              >Cheat Sheet</a
-            >
-          </p>
-        </blockquote>
-        <hr />
-        <p>Start postgresql service:</p>
-        <pre><code class="lang-bash">$ sudo service postgresql <span class="hljs-literal">start</span>
-</code></pre>
-        <p>Then you can connect using:</p>
-        <pre><code class="lang-bash">$ psql <span class="hljs-_">-d</span> db_name
-psql (13.0)
-Type <span class="hljs-string">"help"</span> <span class="hljs-keyword">for</span> help.
-db_name=<span class="hljs-comment">#</span>
-</code></pre>
-        <p>
-          From here you can start writing your
-          <a href="https://www.postgresqltutorial.com/postgresql-cheat-sheet/"
-            >queries</a
-          >:
-        </p>
-        <pre><code class="lang-bash">movielens=<span class="hljs-meta"># SELECT * FROM table_name;</span>
- id <span class="hljs-string">|    name</span>
-----+-------------
-  <span class="hljs-number">1</span> <span class="hljs-string">| Action</span>
-  <span class="hljs-number">2</span> <span class="hljs-string">| Adventure</span>
-  <span class="hljs-number">3</span> <span class="hljs-string">| Animation</span>
-  <span class="hljs-number">4</span> <span class="hljs-string">| Childrens</span>
-  <span class="hljs-number">5</span> <span class="hljs-string">| Comedy</span>
-  <span class="hljs-number">6</span> <span class="hljs-string">| Crime</span>
-  <span class="hljs-number">7</span> <span class="hljs-string">| Documentary</span>
-  <span class="hljs-number">8</span> <span class="hljs-string">| Drama</span>
-(<span class="hljs-number">8</span> rows)
-</code></pre>
+        <div id="content"></div>
       </section>
-      <!--<div id="content"></div>-->
     </main>
+    <script src="convert/md_to_html.js"></script>
   </body>
-  <script src="js/global/header.js"></script>
-  <!--<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script src="js/global/md_convert.js"></script>-->
-  <script src="/js/global/prism.js"></script>
 </html>

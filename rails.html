@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
     <link rel="stylesheet" href="css/style.css" />
-    <title>rails</title>
+    <link rel="stylesheet" href="convert/prism.css" />
+    <script src="convert/prism.js"></script>
+    <script src="   https://unpkg.com/showdown/dist/showdown.min.js"></script>
   </head>
-  <body>
+  <body onload="md_to_html('md/componentes/notes/rails.md')">
     <header class="header container-lg">
       <a href="/index.html" class="text-decoration-none color-text text-xl bold"
         >WilCahuaya</a
@@ -46,130 +47,9 @@
     </header>
     <main class="container-lg">
       <section class="section-sm">
-        <h1 id="rails">Rails</h1>
-        <blockquote>
-          <p>
-            Documentacion
-            <a href="https://guides.rubyonrails.org/">Click Here</a>/
-          </p>
-        </blockquote>
-        <blockquote>
-          <p>
-            <a
-              href="https://dev.to/ericchapman/my-beloved-ruby-on-rails-cheat-sheet-50pi"
-              >Cheap Shet</a
-            >
-          </p>
-        </blockquote>
-        <hr />
-        <h2 id="rails-cli">Rails CLI</h2>
-        <p>
-          Create a Rails application from scratch and we added --skip-test to
-          avoid using Minitest (the default test engine) and to be able to add
-          RSpec later.
-        </p>
-        <pre><code class="language-ruby">$ rails new . --database postgresql --skip-test
-</code></pre>
-        <p>
-          Add the gem <strong>rubocop-rails</strong> to the Gemfile and create
-          the file <strong>.rubocop.yml.</strong>
-        </p>
-        <pre><code class="language-ruby"># Gemfile
-
-group :development do
-  ...
-  gem &#39;rubocop&#39;, require: false
-  gem &#39;rubocop-rails&#39;, require: false
-  ...
-end
-</code></pre>
-        <pre><code class="language-ruby"># .rubocop.yml
-
-require: rubocop-rails
-
-AllCops:
-  NewCops: enable
-  Exclude:
-    - &quot;db/**/*&quot;
-    - &quot;script/**/*&quot;
-    - &quot;bin/**/*&quot;
-    - &quot;node_modules/**/*&quot;
-
-Style/StringLiterals:
-  EnforcedStyle: double_quotes
-
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
-Style/Documentation:
-  Enabled: false
-
-Metrics/MethodLength:
-  Max: 20
-
-Metrics/AbcSize:
-  Max: 30
-
-Style/GlobalVars:
-  Enabled: false
-
-Style/WordArray:
-  MinSize: 10
-
-Style/ClassVars:
-  Enabled: false
-
-HasAndBelongsToMany:
-  Enabled: false
-
-Layout/LineLength:
-  Max: 100
-  IgnoredPatterns: [&#39;\s*#&#39;]
-
-Metrics/BlockLength:
-  Exclude:
-    - config/**/*
-    - spec/**/*
-
-Lint/AmbiguousBlockAssociation:
-  Exclude:
-    - spec/**/*
-</code></pre>
-        <p>
-          Run <strong>bundle install</strong> and the
-          <strong>rubocop -A</strong> to autocorrect minor offenses. Correct any
-          extra offenses and commit your progress.
-        </p>
-        <pre><code class="language-ruby">$ git add .
-$ git commit -m &quot;Initial commit&quot;
-</code></pre>
-        <p>Other CLI</p>
-        <pre><code class="language-ruby"># Create a new rails app
-$ rails new project_name
-
-# Start the Rails server
-$ rails s
-
-# Rails console
-$ rails c
-
-# Install dependencies
-$ bundle install
-
-# View all routes
-$ rails routes
-
-# Toggle rails caching
-$ rails dev:cache
-</code></pre>
-        <h2 id="models">Models</h2>
-        <h2 id="controllers">Controllers</h2>
-        <h2 id="views">views</h2>
+        <div id="content"></div>
       </section>
     </main>
+    <script src="convert/md_to_html.js"></script>
   </body>
-  <script src="js/global/header.js"></script>
-  <!--<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script src="js/global/md_convert.js"></script>-->
-  <script src="/js/global/prism.js"></script>
 </html>
