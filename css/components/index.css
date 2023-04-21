@@ -7,7 +7,9 @@
 }
 
 .index__img {
-  width: 250px;
+  background-color: var(--background-dark);
+  border: 2px solid var(--background-darker);
+  width: 180px;
   border-radius: 2rem;
-  background-color: var(--primary-light);
+  background-color: none;
 }
