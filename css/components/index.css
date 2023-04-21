@@ -9,7 +9,11 @@
 .index__img {
   background-color: var(--background-dark);
   border: 2px solid var(--background-darker);
-  width: 180px;
-  border-radius: 2rem;
+  width: 200px;
+  border-radius: 1.5rem;
   background-color: none;
+}
+
+.index_description {
+  text-align: center;
 }
