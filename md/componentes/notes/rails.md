@@ -170,7 +170,7 @@ end
 ![Alt text](/img/notes/Screenshot_20230421_163713.png"No model")
 
 ```bash
-$ rails g migrate CreateJoinTableGameGenre game platforms
+$ rails g migration CreateJoinTableGameGenre game platforms
 ```
 
 Migrate
@@ -224,7 +224,7 @@ end
    - Generate a migration AddParentRefToGame
      ![Table Games](/img/notes//table_games.png "Self Joins")
 
-```hash
+```bash
 $ rails g migration addParentRefToGame parent:references
 ```
 
@@ -282,6 +282,83 @@ end
    > Documentation [Polymorphic table](https://guides.rubyonrails.org/association_basics.html#polymorphic-associations)
 
 ![polymorphic table](/img/notes/polymorphic_table.jpeg)
+
+Create a polymorphic migration
+
+```bash
+$ rails g migration AddRefCriticableToCritic criticable:references{polymorphic}
+```
+
+Migration
+
+```javascript
+class AddRefCriticableToCritic < ActiveRecord::Migration[7.0]
+  def change
+   // # rails g migration AddRefCriticableToCritic criticable:references{polymorphic}
+    add_reference :critics, :criticable, polymorphic: true, null: false
+  end
+end
+```
+
+Schema
+
+```sql
+create_table "critics", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "criticable_type", null: false
+    t.bigint "criticable_id", null: false
+    t.index ["criticable_type", "criticable_id"], name: "index_critics_on_criticable"
+    t.index ["user_id"], name: "index_critics_on_user_id"
+  end
+```
+
+Model Critic
+
+```javascript
+class Critic < ApplicationRecord
+  # Assocciations
+  belongs_to :criticable, polymorphic: true
+end
+```
+
+Model Game
+
+```javascript
+class Game < ApplicationRecord
+
+  # Associations
+  has_many :critics, as: :criticable, dependent: :destroy
+end
+```
+
+Model Company
+
+```javascript
+class Company < ApplicationRecord
+  has_many :critics, as: :criticable, dependent: :destroy
+end
+```
+
+Create a Critics
+
+```javascript
+irb(main):021:0> criticGame = Critic.create(title: 'Critic Game', criticable: game)
+irb(main):021:0> criticCompany = Critic.create(title: 'Critic Company', criticable: company)
+```
+
+Consult
+
+```javascript
+company.critics;
+game.critics;
+
+criticGame.criticable;
+criticCompany.criticable;
+```
 
 ## Controllers
 
