@@ -1,6 +1,6 @@
 # Rails
 
-> Documentacion [Click Here](https://guides.rubyonrails.org/)/
+> Documentacion [Click Here](https://guides.rubyonrails.org/)
 
 > [Cheap Shet](https://dev.to/ericchapman/my-beloved-ruby-on-rails-cheat-sheet-50pi)
 
@@ -92,9 +92,6 @@ $ git commit -m "Initial commit"
 Other CLI
 
 ```bash
-# Create a new rails app
-$ rails new project_name
-
 # Start the Rails server
 $ rails s
 
@@ -109,13 +106,182 @@ $ rails routes
 
 # Toggle rails caching
 $ rails dev:cache
+
+# Create db in project Rails
+$ rails db:create
+
+# Migrate db in project Rails
+$ rails db:migrate
 ```
 
 ## Models
 
-```javascript
-hola;
+Generate a model and a migration
+
+```bash
+$ rails generate model Categories name description photo_count:integer
 ```
+
+- You can define the type of the field using ¨**:**¨ followed by the data type (no spaces!).
+- The most common types are: string, text, integer, decimal, date, time, datetime, boolean, and references.
+
+Generate a model and a migration whit reference
+
+```bash
+$ rails g model Photos title description category:references
+```
+
+Destroy a model and a migration
+
+```bash
+$ rails generate model Categories name description photo_count:integer
+```
+
+> Documentacion [Active Record Associations](https://guides.rubyonrails.org/association_basics.html)
+
+### One to many
+
+Model User
+
+```javascript
+class User < ApplicationRecord
+  # Assocciations
+  has_many :critics, dependent: :destroy
+end
+```
+
+- **dependent: :destroy** If a user is destroyed, all his reviews are deleted.
+  Model Critic
+
+```javascript
+class Critic < ApplicationRecord
+  # Assocciations
+  belongs_to :user, counter_cache: true
+end
+```
+
+### Join tables (Many to many)
+
+1. Image of many-to-many relationship when the intermediate table exists as a model
+   ![Alt text](/img/notes/many_to_many.png"Many to many")
+
+2. Create a migration to join two tables via model
+
+![Alt text](/img/notes/Screenshot_20230421_163713.png"No model")
+
+```bash
+$ rails g migrate CreateJoinTableGameGenre game platforms
+```
+
+Migrate
+
+```javascript
+class CreateJoinTableGamePlatform < ActiveRecord::Migration[7.0]
+  def change
+    create_join_table :games, :platforms do |t|
+      # t.index [:game_id, :platform_id]
+      # t.index [:platform_id, :game_id]
+    end
+  end
+end
+```
+
+Schema
+
+```sql
+create_table "games_platforms", id: false, force: :cascade do |t|
+    t.bigint "game_id", null: false
+    t.bigint "platform_id", null: false
+  end
+```
+
+Model Game
+
+```javascript
+class Game < ApplicationRecord
+  # Assocciations
+  has_and_belongs_to_many :platforms
+end
+```
+
+Model Platform
+
+```javascript
+class Platform < ApplicationRecord
+  # Assocciations
+  has_and_belongs_to_many :games
+end
+```
+
+3. Self Joins
+
+   > Documentacion [Self Joins](https://guides.rubyonrails.org/association_basics.html#self-joins)
+
+   A manager has many subordinates but a subordinate has one manager
+
+   ![Self Joins](/img/notes/self_joins.jpeg "Self Joins")
+
+   - Generate a migration AddParentRefToGame
+     ![Table Games](/img/notes//table_games.png "Self Joins")
+
+```hash
+$ rails g migration addParentRefToGame parent:references
+```
+
+Migration
+
+```javascript
+class AddParentRefToGame < ActiveRecord::Migration[7.0]
+  def change
+    # add_reference :games, :parent, null: false, foreign_key: true
+    add_reference :games, :parent, foreign_key: { to_table: :games }
+  end
+end
+```
+
+Schema
+
+```sql
+create_table "games", force: :cascade do |t|
+    t.string "name"
+    t.text "summary"
+    t.date "release_date"
+    t.integer "category", default: 0
+    t.decimal "rating"
+    t.string "cover"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "parent_id"
+    t.index ["name"], name: "index_games_on_name", unique: true
+    t.index ["parent_id"], name: "index_games_on_parent_id"
+end
+
+add_foreign_key "games", "games", column: "parent_id"
+```
+
+Model Game
+
+```javascript
+class Game < ApplicationRecord
+  # Self-join Assocciations
+  has_many :expansions, class_name: "Game",
+                        foreign_key: "parent_id",
+                        dependent: :destroy,
+                        inverse_of: "parent"
+
+  belongs_to :parent, class_name: "Game", optional: true
+end
+```
+
+- Way to add values associated to has_many
+
+![Add values associated](/img/notes/add_values_associated.png)
+
+4. Polymorphic table
+
+   > Documentation [Polymorphic table](https://guides.rubyonrails.org/association_basics.html#polymorphic-associations)
+
+![polymorphic table](/img/notes/polymorphic_table.jpeg)
 
 ## Controllers
 
