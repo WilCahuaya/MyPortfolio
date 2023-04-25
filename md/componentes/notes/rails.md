@@ -360,9 +360,200 @@ criticGame.criticable;
 criticCompany.criticable;
 ```
 
+5. Enums fields
+
+Documentation [Enums Fields](https://api.rubyonrails.org/v5.1/classes/ActiveRecord/Enum.html)
+
+**Category** is the name of the column that is of type integer that by default is 0
+Model Game
+
+```sql
+class Game < ApplicationRecord
+  enum category: { main_game: 0, expansion: 1 }
+
+  # gta_exp = Game.create(name: "GTA Expansion", parent: gta, category: "expansion")
+end
+```
+
+```sql
+# create some games
+main_game = Game.create(name: 'New game', category: 'main_game')
+expansion_game = main_game.expansions.create(name: 'New expansion', category: 'expansion')
+# check the 'enum' methods
+main_game.category # => 'main_game'
+main_game.main_game? # => true
+main_game.expansion? # => false
+
+expansion_game.category # => 'expansion'
+expansion_game.main_game? # => false
+expansion_game.expansion? # => true
+
+# to list all the games that are expansions
+Game.expansion
+
+# to list all the games that are main_games
+Game.main_game
+
+# create some platforms
+arcade = Platform.create(name: 'Play Station 5', category: 'arcade')
+portable = Platform.create(name: 'Nintendo Switch', category: 'portable_console')
+# check the 'enum' methods
+arcade.category # => 'arcade'
+arcade.arcade? # => true
+arcade.portable_console? # => false
+
+portable.category # => 'portable_console'
+portable.arcade? # => false
+portable.portable_console? # => true
+
+# to list all the platforms that are arcade
+Platform.arcade
+
+# to list all the platforms that are portable_console
+Platform.portable_console
+```
+
+![Enums Fields](/img/notes/enums_fields.png)
+
+6. Callbacks
+
+Documentation [Active Record Callbacks](https://guides.rubyonrails.org/active_record_callbacks.html)
+
+![Callbacks](/img/notes/callbacks.png)
+
+**counter_cache** It does the same as the code commented below
+
+```sql
+class Critic < ApplicationRecord
+
+  # Assocciations
+  belongs_to :user, counter_cache: true
+
+  belongs_to :criticable, polymorphic: true
+
+  # after_create :increment_critics_count
+  # after_destroy :decrement_critics_count
+
+  # private
+
+  # def increment_critics_count
+  #   critic_user = user #=> self.user #=> critic.user
+  #   critic_user.critics_count += 1
+  #   critic_user.save
+  # end
+
+  # def decrement_critics_count
+  #   critic_user = user #=> self.user #=> critic.user
+  #   critic_user.critics_count -= 1
+  #   critic_user.save
+  # end
+end
+```
+
+![Callback with name parameter count](/img/notes/callback_with_name.jpeg)
+
+```sql
+class Critic < ApplicationRecord
+
+  belongs_to :user, counter_cache: :count_of_books
+end
+```
+
+7. Ejm. Validates
+
+Critic:
+
+- title, body: required
+- title: max 40 characters
+
+```sql
+class Critic < ApplicationRecord
+  # Validations
+  # title, body: required
+  validates :body, presence: true
+  validates :title, presence: true, length: { maximum: 40 }
+end
+```
+
+Game:
+
+- name, category: required
+- name: unique
+- rating: between 0 and 100 (if provided)
+- parent_id: if the category is expansion, parent_id should be a valid game_id. If a category is main_game, parent_id should be null.
+
+```sql
+class Critic < ApplicationRecord
+  # Validations
+  # title, body: required
+  validates :body, presence: true
+  validates :title, presence: true, length: { maximum: 40 }
+end
+```
+
+User:
+
+- username, email: required and unique
+- birth_date: before 16 years from now. Message: You should be 16 years old to create an account (this one requires custom validations)
+
+Platform:
+
+- name, category: required
+- name: unique
+
+Genre:
+
+- name: required and unique
+
+Company:
+
+- name: required and unique
+
+InvolvedCompany:
+
+- developer, publisher: required
+- company_id and game_id should be a unique combination
+- Test your models in the Rails console. Remember that the methods valid?, create and save trigger the validations. Use entity.errors, entity.errors.messages or entity.errors.full_messages to see the the entity errors.
+
 ## Controllers
 
 ## views
+
+## Migration
+
+Add default category to game
+
+```bash
+  $ rails g migration AddDefaultCategoryToGame
+```
+
+Migration
+
+Documentation [change column default](https://apidock.com/rails/v5.2.3/ActiveRecord/ConnectionAdapters/SchemaStatements/change_column_default)
+
+```sql
+class AddDefaultCategoryToGame < ActiveRecord::Migration[7.0]
+  def change
+    # reversible do |dir|
+    #   dir.up { change_column :games, :category, :integer, default: 0 }
+    #   dir.down { change_column :games, :category, :integer, default: nil }
+    # end
+
+    change_column_default :games, :category, from: nil, to: 0
+  end
+end
+```
+
+When it is **uniquess: true** you must add a unique id in the field with a migration
+
+```sql
+class AddIndexNameToGame < ActiveRecord::Migration[7.0]
+  # rails g migration AddIndexNameToGame name:string:uniq
+  def change
+    add_index :games, :name, unique: true
+  end
+end
+```
 
 <!--
 ## Rails
@@ -419,3 +610,52 @@ get ¨/companies¨, to: ¨companies#index¨
 
 ```
 -->
+
+==============================================================
+#Authentication with Bcrypt
+
+> Documentation [Bcrypt](https://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html#method-i-has_secure_password)
+
+> 15 step to Authentication with Bcrypt [tutorial based ](https://gist.github.com/thebucknerlife/10090014)
+
+**Apply this step if you already had the user table created**
+
+```bash
+rails g migration AddPasswordDigestToUser password_digest:string:uniq
+```
+
+Model User
+
+```sql
+class User < ApplicationRecord
+
+  # => Macro
+  has_secure_password
+end
+```
+
+para utilizar en todos los controladores este id logueado lo creamos un metodo en aplication controller
+
+en method create se captura la cookis y se agrega el usuario logueado por user id
+![cookis](/img/notes/cookid.png)
+
+#Authentication with OmniAuth
+
+Agregar el gem para correr .env
+
+[OmniAuth GitHub](https://github.com/omniauth/omniauth-github)
+
+[Register a new OAuth application](https://github.com/settings/applications/new)
+
+[omniauth/omniauth](https://github.com/omniauth/omniauth/wiki)
+
+##Tareas
+
+> binding --blogs hacer
+
+tarea SSR vs CSR
+Cada vista de rails tiene un CSRF token
+![tokens ssr](/img/notes/Token_ssr.png)
+
+Look up a Rails HTTP Status Code
+[Status Code](http://www.railsstatuscodes.com/unprocessable_entity.html)
