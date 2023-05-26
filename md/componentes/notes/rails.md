@@ -612,7 +612,12 @@ get ¨/companies¨, to: ¨companies#index¨
 -->
 
 ==============================================================
+
 #Authentication with Bcrypt
+
+[Video de la clase eith Bcrypt](https://www.youtube.com/watch?v=u0eeldQpTwg&list=PLg-HAfJ6LTqXbEhcgIbUhHmos5wgdH8Ui&index=93)
+[Video de la clase eith Bcrypt2](https://www.youtube.com/watch?v=Qx1Qeuf830c&list=PLg-HAfJ6LTqXbEhcgIbUhHmos5wgdH8Ui&index=94)
+[Video de la clase eith Bcrypt device](https://us02web.zoom.us/rec/play/KlV95Z7b2uDMuEat-GrRJTPyxG47qG6gYSWG6wjeIvbPSwSYW5fUSP55k74ZDAIDvmMd4279VQpaANau.zhXwLk0By7r6bIBe?canPlayFromShare=true&from=share_recording_detail&continueMode=true&componentName=rec-play&originRequestUrl=https%3A%2F%2Fus02web.zoom.us%2Frec%2Fshare%2FzK-7xSBRd-PPxOt6hFp8DDdpmFy5cZ8p-_5UKjs0zuvZ-1-e8rPzgTsMZf_Ayh2r.P0AeBsonbHmFHo8U)
 
 > Documentation [Bcrypt](https://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html#method-i-has_secure_password)
 
@@ -639,7 +644,15 @@ para utilizar en todos los controladores este id logueado lo creamos un metodo e
 en method create se captura la cookis y se agrega el usuario logueado por user id
 ![cookis](/img/notes/cookid.png)
 
+#Authentication with Devise
+
+[Video de la clase eith Bcrypt device en 1:06:24](https://us02web.zoom.us/rec/play/KlV95Z7b2uDMuEat-GrRJTPyxG47qG6gYSWG6wjeIvbPSwSYW5fUSP55k74ZDAIDvmMd4279VQpaANau.zhXwLk0By7r6bIBe?canPlayFromShare=true&from=share_recording_detail&continueMode=true&componentName=rec-play&originRequestUrl=https%3A%2F%2Fus02web.zoom.us%2Frec%2Fshare%2FzK-7xSBRd-PPxOt6hFp8DDdpmFy5cZ8p-_5UKjs0zuvZ-1-e8rPzgTsMZf_Ayh2r.P0AeBsonbHmFHo8U)
+
+documentacion [Devise](https://github.com/heartcombo/devise#getting-started)
+
 #Authentication with OmniAuth
+
+[video de la clase de OmniAuth](https://us02web.zoom.us/rec/play/oviQJtTeh28FIWNpAq8cDI3cTbxXm3ctXRoaW1k1PTX1InQUALL9-Pfs0avQoVLmI6H8O3exOa7nEoGZ.dWDtx6y2cB54yGx8?canPlayFromShare=true&from=share_recording_detail&continueMode=true&componentName=rec-play&originRequestUrl=https%3A%2F%2Fus02web.zoom.us%2Frec%2Fshare%2FS3L5fKtSBlyyV6R3-8ONIrnS5VbWarpiiFnU3iv2WF_4jVMYNil72DhVZt0gEmG4.wmXqs-jolhV1-7k7)
 
 Agregar el gem para correr .env
 
@@ -659,3 +672,6 @@ Cada vista de rails tiene un CSRF token
 
 Look up a Rails HTTP Status Code
 [Status Code](http://www.railsstatuscodes.com/unprocessable_entity.html)
+
+necesitas aprender flash[:message] = "user logueado"
+necesiatas cdocumentarte en los callbacks before_action y skip_before_action

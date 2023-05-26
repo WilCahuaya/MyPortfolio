@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
     <title>WilCahuaya</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="convert/prism.css" />
+    <script src="convert/prism.js"></script>
+    <script src="   https://unpkg.com/showdown/dist/showdown.min.js"></script>
   </head>
-  <body>
+  <body onload="md_to_html('md/componentes/notes/javascript.md')">
     <header class="header container-lg">
       <a href="/index.html" class="text-decoration-none color-text text-xl bold"
         >WilCahuaya</a
@@ -46,12 +49,10 @@
     </header>
     <main class="container-lg">
       <section class="section-sm">
-        <h1 class="color-text">JavaScript</h1>
+        <div id="content"></div>
       </section>
     </main>
+    <script src="js/global/header.js"></script>
+    <script src="convert/md_to_html.js"></script>
   </body>
-  <script src="js/global/header.js"></script>
-  <!--<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script src="js/global/md_convert.js"></script>-->
-  <script src="/js/global/prism.js"></script>
 </html>
