@@ -21,3 +21,31 @@ innerHTML .- Tiene todos los elementos del elemento body
 innerText .- Tiene todos el continido de texto
 
 ![Javascript DOM](https://static.platzi.com/media/user_upload/Ei2AUiIVgAM9th--5a3f8bb6-c2ef-4f67-8e07-8b328ff0cf5d.jpg)
+
+### Pasar NodeList a Array
+
+```javascript
+// Los node List No se pueden manipulart coimo arrays en su totalidad
+const nodeList = document.querySelectorAll(
+  "name className or idName or tagName "
+);
+// Convertir NodeList a array
+const newNodeListArray1 = [...nodeList];
+const newNodeListArray2 = Array.from(nodeList);
+```
+
+![NodeList to Array](https://static.platzi.com/media/user_upload/class_2-952bbac5-15e7-4374-bcbd-1b8419b5e287.jpg)
+
+### document.createElemnt
+
+```javascript
+document.createElememt("ELEMENTO"); // h1, p, etc...
+```
+
+### document.createTextNode
+
+```javascript
+document.createTextNode("TEXTO");
+```
+
+## node.appendChild
