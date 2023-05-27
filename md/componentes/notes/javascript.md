@@ -36,16 +36,37 @@ const newNodeListArray2 = Array.from(nodeList);
 
 ![NodeList to Array](https://static.platzi.com/media/user_upload/class_2-952bbac5-15e7-4374-bcbd-1b8419b5e287.jpg)
 
+# DOM Javascript en pdf
+
+[DOM Javascript](https://wilcahuaya.netlify.app/pdf/javascript_platzi.pdf)
+
+## Crear un elemento
+
 ### document.createElemnt
 
 ```javascript
-document.createElememt("ELEMENTO"); // h1, p, etc...
+h1 = document.createElememt("ELEMENTO"); // h1, p, etc...
 ```
+
+## Crear un texto
 
 ### document.createTextNode
 
 ```javascript
-document.createTextNode("TEXTO");
+texto = document.createTextNode("TEXTO");
 ```
 
-## node.appendChild
+## Agregar Nodos
+
+## parentElement.appendChild(nodo)
+
+```javascript
+h1.appendChild(texto);
+div.appendChild(h1);
+```
+
+## parentElement.append
+
+## parentElement.insertBefore
+
+## parentElement.insertAdjacentElement
