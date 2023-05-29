@@ -38,7 +38,7 @@ const newNodeListArray2 = Array.from(nodeList);
 
 # DOM Javascript en pdf
 
-[DOM Javascript](https://wilcahuaya.netlify.app/pdf/javascript_platzi.pdf)
+[Pdf de DOM Javascript de platzi](https://wilcahuaya.netlify.app/pdf/javascript_platzi.pdf)
 
 ## Crear un elemento
 
@@ -59,6 +59,8 @@ texto = document.createTextNode("TEXTO");
 ## Agregar Nodos
 
 ## parentElement.appendChild(nodo)
+
+![appenChild](../../../img/notes/javascript/23.jpg)
 
 ```javascript
 h1.appendChild(texto);
