@@ -64,6 +64,8 @@ texto = document.createTextNode("TEXTO");
 
 ```javascript
 h1.appendChild(texto);
+//Tambien se puede agregar un texto a un nodo de esta manera
+h1.textContent = "TEXTO";
 div.appendChild(h1);
 ```
 
@@ -72,3 +74,70 @@ div.appendChild(h1);
 ## parentElement.insertBefore
 
 ## parentElement.insertAdjacentElement
+
+# Algunos metodos de javcascript
+
+Para eliminar un elemento de un array
+
+- splice
+
+# LOCAL STORAGE
+
+Ecadenar objetos a string
+
+```javascript
+people = [
+  {
+    name: "Wilder",
+    lastname: "Cahuaya Quispe",
+  },
+  {
+    name: "Juan",
+    lastname: "Perez Lazaro",
+  },
+];
+
+JSON.stringify(people);
+// '[{name: "Wilder", lastname: "Cahuaya Quispe"}, {name: "Juan", lastname: "Perez Lazaro"}]'
+```
+
+Local store solo guarda en estring por eso se encadena los objetos que deseas guardar
+
+```javascript
+localStorage.setItem("people", JSON.stringify(people));
+```
+
+Para obtener el string de local storage y parsearlo a array
+
+```javascript
+peopleFromStorage = localStorage.getItem("people");
+//'[{"name":"Wilder","lastname":"Cahuaya Quispe"},{"name":"Juan","lastname":"Perez Lazaro"}]'
+JSON.parse(peopleFromStorage);
+```
+
+Para prevenir el comportamineto por defauld del submit de los formularios
+
+```javascript
+const form = document.querySelector("#expense-form");
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+});
+```
+
+Para traer los elementos del formulario
+
+```javascript
+event.target.elements;
+const { name, lastname } = event.target.elements;
+
+const newUser = {
+  name: name.value,
+  lastname: lastname.value,
+};
+```
+
+Para redireccionar hacia el index
+
+```javascript
+location.assign("/");
+```
