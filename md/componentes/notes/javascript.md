@@ -141,3 +141,7 @@ Para redireccionar hacia el index
 ```javascript
 location.assign("/");
 ```
+
+# Template Module
+
+![Template Module](/img/notes/javascript/template_module.png)
