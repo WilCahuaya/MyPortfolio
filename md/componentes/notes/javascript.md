@@ -144,4 +144,33 @@ location.assign("/");
 
 # Template Module
 
+Este template es para cada modulo
 ![Template Module](/img/notes/javascript/template_module.png)
+
+```javascript
+const Module = (function () {
+  const template = ``;
+
+  return {
+    tosTring() {
+      return template;
+    },
+    addListeners() {},
+  };
+})();
+```
+
+# Para capturar una informacion en un evento click
+
+Se crea una data que es unica para borrar
+
+```html
+<a data-id="${user.id}" class="js-delete">Delete</a>
+```
+
+para solo escuchar ancor Delete se utiliza el metodo **_contains_**
+![Contains](/img/notes/javascript/contains.png)
+
+```javascript
+//Codigo
+```
