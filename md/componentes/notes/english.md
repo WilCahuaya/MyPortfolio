@@ -11,3 +11,11 @@
 ### English pronouns
 
 ![Pronouns subject object possesive adjetive and pronouns](../../../img/notes/english/Pronouns_subject_object_possesive_adjetive_and_pronouns.png)
+
+### This that these those
+
+![This that these those](../../../img/notes/english/this_that_those_these.jpg)
+
+### Who whon whose
+
+![Who whon whose](../../../img/notes/english/who_whon_whose.jpg)
