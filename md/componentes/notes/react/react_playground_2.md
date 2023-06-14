@@ -169,8 +169,13 @@ function Form() {
 }
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Form />);
-React STATE - END
-Controlled vs Uncontrolled - START
+```
+
+# React STATE - END
+
+# Controlled vs Uncontrolled - START
+
+```javascript
 function Form() {
   const [name, setName] = React.useState("");
   function handleNameChange(event) {
@@ -179,6 +184,7 @@ function Form() {
   return (
     <div>
       <label htmlFor="name">Name:</label>
+      //Controlado -> value={name}
       <input type="text" id="name" value={name} onChange={handleNameChange} />
       {name ? <p>Hello {name}</p> : <p>Please type your name</p>}
     </div>

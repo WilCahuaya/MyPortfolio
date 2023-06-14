@@ -2,6 +2,22 @@
 
 ## React Api
 
+Using React raw API (`React.createElement()`), render the following UI inside `<div id="root">`:
+
+```html
+<div class="article">
+  <h3 class="article__title">Postula a Codeable</h3>
+  <p class="article__body">
+    Aprende a construir aplicaciones web profesionales
+  </p>
+  <a class="article__link" href="https://www.codeable.la/" target="blank">
+    Haz click aqui
+  </a>
+</div>
+```
+
+#### Resolución:
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -60,6 +76,22 @@ root.render(article);
 
 ## jsx
 
+Using JSX and te power of Babel, render the following UI inside `<div id="root">`:
+
+```html
+<div class="article">
+  <h3 class="article__title">Postula a Codeable</h3>
+  <p class="article__body">
+    Aprende a construir aplicaciones web profesionales
+  </p>
+  <a class="article__link" href="https://www.codeable.la/" target="blank"
+    >Haz click aqui</a
+  >
+</div>
+```
+
+#### Resolución:
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -110,7 +142,30 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(article);
 ```
 
-## Custom Comp
+## Custom Components
+
+Create the following custom components:
+
+- Article
+- Title
+- Body
+- Link
+
+After creating each component you should be able to use them as following:
+
+```html
+<Article>
+  <Title>Postula a Codeable</Title>
+  <Body>
+    Aprende a construir aplicaciones web profesionales
+  </Body>
+  <Link url="https://www.codeable.la/">Haz click aqui</Link>
+</Article>
+```
+
+The result should be the same as before 🙂
+
+#### Resolución:
 
 Con el mismo html de jsx
 
@@ -147,7 +202,50 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(article);
 ```
 
-## Stylingg comp
+## Styling components
+
+Create a re-usable custom component for Codeable's design button. The button should receive props that change its style. It could take the combination of type, leftIcon, rightIcon, and size.
+
+```sql
+prop        | options
+------------+-----------------------------
+type        | primary | secondary | subtle
+------------+-----------------------------
+size        | sm | md | lg Default: md
+------------+-----------------------------
+leftIcon    | svg element
+------------+-----------------------------
+rightIcon   | svg element
+------------+-----------------------------
+```
+
+You should be able to use the Button component like this:
+
+```javascript
+const icon = <svg>...</svg>
+
+<Button size="sm" type="primary" leftIcon={icon}>
+  Click here!
+</Button>
+```
+
+It should be able to receive custom class names and inline styles as well:
+
+```javascript
+<Button
+  size="lg"
+  type="subtle"
+  style={{ backgroundColor: "orange" }}
+  className="extra-bold"
+>
+  {" "}
+  Click here! >{" "}
+</Button>
+```
+
+Don't forget to add the required css rules on styles.css
+
+#### Resolución:
 
 ```html
 <!DOCTYPE html>
