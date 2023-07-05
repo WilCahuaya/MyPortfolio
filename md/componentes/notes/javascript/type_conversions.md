@@ -74,6 +74,16 @@ Please note that `null` and `undefined` behave differently here: `null` becomes 
 
 Most mathematical operators also perform such conversion, we’ll see that in the next chapter.
 
+## "casting" o "coerción"
+
+```javascript
+let value = +"123";
+
+value += 1;
+
+alert(value); // 124
+```
+
 ## Boolean Conversion
 
 Boolean conversion is the simplest one.
