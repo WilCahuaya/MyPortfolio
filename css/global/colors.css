@@ -90,6 +90,7 @@
   --success: var(--green-400);
   --info: var(--blue-400);
   --text: var(--gray-900);
+  --link: var(--yellow-700);
 
   --background-lighter: var(--white);
   --background-light: var(--gray-50);
