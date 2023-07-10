@@ -2,7 +2,7 @@
 
 Arrays provide a lot of methods. To make things easier, in this chapter they are split into groups.
 
-## [Add/remove items](https://javascript.info/array-methods#add-remove-items)
+## Add/remove items
 
 We already know methods that add and remove items from the beginning or the end:
 
@@ -13,7 +13,7 @@ We already know methods that add and remove items from the beginning or the end:
 
 Here are a few others.
 
-### [splice](https://javascript.info/array-methods#splice)
+### splice
 
 How to delete an element from the array?
 
@@ -276,6 +276,12 @@ That’s because `includes` was added to JavaScript much later and uses the more
 
 ### find and findIndex/findLastIndex
 
+> ```javascript
+> array.find((element, index, array) => element == array[2]);
+> ```
+
+````
+
 Imagine we have an array of objects. How do we find an object with the specific condition?
 
 Here the [arr.find(fn)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) method comes in handy.
@@ -287,7 +293,7 @@ let result = arr.find(function (item, index, array) {
   // if true is returned, item is returned and iteration is stopped
   // for falsy scenario returns undefined
 });
-```
+````
 
 The function is called for elements of the array, one after another:
 
@@ -338,6 +344,12 @@ alert(users.findLastIndex((user) => user.name == "John")); // 3
 
 ### filter
 
+> ```javascript
+> array.filter((element, index, array) => element == array[2]);
+> ```
+
+````
+
 The `find` method looks for a single (first) element that makes the function return `true`.
 
 If there may be many, we can use [arr.filter(fn)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
@@ -349,7 +361,7 @@ let results = arr.filter(function (item, index, array) {
   // if true item is pushed to results and the iteration continues
   // returns empty array if nothing found
 });
-```
+````
 
 For instance:
 
@@ -372,6 +384,12 @@ Let’s move on to methods that transform and reorder an array.
 
 ### map
 
+> ```javascript
+> array.map((element, index, array) => element == array[2]);
+> ```
+
+````
+
 The [arr.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method is one of the most useful and often used.
 
 It calls the function for each element of the array and returns the array of results.
@@ -382,7 +400,7 @@ The syntax is:
 let result = arr.map(function (item, index, array) {
   // returns the new value instead of item
 });
-```
+````
 
 For instance, here we transform each element into its length:
 
