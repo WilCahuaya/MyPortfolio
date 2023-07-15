@@ -1,10 +1,11 @@
 # Object methods, this
+
 Objects are usually created to represent entities of the real world, like users, orders and so on:
 
 ```javascript
 let user = {
   name: "John",
-  age: 30
+  age: 30,
 };
 ```
 
@@ -19,10 +20,10 @@ For a start, let’s teach the `user` to say hello:
 ```javascript
 let user = {
   name: "John",
-  age: 30
+  age: 30,
 };
 
-user.sayHi = function() {
+user.sayHi = function () {
   alert("Hello!");
 };
 
@@ -69,16 +70,17 @@ There exists a shorter syntax for methods in an object literal:
 // these objects do the same
 
 user = {
-  sayHi: function() {
+  sayHi: function () {
     alert("Hello");
-  }
+  },
 };
 
 // method shorthand looks better, right?
 user = {
-  sayHi() { // same as "sayHi: function(){...}"
+  sayHi() {
+    // same as "sayHi: function(){...}"
     alert("Hello");
-  }
+  },
 };
 ```
 
@@ -106,8 +108,7 @@ let user = {
   sayHi() {
     // "this" is the "current object"
     alert(this.name);
-  }
-
+  },
 };
 
 user.sayHi(); // John
@@ -124,8 +125,7 @@ let user = {
 
   sayHi() {
     alert(user.name); // "user" instead of "this"
-  }
-
+  },
 };
 ```
 
@@ -139,11 +139,9 @@ let user = {
   age: 30,
 
   sayHi() {
-    alert( user.name ); // leads to an error
-  }
-
+    alert(user.name); // leads to an error
+  },
 };
-
 
 let admin = user;
 user = null; // overwrite to make things obvious
@@ -161,7 +159,7 @@ There’s no syntax error in the following example:
 
 ```javascript
 function sayHi() {
-  alert( this.name );
+  alert(this.name);
 }
 ```
 
@@ -174,7 +172,7 @@ let user = { name: "John" };
 let admin = { name: "Admin" };
 
 function sayHi() {
-  alert( this.name );
+  alert(this.name);
 }
 
 // use the same function in two objects
@@ -186,7 +184,7 @@ admin.f = sayHi;
 user.f(); // John  (this == user)
 admin.f(); // Admin  (this == admin)
 
-admin['f'](); // Admin (dot or square brackets access the method – doesn't matter)
+admin["f"](); // Admin (dot or square brackets access the method – doesn't matter)
 ```
 
 The rule is simple: if `obj.f()` is called, then `this` is `obj` during the call of `f`. So it’s either `user` or `admin` in the example above.
@@ -219,7 +217,7 @@ The concept of run-time evaluated `this` has both pluses and minuses. On the one
 
 Here our position is not to judge whether this language design decision is good or bad. We’ll understand how to work with it, how to get benefits and avoid problems.
 
-## [Arrow functions have no “this”](https://javascript.info/object-methods#arrow-functions-have-no-this)
+## Arrow functions have no “this”
 
 Arrow functions are special: they don’t have their “own” `this`. If we reference `this` from such a function, it’s taken from the outer “normal” function.
 
@@ -231,7 +229,7 @@ let user = {
   sayHi() {
     let arrow = () => alert(this.firstName);
     arrow();
-  }
+  },
 };
 
 user.sayHi(); // Ilya

@@ -19,3 +19,7 @@
 ### Who whon whose
 
 ![Who whon whose](../../../img/notes/english/who_whon_whose.jpg)
+
+### Comparative and superlative adjetives
+
+![adjetive comparative and superlativo](../../../img/notes/english/adjetive_comparativo_end_superlativo.png)
