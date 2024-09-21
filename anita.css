@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f8ff;
+  font-family: "Arial", sans-serif;
+  overflow: hidden; /* Para evitar desplazamiento si usamos partículas */
+}
+
+.container {
+  text-align: center;
+  position: relative;
+}
+
+.title_flor {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  color: #ffda00;
+  opacity: 0;
+  transform: translateY(-50px);
+  animation: fadeInDown 2s ease-in-out forwards 1s; /* Aparición con desvanecimiento */
+}
+
+.flower {
+  width: 200px;
+  margin: 0 auto;
+  animation: bloom 2s ease-in-out forwards, sway 4s infinite ease-in-out; /* Florece y se balancea */
+}
+
+.message {
+  font-size: 2rem;
+  margin-top: 16px;
+  color: #ffda00;
+  font-strgb(117, 100, 2)alic;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 2s ease-in-out forwards 2s; /* Aparición con desvanecimiento */
+}
+
+/* Aparición con desvanecimiento para el texto */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animación de la flor */
+@keyframes bloom {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Movimiento de balanceo de la flor */
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+/* Efecto de partículas */
+.particle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 218, 0, 0.7);
+  border-radius: 50%;
+  animation: float 5s ease-in-out infinite;
+  opacity: 0;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-150px);
+    opacity: 0;
+  }
+}
