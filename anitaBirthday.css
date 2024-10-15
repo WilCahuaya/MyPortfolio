@@ -1,0 +1,37 @@
+body {
+  background-color: #d7ead6;
+  margin: 0;
+}
+
+* {
+  border: 1px solid red;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+}
+
+ul {
+  padding: 0px;
+  display: flex;
+  gap: 2rem;
+}
+
+li {
+  list-style-type: none;
+  font-family: "Concert One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+a {
+  font-size: 1.75rem;
+}
+
+@media (max-width: 350px) {
+  ul {
+    display: flex;
+    flex-direction: column;
+  }
+}
