@@ -71,7 +71,12 @@ header {
 }
 
 .header__nav__item:hover {
-  background-color: #bac8d9;
+  background-image: linear-gradient(
+    to right,
+    #193940 0%,
+    #7abf5a 51%,
+    #193940 100%
+  );
   border-radius: 0.5rem;
 }
 
@@ -80,11 +85,7 @@ header {
 }
 
 .itemSelected {
-  background: linear-gradient(
-    0deg,
-    rgba(34, 193, 195, 0.5074404761904762) 0%,
-    rgba(186, 200, 217, 0.6278886554621849) 100%
-  );
+  background-color: #bac8d9bd;
   border-radius: 0.5rem;
 }
 
@@ -130,3 +131,14 @@ a {
 
 /* BODY */
 /* ============================================== */
+.containerTitle {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+.titleBirthay {
+  color: #bac8d9;
+  font-family: "Concert One", sans-serif;
+  font-weight: 400;
+  font-size: 8rem;
+}
