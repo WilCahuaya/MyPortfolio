@@ -7,5 +7,4 @@ menuToggle.addEventListener("click", () => {
   menu.classList.toggle("block");
   closeIcon.classList.toggle("block");
   hamburgerIcon.classList.toggle("none");
-  console.log("Holassss");
 });

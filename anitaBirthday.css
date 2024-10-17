@@ -55,7 +55,7 @@ header {
   align-items: center;
 }
 
-.hheader__nav__ul {
+.header__nav__ul {
   padding: 0px;
   display: flex;
   gap: 2rem;
@@ -80,7 +80,11 @@ header {
 }
 
 .itemSelected {
-  background-color: #bac8d9;
+  background: linear-gradient(
+    0deg,
+    rgba(34, 193, 195, 0.5074404761904762) 0%,
+    rgba(186, 200, 217, 0.6278886554621849) 100%
+  );
   border-radius: 0.5rem;
 }
 
@@ -97,8 +101,9 @@ a {
 }
 
 @media screen and (max-width: 600px) {
-  .header__nav {
+  .header__nav__ul {
     display: flex;
+    gap: 0.25rem;
     flex-direction: column;
   }
 
