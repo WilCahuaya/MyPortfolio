@@ -127,7 +127,6 @@ a {
   display: flex;
   justify-content: center;
   gap: 8rem;
-  flex-wrap: wrap;
   align-items: center;
 }
 
@@ -274,9 +273,18 @@ a {
 
   .titleBirthay {
     font-size: 2.25rem;
+    margin-block: 1rem;
   }
 
   .containerImgChild {
     width: 60%;
+  }
+
+  .contBody {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    margin: 1rem;
+    padding: 1rem;
   }
 }
