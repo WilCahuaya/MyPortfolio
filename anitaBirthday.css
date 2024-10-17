@@ -118,16 +118,16 @@ a {
 /* BODY */
 /* ============================================== */
 .body {
-  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 .contBody {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   gap: 8rem;
   align-items: center;
+  margin-inline: 4rem;
 }
 
 .containerTitle {
@@ -206,6 +206,7 @@ a {
 }
 
 .contDesc {
+  width: 60%;
   border: 1px solid #bac8d9;
   background-color: #9bf272;
   border-radius: 2rem;
@@ -286,5 +287,9 @@ a {
     gap: 4rem;
     margin: 1rem;
     padding: 1rem;
+  }
+
+  .contDesc{
+    width: 100%;
   }
 }
