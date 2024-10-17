@@ -169,6 +169,11 @@ a {
   object-fit: cover;
 }
 
+.imgBirdhay:hover {
+  width: 98%;
+  box-shadow: #7abf5a 0px 22px 70px 4px;
+}
+
 @keyframes typing {
   0%,
   50% {
@@ -217,10 +222,10 @@ a {
   /* ============================================== */
 
   .titleBirthay {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 
   .containerImgChild {
-    width: 50%;
+    width: 60%;
   }
 }
