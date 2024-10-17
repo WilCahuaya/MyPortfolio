@@ -118,6 +118,7 @@ a {
   overflow: hidden;
   border-right: 3px solid #7abf5a;
   font-style: normal;
+  margin-block: 2rem;
 
   overflow: hidden;
   border-right: 2px solid #7abf5a;
@@ -125,9 +126,32 @@ a {
   animation: typing 4s steps(30, end) infinite, blink 0.6s step-end infinite;
 }
 
+.containerImgFather {
+  display: flex;
+  justify-content: center;
+}
+
+.containerImgChild {
+  background-color: #bac8d9;
+  transform: rotate(15deg); /* Rotación de 45 grados */
+  border-radius: 2rem;
+}
+
 .containerImg {
   display: flex;
   justify-content: center;
+  background-color: #bac8d9;
+  transform: rotate(330deg); /* Rotación de 45 grados */
+  padding: 1rem;
+  border-radius: 2rem;
+}
+
+.imgBirdhay {
+  width: 100%; /* Ocupa el ancho completo del contenedor */
+  max-width: 200px; /* Límite máximo */
+  height: auto; /* Mantiene la proporción */ /* Centra la imagen */
+  transform: rotate(15deg); /* Rotación de 45 grados */
+  border-radius: 2rem;
 }
 
 @keyframes typing {
@@ -179,5 +203,13 @@ a {
 
   .titleBirthay {
     font-size: 3rem;
+  }
+
+  .containerImg {
+    height: 600px;
+  }
+
+  .imgBirdhay {
+    max-width: 300px;
   }
 }
