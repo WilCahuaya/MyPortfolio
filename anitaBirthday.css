@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 body {
   background-color: #193940;
   /* background-color: #bac8d9; */
@@ -101,6 +102,51 @@ a {
   /* color: #9bf272; */
 }
 
+/* BODY */
+/* ============================================== */
+.containerTitle {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+.titleBirthay {
+  font-family: "Lobster", sans-serif;
+  font-weight: 400;
+  font-size: 7rem;
+  color: #bac8d9;
+  text-shadow: 2px 2px 5px #7abf5a;
+  overflow: hidden;
+  border-right: 3px solid #7abf5a;
+  font-style: normal;
+
+  overflow: hidden;
+  border-right: 2px solid #7abf5a;
+  white-space: nowrap;
+  animation: typing 4s steps(30, end) infinite, blink 0.6s step-end infinite;
+}
+
+.containerImg {
+  display: flex;
+  justify-content: center;
+}
+
+@keyframes typing {
+  0%,
+  50% {
+    width: 0;
+  }
+  50%,
+  90% {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .header__nav__ul {
     display: flex;
@@ -127,18 +173,11 @@ a {
   .block {
     display: block;
   }
-}
 
-/* BODY */
-/* ============================================== */
-.containerTitle {
-  display: flex;
-  text-align: center;
-  justify-content: center;
-}
-.titleBirthay {
-  color: #bac8d9;
-  font-family: "Concert One", sans-serif;
-  font-weight: 400;
-  font-size: 8rem;
+  /* BODY */
+  /* ============================================== */
+
+  .titleBirthay {
+    font-size: 3rem;
+  }
 }
