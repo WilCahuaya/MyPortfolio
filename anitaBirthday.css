@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -117,6 +117,20 @@ a {
 
 /* BODY */
 /* ============================================== */
+.body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.contBody {
+  display: flex;
+  justify-content: center;
+  gap: 8rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
 .containerTitle {
   display: flex;
   text-align: center;
@@ -143,6 +157,7 @@ a {
 .containerImgFather {
   display: flex;
   justify-content: center;
+  height: 100%;
 }
 
 .containerImgChild {
@@ -155,7 +170,7 @@ a {
   display: flex;
   justify-content: center;
   background-color: #bac8d9;
-  transform: rotate(330deg); /* Rotación de 45 grados */
+  transform: rotate(-30deg); /* Rotación de 45 grados */
   padding: 1rem;
   border-radius: 2rem;
 }
@@ -191,6 +206,42 @@ a {
   }
 }
 
+.contDesc {
+  border: 1px solid #bac8d9;
+  background-color: #9bf272;
+  border-radius: 2rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contDesc__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.conDesc__titleh1 {
+  color: #193940;
+  font-size: 3rem;
+}
+
+.contDesc__icon {
+  display: flex;
+  align-items: center;
+  background-color: #7abf5a;
+  padding: 0.75rem;
+  border-radius: 50%;
+}
+
+.contDesc__body__text {
+  color: #193940;
+  font-family: "Roboto Mono", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
 @media screen and (max-width: 600px) {
   .header__nav__ul {
     display: flex;
@@ -222,7 +273,7 @@ a {
   /* ============================================== */
 
   .titleBirthay {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
   }
 
   .containerImgChild {
