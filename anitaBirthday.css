@@ -219,4 +219,8 @@ a {
   .titleBirthay {
     font-size: 3rem;
   }
+
+  .containerImgChild {
+    width: 50%;
+  }
 }
