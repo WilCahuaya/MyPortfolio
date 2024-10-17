@@ -17,22 +17,45 @@
       <img src="anitaimg/logo.png" alt="" />
     </section>
     <header>
-      <nav>
-        <ul>
-          <li class="itemSelected">
-            <a href="#">Feliz Cumpleaños</a>
-          </li>
-          <li>
-            <a href="#">Recuerdos</a>
-          </li>
-          <li>
-            <a href="#">Quien Soy</a>
-          </li>
-          <li>
-            <a href="#">Como me ven</a>
-          </li>
-        </ul>
-      </nav>
+      <section class="header__buttonNav">
+        <button class="menu-toggle" id="menuToggle">
+          <!-- Ícono de hamburguesa -->
+          <img
+            class="hamburgerIcon"
+            id="hamburgerIcon"
+            src="anitaimg/menu-hamburguesa.svg"
+            alt="Menú"
+            width="24"
+            height="24"
+          />
+          <!-- Ícono de "X" (cerrar) -->
+          <img
+            class="closeIcon"
+            id="closeIcon"
+            src="anitaimg/menu-cerrar.svg"
+            alt="Cerrar"
+            width="24"
+            height="24"
+          />
+        </button>
+        <nav class="header__nav">
+          <ul class="header__nav__ul">
+            <li class="header__nav__item itemSelected">
+              <a href="#">Feliz Cumpleaños</a>
+            </li>
+            <li class="header__nav__item">
+              <a href="#">Recuerdos</a>
+            </li>
+            <li class="header__nav__item">
+              <a href="#">Quien Soy</a>
+            </li>
+            <li class="header__nav__item">
+              <a href="#">Como me ven</a>
+            </li>
+          </ul>
+        </nav>
+      </section>
     </header>
+    <script src="anitaBirthday.js"></script>
   </body>
 </html>
