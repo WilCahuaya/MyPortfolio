@@ -1,8 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
-body {
-  background-color: #193940;
-  /* background-color: #bac8d9; */
+
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Asegura que HTML y BODY ocupen el 100% de la pantalla */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #193940;
 }
 
 /* * {
@@ -48,6 +57,10 @@ body {
 header {
   display: flex;
   justify-content: center;
+}
+
+.header__nav {
+  margin-top: 1rem;
 }
 
 .header__buttonNav {
@@ -118,7 +131,8 @@ a {
   overflow: hidden;
   border-right: 3px solid #7abf5a;
   font-style: normal;
-  margin-block: 2rem;
+  margin-top: 0;
+  margin-bottom: 4rem;
 
   overflow: hidden;
   border-right: 2px solid #7abf5a;
@@ -148,10 +162,11 @@ a {
 
 .imgBirdhay {
   width: 100%; /* Ocupa el ancho completo del contenedor */
-  max-width: 200px; /* Límite máximo */
+  max-width: 400px; /* Límite máximo */
   height: auto; /* Mantiene la proporción */ /* Centra la imagen */
   transform: rotate(15deg); /* Rotación de 45 grados */
   border-radius: 2rem;
+  object-fit: cover;
 }
 
 @keyframes typing {
@@ -203,13 +218,5 @@ a {
 
   .titleBirthay {
     font-size: 3rem;
-  }
-
-  .containerImg {
-    height: 600px;
-  }
-
-  .imgBirdhay {
-    max-width: 300px;
   }
 }
