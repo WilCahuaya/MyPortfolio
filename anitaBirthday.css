@@ -160,7 +160,7 @@ a {
 }
 
 .containerImgChild {
-  background-color: #bac8d9;
+  background-color: #bac8d97c;
   transform: rotate(15deg); /* Rotación de 45 grados */
   border-radius: 2rem;
 }
@@ -168,10 +168,16 @@ a {
 .containerImg {
   display: flex;
   justify-content: center;
-  background-color: #bac8d9;
+  background-color: #bac8d97c;
   transform: rotate(-30deg); /* Rotación de 45 grados */
   padding: 1rem;
   border-radius: 2rem;
+}
+
+.contImgButton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .imgBirdhay {
@@ -186,6 +192,45 @@ a {
 .imgBirdhay:hover {
   width: 98%;
   box-shadow: #7abf5a 0px 22px 70px 4px;
+}
+
+.modalImgBirthayDialog {
+  border: none;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  background-color: #bac8d97c;
+  width: 90%; /* Para mobile */
+  max-width: 900px;
+  position: relative;
+  margin: auto;
+}
+
+/* Centrar el dialog vertical y horizontalmente */
+.modalImgBirthayDialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imgBirdhayModal {
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
+  border-radius: 8px;
+}
+
+.modalImgBirthayDialog__btncerrar {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  cursor: pointer;
+  border: none;
+
+  background: #7abf5a;
+  border-radius: 16px;
+  padding: 0.7rem;
 }
 
 @keyframes typing {
@@ -289,7 +334,12 @@ a {
     padding: 1rem;
   }
 
-  .contDesc{
+  .contDesc {
     width: 100%;
+  }
+
+  .modalImgBirthayDialog {
+    border-radius: 20px;
+    padding: 15px;
   }
 }

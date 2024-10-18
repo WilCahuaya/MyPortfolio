@@ -70,14 +70,41 @@
         <div class="containerImgFather">
           <div class="containerImgChild">
             <div class="containerImg">
-              <img
-                class="imgBirdhay"
-                src="anitaimg/selvaBalansin.jpeg"
-                alt=""
-              />
+              <button
+                onclick="window.modalImgBirthayDialog.showModal();"
+                class="contImgButton"
+              >
+                <img
+                  class="imgBirdhay"
+                  src="anitaimg/selvaBalansin.jpeg"
+                  alt=""
+                />
+              </button>
             </div>
           </div>
         </div>
+        <dialog class="modalImgBirthayDialog" id="modalImgBirthayDialog">
+          <button
+            class="modalImgBirthayDialog__btncerrar"
+            onclick="window.modalImgBirthayDialog.close();"
+          >
+            <!-- Ícono de "X" (cerrar) -->
+            <img
+              id="closeIcon"
+              src="anitaimg/menu-cerrar.svg"
+              alt="Cerrar"
+              width="24"
+              height="24"
+            />
+          </button>
+          <div class="modalImgBirthay">
+            <img
+              class="imgBirdhayModal"
+              src="anitaimg/selvaBalansin.jpeg"
+              alt=""
+            />
+          </div>
+        </dialog>
         <div class="contDesc">
           <div class="contDesc__title">
             <h1 class="conDesc__titleh1">Anitaaa</h1>
@@ -92,7 +119,24 @@
           </div>
           <div class="contDesc__body">
             <p class="contDesc__body__text">
-              No soy tan bueno en esto pero intentare hacer lo mejor posible, primero te quiero decir que un dia como hoy nacio una nina que le dio mucha alegria a sus padres, y conforme ibas creciendo seguro que le diste muchas preocupaciones y al mismo tiempo amor. Dios es buenoooooo nunca de los nuncas te apartes de El, aunque pases por pruebas fuertes solo aferrate a su palabra, te dice mia es la batalla no te preocupes solo confia, solo en El encontraras la paz que necesitas para ser feliz. Eres de bendicion para la vida de muchos esfuerzate muchoooooo. No permitas que otras personas definan tu identidad con sus opiniones porque lo que te debe importar es que dice Dios de ti. Te admiro por lo madura que eres y lo demuestras con tus acciones. En lo personal admiro mas cosas de ti porque bonito es verte sonreir, hablar contigo sin dejar de ser yo mismo, bonito es que sacas lo mejor de mi y bonito es verte servir a Dios. Pues que tengas un hermoso y bendecido dia por tu cumple cumple. Oro por tu vida para que Dios te cuide en todos los segundos de tu vida y te de sabiduria a la hora de que tomes tus deciciones para que sea de agrado ante sus ojos.
+              No soy tan bueno en esto pero intentare hacer lo mejor posible,
+              primero te quiero decir que un dia como hoy nacio una nina que le
+              dio mucha alegria a sus padres, y conforme ibas creciendo seguro
+              que le diste muchas preocupaciones y al mismo tiempo amor. Dios es
+              buenoooooo nunca de los nuncas te apartes de El, aunque pases por
+              pruebas fuertes solo aferrate a su palabra, te dice mia es la
+              batalla no te preocupes solo confia, solo en El encontraras la paz
+              que necesitas para ser feliz. Eres de bendicion para la vida de
+              muchos esfuerzate muchoooooo. No permitas que otras personas
+              definan tu identidad con sus opiniones porque lo que te debe
+              importar es que dice Dios de ti. Te admiro por lo madura que eres
+              y lo demuestras con tus acciones. En lo personal admiro mas cosas
+              de ti porque bonito es verte sonreir, hablar contigo sin dejar de
+              ser yo mismo, bonito es que sacas lo mejor de mi y bonito es verte
+              servir a Dios. Pues que tengas un hermoso y bendecido dia por tu
+              cumple cumple. Oro por tu vida para que Dios te cuide en todos los
+              segundos de tu vida y te de sabiduria a la hora de que tomes tus
+              deciciones para que sea de agrado ante sus ojos.
             </p>
           </div>
         </div>
