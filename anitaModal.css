@@ -1,16 +1,44 @@
-.modalImgDialog {
+.modalImgDialog,
+.modalImgDialog1,
+.modalImgDialog2,
+.modalImgDialog3,
+.modalImgDialog4,
+.modalImgDialog5,
+.modalImgDialog6,
+.modalImgDialog7,
+.modalImgDialog8,
+.modalImgDialog9,
+.modalImgDialog10,
+.modalImgDialog11,
+.modalImgDialog12,
+.modalImgDialog13,
+.modalImgDialog14 {
   border: none;
   border-radius: 1.2rem;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   background-color: #bac8d97c;
   width: 60%;
-  position: relative;
+  position: fixed;
   margin: auto;
 }
 
 /* Centrar el dialog vertical y horizontalmente */
-.modalImgDialog::backdrop {
+.modalImgDialog::backdrop,
+.modalImgDialog1::backdrop,
+.modalImgDialog2::backdrop,
+.modalImgDialog3::backdrop,
+.modalImgDialog4::backdrop,
+.modalImgDialog5::backdrop,
+.modalImgDialog6::backdrop,
+.modalImgDialog7::backdrop,
+.modalImgDialog8::backdrop,
+.modalImgDialog9::backdrop,
+.modalImgDialog10::backdrop,
+.modalImgDialog11::backdrop,
+.modalImgDialog12::backdrop,
+.modalImgDialog13::backdrop,
+.modalImgDialog14::backdrop {
   background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro */
 }
 
