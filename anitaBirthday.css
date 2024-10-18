@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lobster&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+@import url("anitaModal.css");
+@import url("anitaMemories.css");
 * {
   margin: 0;
   padding: 0;
@@ -192,45 +194,6 @@ a {
 .imgBirdhay:hover {
   width: 98%;
   box-shadow: #7abf5a 0px 22px 70px 4px;
-}
-
-.modalImgBirthayDialog {
-  border: none;
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  background-color: #bac8d97c;
-  width: 90%; /* Para mobile */
-  max-width: 900px;
-  position: relative;
-  margin: auto;
-}
-
-/* Centrar el dialog vertical y horizontalmente */
-.modalImgBirthayDialog::backdrop {
-  background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.imgBirdhayModal {
-  width: 100%;
-  height: auto;
-  max-height: 80vh;
-  border-radius: 8px;
-}
-
-.modalImgBirthayDialog__btncerrar {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  cursor: pointer;
-  border: none;
-
-  background: #7abf5a;
-  border-radius: 16px;
-  padding: 0.7rem;
 }
 
 @keyframes typing {

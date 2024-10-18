@@ -1,0 +1,41 @@
+.sectionBody {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 3rem;
+  margin-inline: 5rem;
+  gap: 1rem;
+}
+
+.img {
+  width: 100%;
+  height: auto;
+
+  border-radius: 1rem 1rem 0rem 0rem;
+}
+
+.pictureImg:hover {
+  width: 98%;
+  box-shadow: #7abf5a 0px 22px 70px 4px;
+}
+
+.pictureImg {
+  display: flex;
+  flex-direction: column;
+  background-color: #bac8d977;
+  border-radius: 1rem;
+  margin: auto;
+}
+
+.imgTitle {
+  margin: 1rem;
+  color: #193940;
+}
+
+@media screen and (max-width: 600px) {
+  .sectionBody {
+    display: flex;
+    flex-direction: column;
+    margin-inline: 2rem;
+  }
+}
