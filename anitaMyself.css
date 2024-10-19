@@ -16,8 +16,8 @@
 }
 
 hr {
-  background-color: #7abf5a;
-  border: 1px solid #7abf5a;
+  background-color: #dec7ad;
+  border: 1px solid #dec7ad;
 }
 
 .contBodyMyself > p {
@@ -37,7 +37,7 @@ hr {
 }
 
 .sectionTxtBible > ol > li {
-  background-color: #7abf5a;
+  background-color: #dec7ad;
   padding: 0.5rem;
   border-radius: 0.5rem;
 }
