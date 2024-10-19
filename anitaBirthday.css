@@ -42,7 +42,7 @@ body {
 } */
 
 .menu-toggle {
-  background: linear-gradient(45deg, #7abf5a, #bac8d9);
+  background: linear-gradient(45deg, #dec7ad, #bac8d9);
   border: none;
   border-radius: 16px;
   padding: 1rem;
@@ -54,7 +54,7 @@ body {
 
 /* Efecto hover */
 .menu-toggle:hover {
-  background: linear-gradient(45deg, #bac8d9, #7abf5a);
+  background: linear-gradient(45deg, #bac8d9, #dec7ad);
   transform: scale(1.05);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
@@ -92,9 +92,9 @@ header {
 .header__nav__item:hover {
   background-image: linear-gradient(
     to right,
-    #193940 0%,
-    #7abf5a 51%,
-    #193940 100%
+    #34462c 0%,
+    #dec7ad 51%,
+    #34462c 100%
   );
   border-radius: 0.5rem;
 }
