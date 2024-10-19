@@ -61,7 +61,21 @@
 }
 
 @media screen and (max-width: 600px) {
-  .modalImgDialog {
+  .modalImgDialog,
+  .modalImgDialog1,
+  .modalImgDialog2,
+  .modalImgDialog3,
+  .modalImgDialog4,
+  .modalImgDialog5,
+  .modalImgDialog6,
+  .modalImgDialog7,
+  .modalImgDialog8,
+  .modalImgDialog9,
+  .modalImgDialog10,
+  .modalImgDialog11,
+  .modalImgDialog12,
+  .modalImgDialog13,
+  .modalImgDialog14 {
     width: 100%;
   }
 }
