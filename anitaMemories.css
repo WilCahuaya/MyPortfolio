@@ -22,11 +22,11 @@
 .pictureImg {
   display: flex;
   flex-direction: column;
-  background-color: #7abf5abd;
+  background-color: #dec7ad;
   border-radius: 1rem;
   margin: auto;
   text-align: center;
-  border: 1px solid #7abf5a;
+  border: 1px solid #dec7ad;
 }
 
 .imgTitle {
