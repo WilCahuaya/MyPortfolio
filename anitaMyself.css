@@ -51,4 +51,12 @@ hr {
   .sectionTxtBible > ol {
     padding-inline: 1rem;
   }
+
+  .contBodyMyself > p {
+    font-size: 1.5rem;
+  }
+
+  .sectionTxtBible h1 {
+    font-size: 1.2rem;
+  }
 }
