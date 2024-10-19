@@ -1,0 +1,54 @@
+.contBodyMyself {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+  width: 65%;
+  margin-inline: auto;
+  padding-bottom: 4rem;
+  color: #193940;
+  font-family: "Roboto Mono", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background-color: #bac8d993;
+  padding: 1rem 2.5rem;
+  border-radius: 1rem;
+}
+
+hr {
+  background-color: #7abf5a;
+  border: 1px solid #7abf5a;
+}
+
+.contBodyMyself > p {
+  text-align: center;
+  color: #365e24;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.sectionTxtBible > ol {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-inline: 3rem;
+  margin-top: 0.5rem;
+}
+
+.sectionTxtBible > ol > li {
+  background-color: #7abf5a;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+@media screen and (max-width: 600px) {
+  .contBodyMyself {
+    width: 90%;
+    padding: 1rem;
+  }
+
+  .sectionTxtBible > ol {
+    padding-inline: 1rem;
+  }
+}
