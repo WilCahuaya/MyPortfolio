@@ -1,0 +1,71 @@
+body {
+  background-image: url(/img/gatoNavideño.jpg);
+  margin: auto;
+  padding: 1rem;
+}
+
+.navidad {
+  padding: 1rem 1rem 1rem 3rem;
+  /* background-color: rgba(245, 245, 220, 0.041); */
+  width: 40%;
+  border-radius: 5%;
+}
+
+h1 {
+  margin: 0;
+  color: aliceblue;
+  font-size: 4rem;
+}
+
+.navidad__p1 {
+  color: rgb(157, 248, 218);
+  font-size: 2rem;
+}
+
+.navidad__p2 {
+  position: absolute;
+  right: 0.2rem;
+  top: 10rem;
+  writing-mode: vertical-lr;
+  color: wheat;
+  font-size: 5rem;
+}
+
+@media only screen and (max-width: 700px) {
+  html,
+  body {
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-color: black;
+  }
+
+  h1 {
+    margin: 0;
+    color: rgb(29, 131, 221);
+    font-size: 4rem;
+  }
+
+  .navidad {
+    padding: 1rem 1rem 1rem 3rem;
+    /* background-color: rgba(245, 245, 220, 0.041); */
+    width: 70%;
+    border-radius: 5%;
+  }
+
+  .navidad__p1 {
+    color: rgb(157, 248, 218);
+    font-size: 1.5rem;
+  }
+
+  .navidad__p2 {
+    position: absolute;
+    top: 8rem;
+    right: 1rem;
+    writing-mode: vertical-lr;
+    color: wheat;
+    font-size: 3rem;
+    margin: 0;
+  }
+}
