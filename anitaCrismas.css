@@ -56,7 +56,7 @@ h1 {
 
   .navidad__p1 {
     color: rgb(157, 248, 218);
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 
   .navidad__p2 {
@@ -65,7 +65,7 @@ h1 {
     right: 1.5rem;
     writing-mode: vertical-lr;
     color: wheat;
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin: 0;
   }
 }
