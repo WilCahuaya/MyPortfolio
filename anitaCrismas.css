@@ -48,7 +48,7 @@ h1 {
   }
 
   .navidad {
-    padding: 1rem 1rem 1rem 3rem;
+    padding: 0.2rem 0.2rem 0.2rem 1rem;
     /* background-color: rgba(245, 245, 220, 0.041); */
     width: 70%;
     border-radius: 5%;
@@ -56,13 +56,13 @@ h1 {
 
   .navidad__p1 {
     color: rgb(157, 248, 218);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   .navidad__p2 {
     position: absolute;
     top: 8rem;
-    right: 1rem;
+    right: 1.5rem;
     writing-mode: vertical-lr;
     color: wheat;
     font-size: 3rem;
