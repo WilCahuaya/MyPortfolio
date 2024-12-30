@@ -18,6 +18,7 @@
         color: #fff;
         user-select: none;
         z-index: 10; /* Asegura que esté por encima de la imagen */
+        transition: opacity 1s ease-in-out; /* Transición suave para el texto */
       }
 
       .image-container {
@@ -32,16 +33,20 @@
         border-radius: 10px; /* Bordes redondeados opcionales */
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra para resaltar */
         z-index: 1; /* Está detrás del texto */
+        opacity: 1; /* Inicialmente visible */
+        transition: opacity 1s ease-in-out; /* Desvanecimiento suave de la imagen */
       }
 
       @media (max-width: 768px) {
         .image-container {
-          height: 300px; /* Asegura que ocupe toda la altura en móviles */
+          background-size: cover; /* Para pantallas más pequeñas, cambia a cover */
+          height: 400px; /* Asegura que ocupe toda la altura en móviles */
           width: 300px; /* Asegura que ocupe todo el ancho en móviles */
         }
 
         .bouncing-text {
-        font-size: 1rem;
+          font-size: 1rem;
+        }
       }
     </style>
   </head>
@@ -55,8 +60,8 @@
 
       let x = 50,
         y = 50; // Posición inicial
-      let vx = 3,
-        vy = 3; // Velocidades iniciales
+      let vx = 1, // Velocidad más lenta en el eje X
+        vy = 1; // Velocidad más lenta en el eje Y
 
       // Lista de imágenes locales
       const images = [
@@ -69,10 +74,15 @@
 
       let currentImage = 0;
 
-      // Cambiar imagen
+      // Cambiar imagen con desvanecimiento
       function changeImage() {
         currentImage = (currentImage + 1) % images.length;
-        imageContainer.style.backgroundImage = `url(${images[currentImage]})`;
+        imageContainer.style.opacity = 0; // Desvanece la imagen
+
+        setTimeout(() => {
+          imageContainer.style.backgroundImage = `url(${images[currentImage]})`;
+          imageContainer.style.opacity = 1; // Restaura la opacidad
+        }, 1000); // Espera 1 segundo para cambiar la imagen con desvanecimiento
       }
 
       function animate() {
