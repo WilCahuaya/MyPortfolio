@@ -38,7 +38,7 @@ h1 {
   font-family: "Mountains of Christmas", serif;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 900px) {
   html,
   body {
     height: 100%;

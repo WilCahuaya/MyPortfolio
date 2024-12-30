@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2025 Rebote con Imagen y Texto</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        background-color: #333; /* Fondo de color sólido */
+      }
+
+      .bouncing-text {
+        position: absolute;
+        font-size: 3rem;
+        font-weight: bold;
+        color: #fff;
+        user-select: none;
+        z-index: 10; /* Asegura que esté por encima de la imagen */
+      }
+
+      .image-container {
+        position: absolute;
+        width: 500px; /* Ajusta el tamaño de la imagen */
+        height: 500px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-size: cover; /* Ajusta la imagen para cubrir el contenedor */
+        background-position: center; /* Centra la imagen */
+        border-radius: 10px; /* Bordes redondeados opcionales */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra para resaltar */
+        z-index: 1; /* Está detrás del texto */
+      }
+
+      @media (max-width: 768px) {
+        .image-container {
+          height: 300px; /* Asegura que ocupe toda la altura en móviles */
+          width: 300px; /* Asegura que ocupe todo el ancho en móviles */
+        }
+
+        .bouncing-text {
+        font-size: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="image" class="image-container"></div>
+    <div id="text" class="bouncing-text">Anitaaa feliz 2025</div>
+
+    <script>
+      const text = document.getElementById("text");
+      const imageContainer = document.getElementById("image");
+
+      let x = 50,
+        y = 50; // Posición inicial
+      let vx = 3,
+        vy = 3; // Velocidades iniciales
+
+      // Lista de imágenes locales
+      const images = [
+        "anitaimg/cine.jpeg",
+        "anitaimg/comiendo.jpeg",
+        "anitaimg/damas.jpeg",
+        "anitaimg/doctora.jpeg",
+        "anitaimg/fucion.jpeg",
+      ];
+
+      let currentImage = 0;
+
+      // Cambiar imagen
+      function changeImage() {
+        currentImage = (currentImage + 1) % images.length;
+        imageContainer.style.backgroundImage = `url(${images[currentImage]})`;
+      }
+
+      function animate() {
+        const textRect = text.getBoundingClientRect();
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        // Cambiar dirección e imagen si choca con los bordes
+        if (x + textRect.width >= width || x <= 0) {
+          vx *= -1;
+          changeImage();
+        }
+        if (y + textRect.height >= height || y <= 0) {
+          vy *= -1;
+          changeImage();
+        }
+
+        // Actualizar posición
+        x += vx;
+        y += vy;
+
+        // Aplicar posiciones al texto
+        text.style.transform = `translate(${x}px, ${y}px)`;
+
+        requestAnimationFrame(animate);
+      }
+
+      // Establecer la primera imagen
+      imageContainer.style.backgroundImage = `url(${images[currentImage]})`;
+
+      animate();
+    </script>
+  </body>
+</html>
