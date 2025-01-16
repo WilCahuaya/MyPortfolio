@@ -1,4 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
 .bodyWill {
+  font-family: "Roboto", serif;
   background-color: rgb(10, 138, 138);
   padding-inline: 20%;
 }
@@ -13,9 +16,13 @@
   margin-bottom: 1rem;
 }
 .blogwil__item {
-  background-color: aqua;
+  background-color: rgb(2, 194, 194);
   padding: 1rem;
   border-radius: 1rem;
+}
+
+.blogwil__item > strong {
+  font-size: 1.5rem;
 }
 
 @media only screen and (max-width: 768px) {
