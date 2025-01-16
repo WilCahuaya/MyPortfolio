@@ -1,0 +1,29 @@
+.bodyWill {
+  background-color: rgb(10, 138, 138);
+  padding-inline: 20%;
+}
+
+.bodyWill__title {
+  font-size: 4rem;
+}
+.blogwil {
+  background-color: rgb(42, 199, 199);
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+.blogwil__item {
+  background-color: aqua;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .bodyWill {
+    padding-inline: 5%;
+  }
+
+  .bodyWill__title {
+    font-size: 3rem;
+  }
+}
