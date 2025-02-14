@@ -10,18 +10,20 @@ const messages = [
   Ya sabes si me necesitas cuando quieras, donde quieras y como quieras.
   "El aceite y el perfume alegran el corazón, y el cordial consejo del amigo, al hombre".
   Proverbios 27:9.
+  Con este texto te digo que eres sabia y buena concejera.
+  También te recuerde que eres hija de Dios y tu valor sobrepasa a las piedras preciosas.
   Doy gracias por tu vidaaa`,
 
-  `Me gusta cuando frunces los ojos.
-  Me gusta que siempre luces espectacular.
-  Me gusta tu sonrisa única.
-  Me gusta que te emociones al ver gatitos o perritos.
-  Me gusta que ames a los niños de Escuela Dominical.
-  Me gusta que seas comprometida con el ministerio.
-  Me gusta tu sensibilidad.
-  Me gusta que seas social.
-  Me gusta que cuando nos encontramos siempre conversemos mucho.
-  Me gusta que compartamos tantas cosas en común. 
+  `Me gusta ❤️ cuando frunces los ojos.
+  Me gusta ❤️ que siempre luces espectacular.
+  Me gusta ❤️ tu sonrisa única.
+  Me gusta ❤️ que te emociones al ver gatitos o perritos.
+  Me gusta ❤️ que ames a los niños de Escuela Dominical.
+  Me gusta ❤️ que seas comprometida con el ministerio.
+  Me gusta ❤️ tu sensibilidad.
+  Me gusta ❤️ que seas social.
+  Me gusta ❤️ que cuando nos encontramos siempre conversemos mucho.
+  Me gusta ❤️ que compartamos tantas cosas en común. 
   Gracias por tu bonita amistad`,
 
   ,
