@@ -7,12 +7,12 @@ const messages = [
   que te quiere y piensa que eres lo mejor que le paso.
   Somos un buen equipo en Escuela Dominical.
   Me gusta verte feliz.
-  Ya sabes si me necesitas cuando quieras, donde quieras y como quieras.
+  Ya sabes que si me necesitas cuando quieras, donde quieras y como quieras.
   "El aceite y el perfume alegran el corazón, y el cordial consejo del amigo, al hombre".
   Proverbios 27:9.
   Con este texto te digo que eres sabia y buena concejera.
   También te recuerde que eres hija de Dios y tu valor sobrepasa a las piedras preciosas.
-  Doy gracias por tu vidaaa`,
+  Doy gracias Dios por tu vidaaa`,
 
   `Me gusta ❤️ cuando frunces los ojos.
   Me gusta ❤️ que siempre luces espectacular.
