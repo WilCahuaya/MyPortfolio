@@ -8,6 +8,8 @@ const messages = [
   Somos un buen equipo en Escuela Dominical.
   Me gusta verte feliz.
   Ya sabes si me necesitas cuando quieras, donde quieras y como quieras.
+  "El aceite y el perfume alegran el corazón, y el cordial consejo del amigo, al hombre".
+  Proverbios 27:9.
   Doy gracias por tu vidaaa`,
 
   `Me gusta cuando frunces los ojos.
