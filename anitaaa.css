@@ -1,0 +1,87 @@
+/* Estilos Generales */
+body {
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  background: linear-gradient(to bottom, #ffebf2, #ffc2d1);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Contenedor Principal */
+.container {
+  max-width: 700px;
+  width: 90%;
+  padding: 25px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Título */
+h1 {
+  color: #ff4d4d;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* Botón */
+button {
+  padding: 14px 28px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #e63946;
+}
+
+/* Mensaje */
+#message {
+  font-size: 24px; /* AUMENTAMOS EL TAMAÑO */
+  line-height: 1.6;
+  padding: 15px;
+  font-weight: bold;
+}
+
+/* Efecto especial en las comas */
+.special-coma {
+  font-size: 28px;
+  animation: sparkle 0.5s infinite alternate;
+}
+
+/* Animación de brillo */
+@keyframes sparkle {
+  from {
+    color: #ff4d4d;
+  }
+  to {
+    color: #ffcc33;
+  }
+}
+
+/* Responsividad */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  button {
+    font-size: 16px;
+    padding: 12px 24px;
+  }
+
+  #message {
+    font-size: 16px;
+  }
+}
