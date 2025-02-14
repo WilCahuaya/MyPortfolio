@@ -4,7 +4,7 @@ const messages = [
   Doy gracias a Dios por tu amistad.
   A veces pienso que estamos escribiendo una bonita historia juntos.
   No olvides que aqui tienes a alguien que le importas.
-  que te quiere y piensa que eres lo mejor que le paso,
+  que te quiere y piensa que eres lo mejor que le paso.
   Somos un buen equipo en Escuela Dominical.
   Me gusta verte feliz.
   Ya sabes si me necesitas cuando quieras, donde quieras y como quieras.
@@ -62,7 +62,7 @@ function showMessage(text) {
 
       messageContainer.appendChild(span);
       i++;
-      setTimeout(typeWriter, 250); // Mostrar más lento
+      setTimeout(typeWriter, 200); // Mostrar más lento
     }
   }
   typeWriter();
