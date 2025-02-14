@@ -3,7 +3,7 @@ const messages = [
   Valoro mucho las cosas que haces por mi. 
   Doy gracias a Dios por tu amistad.
   A veces pienso que estamos escribiendo una bonita historia juntos.
-  No olvides que aqui tienes a alguien que le importas.
+  No olvides que aqui tienes a alguien que le importas, 
   que te quiere y piensa que eres lo mejor que le paso.
   Somos un buen equipo en Escuela Dominical.
   Me gusta verte feliz.
