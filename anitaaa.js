@@ -1,16 +1,27 @@
-// Mensaje con palabras destacadas y saltos de línea
-const messageText = `
-me gusta cuando frunces los ojos, 
-me gusta que siempre luces espectacular, 
-me gusta tu sonrisa única, 
-me gusta que te emociones al ver gatitos o perritos, 
-me gusta que ames a los niños de Escuela Dominical, 
-me gusta que seas comprometida con el ministerio, 
-me gusta tu sensibilidad, 
-me gusta que seas social, 
-me gusta que cuando nos encontramos siempre conversemos mucho, 
-me gusta que compartamos tantas cosas en común. 
-Gracias por tu bonita amistad`;
+const messages = [
+  `Hoy quiero recordarte lo especial que eres para mi,
+  valoro mucho las cosas que haces por mi y doy gracias a Dios por tu amistad,
+  a veces pienso que estamos escribiendo una bonita historia juntos,
+  no olvides que aqui tienes a alguien que le importas, 
+  que te quiere y piensa que eres lo mejor que le paso,
+  somos un buen equipo en Escuela Dominical, me gusta verte feliz
+  ya sabes si me necesitas cuando quieras, donde quieras y como quieras, 
+  doy gracias por tu vidaaa`,
+
+  `Me gusta cuando frunces los ojos, 
+  me gusta que siempre luces espectacular, 
+  me gusta tu sonrisa única, 
+  me gusta que te emociones al ver gatitos o perritos, 
+  me gusta que ames a los niños de Escuela Dominical, 
+  me gusta que seas comprometida con el ministerio, 
+  me gusta tu sensibilidad, 
+  me gusta que seas social, 
+  me gusta que cuando nos encontramos siempre conversemos mucho, 
+  me gusta que compartamos tantas cosas en común. 
+  Gracias por tu bonita amistad`,
+
+  ,
+];
 
 const colors = [
   "#ff4d4d",
@@ -21,43 +32,43 @@ const colors = [
   "#9966cc",
   "#ff66b2",
 ];
-const words = messageText.split(" ");
 const messageContainer = document.getElementById("message");
 
-let i = 0;
-
-// Función para mostrar el mensaje con saltos de línea en cada coma, más lento
-function typeWriter() {
-  if (i < words.length) {
-    let span = document.createElement("span");
-
-    // Si la palabra tiene una coma, agregamos un salto de línea
-    if (words[i].includes(",")) {
-      span.innerHTML = `<span style="color: ${
-        colors[Math.floor(Math.random() * colors.length)]
-      }">${words[i]}</span><br>`;
-    } else {
-      span.textContent = words[i] + " ";
-      span.style.color = colors[Math.floor(Math.random() * colors.length)];
-    }
-
-    messageContainer.appendChild(span);
-    i++;
-
-    setTimeout(typeWriter, 300); // **Texto más lento (antes era 150ms)**
-  }
-}
-
-// Iniciar Celebración
-function startCelebration() {
+function startCelebration(messageIndex) {
+  messageContainer.innerHTML = ""; // Limpiar mensaje anterior
   document.getElementById("background-music").play(); // Reproducir música
-  typeWriter(); // Mostrar mensaje con saltos de línea
+  showMessage(messages[messageIndex - 1]); // Mostrar mensaje seleccionado
   launchConfetti(); // Iniciar confeti
 }
 
-// Función de confeti (ahora dura 10 segundos)
+// Mostrar mensaje con efecto de aparición lenta
+function showMessage(text) {
+  const words = text.split(" ");
+  let i = 0;
+
+  function typeWriter() {
+    if (i < words.length) {
+      let span = document.createElement("span");
+
+      // Agregar color aleatorio
+      span.style.color = colors[Math.floor(Math.random() * colors.length)];
+
+      // Si la palabra tiene una coma, agregamos un salto de línea
+      span.innerHTML = words[i].includes(",")
+        ? words[i] + "<br>"
+        : words[i] + " ";
+
+      messageContainer.appendChild(span);
+      i++;
+      setTimeout(typeWriter, 250); // Mostrar más lento
+    }
+  }
+  typeWriter();
+}
+
+// Función de confeti (duración 10 segundos)
 function launchConfetti() {
-  let duration = 10 * 1000; // **Antes era 5 segundos**
+  let duration = 10 * 1000;
   let end = Date.now() + duration;
 
   (function frame() {
