@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estudio de Sanidad</title>
+    <style>
+      /* Reset y configuración básica */
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: linear-gradient(
+          135deg,
+          #a8e6cf,
+          #ffeb99
+        ); /* Degradado entre verde menta y amarillo suave */
+        font-family: "Arial", sans-serif;
+      }
+
+      /* Estilos del botón */
+      .boton-inicio {
+        background: #00c9a7; /* Turquesa */
+        color: #fff;
+        border: none;
+        padding: 20px 50px;
+        font-size: 1.6rem;
+        border-radius: 50px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: bold;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .boton-inicio:hover {
+        background: #ff6f61; /* Coral suave */
+        color: #fff;
+        transform: scale(1.1);
+      }
+
+      .boton-inicio i {
+        font-size: 1.8rem;
+        color: #fff; /* Blanco para que contraste con el color del botón */
+        transition: transform 0.3s;
+      }
+
+      .boton-inicio:hover i {
+        transform: scale(
+          1.2
+        ); /* Hace que el icono crezca un poco al hacer hover */
+      }
+
+      h1 {
+        color: #029b81;
+        font-size: 48px;
+      }
+
+      /* Responsividad */
+      @media (max-width: 768px) {
+        body {
+          background: linear-gradient(
+            135deg,
+            #a8e6cf,
+            #00c9a7
+          ); /* Ajuste de degradado para pantallas más pequeñas */
+        }
+
+        .boton-inicio {
+          padding: 15px 30px;
+          font-size: 1.4rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .boton-inicio {
+          padding: 12px 25px;
+          font-size: 1.2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Anitaaa</h1>
+    <!-- Botón con icono de corazón para sanidad -->
+    <button class="boton-inicio" onclick="iniciarEstudio()">
+      <i class="fas fa-heartbeat"></i> 🌿 ¡Sanemos nuestro Corazón! 🌿
+    </button>
+
+    <!-- Agregar el script para los íconos -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <script>
+      function iniciarEstudio() {
+        // Redirigir a otro archivo o mostrar el primer tema
+        window.location.href = "tipos_sanidad.html";
+      }
+    </script>
+  </body>
+</html>
