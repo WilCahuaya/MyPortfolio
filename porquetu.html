@@ -21,12 +21,25 @@
       }
 
       .container {
-        max-width: 800px;
+        display: flex;
+        max-width: 80%;
         width: 100%;
         background-color: #ffffffee;
         border-radius: 16px;
         padding: 2rem;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        gap: 1rem;
+      }
+
+      .containerleft {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 60%;
+      }
+
+      .containerleft h1 {
+        margin: 0px;
       }
 
       h1 {
@@ -38,10 +51,12 @@
       }
 
       .photo {
-        width: 100%;
+        width: 80%;
         border-radius: 16px;
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
         margin-bottom: 2rem;
+        margin-inline: auto;
+        margin-top: 2rem;
       }
 
       ul {
@@ -119,56 +134,75 @@
         font-size: 1.3rem;
         color: #e63946;
       }
+
+      @media (max-width: 600px) {
+        .container {
+          flex-direction: column;
+        }
+
+        .containerleft {
+          width: 100%;
+        }
+      }
     </style>
   </head>
   <body>
     <div class="container">
-      <img
-        src="anitaimg/WhatsApp Image 2025-05-14 at 3.47.47 PM.jpeg"
-        alt="Foto bonitaaa"
-        class="photo"
-      />
-      <h1>¿Sabes por que te quiero muchooo Anitaaa?</h1>
-      <ul>
-        <li>
-          <span class="icon">❤️</span> Porque amas a Dios sobre todas las cosas
-        </li>
-        <li>
-          <span class="icon">🌟</span> Porque eres sabia al tomar tus decisiones
-        </li>
-        <li>
-          <span class="icon">💖</span> Porque eres la más bonitaaa del mundo
-        </li>
-        <li>
-          <span class="icon">🤲</span> Porque eres sensible a las necesidades de
-          los demás
-        </li>
-        <li><span class="icon">👶</span> Porque amas a los niños</li>
-        <li><span class="icon">🐶</span> Porque amas a las mascotas</li>
-        <li>
-          <span class="icon">😊</span> Porque tu sonrisa es inexplicablemente
-          hermosa
-        </li>
-        <li><span class="icon">💪</span> Porque eres muy decidida</li>
-        <li><span class="icon">🤍</span> Porque me comprendes y me corriges</li>
-        <li><span class="icon">🔐</span> Porque me generas confianza</li>
-        <li>
-          <span class="icon">🙏</span> Porque eres la respuesta a mis oraciones
-        </li>
-        <li>
-          <span class="icon">🌿</span> Porque contigo todo es natural, y no
-          busco ser alguien diferente
-        </li>
-        <li>
-          <span class="icon">✨</span> Porque sacas lo mejor de mí tan solo con
-          pensar en ti
-        </li>
-        <li>
-          <span class="icon">📖</span> Porque me sumas en mi vida espiritual
-        </li>
-        <li><span class="icon">📚</span> Porque te esfuerzas en estudiar</li>
-        <li><span class="icon">👨‍👩‍👧‍👦</span> Porque honras a tus papás</li>
-      </ul>
+      <div class="containerleft">
+        <h1>¿Sabes por que te quiero muchooo Anitaaa?</h1>
+        <img
+          src="anitaimg/WhatsApp Image 2025-05-14 at 3.47.47 PM.jpeg"
+          alt="Foto bonitaaa"
+          class="photo"
+        />
+      </div>
+      <div class="containerright">
+        <ul>
+          <li>
+            <span class="icon">❤️</span> Porque amas a Dios sobre todas las
+            cosas
+          </li>
+          <li>
+            <span class="icon">🌟</span> Porque eres sabia al tomar tus
+            decisiones
+          </li>
+          <li>
+            <span class="icon">💖</span> Porque eres la más bonitaaa del mundo
+          </li>
+          <li>
+            <span class="icon">🤲</span> Porque eres sensible a las necesidades
+            de los demás
+          </li>
+          <li><span class="icon">👶</span> Porque amas a los niños</li>
+          <li><span class="icon">🐶</span> Porque amas a las mascotas</li>
+          <li>
+            <span class="icon">😊</span> Porque tu sonrisa es inexplicablemente
+            hermosa
+          </li>
+          <li><span class="icon">💪</span> Porque eres muy decidida</li>
+          <li>
+            <span class="icon">🤍</span> Porque me comprendes y me corriges
+          </li>
+          <li><span class="icon">🔐</span> Porque me generas confianza</li>
+          <li>
+            <span class="icon">🙏</span> Porque eres la respuesta a mis
+            oraciones
+          </li>
+          <li>
+            <span class="icon">🌿</span> Porque contigo todo es natural, y no
+            busco ser alguien diferente
+          </li>
+          <li>
+            <span class="icon">✨</span> Porque sacas lo mejor de mí tan solo
+            con pensar en ti
+          </li>
+          <li>
+            <span class="icon">📖</span> Porque me sumas en mi vida espiritual
+          </li>
+          <li><span class="icon">📚</span> Porque te esfuerzas en estudiar</li>
+          <li><span class="icon">👨‍👩‍👧‍👦</span> Porque honras a tus papás</li>
+        </ul>
+      </div>
     </div>
   </body>
 </html>
