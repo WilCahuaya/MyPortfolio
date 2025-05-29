@@ -31,6 +31,21 @@
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       }
 
+      .volver {
+        display: inline-block;
+        margin-bottom: 1rem;
+        background: none;
+        border: none;
+        color: var(--primario);
+        font-size: 1rem;
+        cursor: pointer;
+        text-decoration: underline;
+      }
+
+      .volver:hover {
+        text-decoration: none;
+      }
+
       h1,
       h2,
       h3 {
@@ -106,6 +121,9 @@
   </head>
   <body>
     <div class="container">
+      <button class="volver" onclick="window.location.href='rechazo.html'">
+        ← Volver
+      </button>
       <h1>Sanando la Herida de Rechazo según la Biblia</h1>
 
       <div class="section">
