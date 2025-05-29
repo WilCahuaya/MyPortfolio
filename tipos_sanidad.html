@@ -21,6 +21,21 @@
         padding: 0;
       }
 
+      .volver {
+        display: inline-block;
+        margin-bottom: 1rem;
+        background: none;
+        border: none;
+        color: var(--primario);
+        font-size: 1rem;
+        cursor: pointer;
+        text-decoration: underline;
+      }
+
+      .volver:hover {
+        text-decoration: none;
+      }
+
       header,
       footer {
         text-align: center;
@@ -96,10 +111,12 @@
   </head>
   <body>
     <header>
+      <button class="volver" onclick="window.location.href='sanidad.html'">
+        ← Volver
+      </button>
       <h1>Tipos de Heridas del Alma</h1>
       <p>Descubre su origen, consecuencias y cómo Dios puede sanarlas</p>
     </header>
-
     <main>
       <a href="rechazo.html">
         <div class="herida">
@@ -126,26 +143,28 @@
         </div>
       </a>
 
-      <div class="herida">
-        <h2>2. Herida de Abandono</h2>
-        <p>
-          <span class="label">Origen:</span> Pérdida de un ser querido,
-          separación de los padres, padres ausentes emocional o físicamente.
-        </p>
-        <p>
-          <span class="label">Fruto:</span> Miedo a estar solo, dependencia
-          emocional, ansiedad por perder a los demás.
-        </p>
-        <p>
-          <span class="label">Reacción común:</span> Apegos excesivos o
-          relaciones tóxicas.
-        </p>
-        <p>
-          <span class="label">Sanidad:</span> Saber que
-          <strong>Dios nunca te dejará ni te desamparará</strong> (Hebreos
-          13:5).
-        </p>
-      </div>
+      <a href="abandono.html">
+        <div class="herida">
+          <h2>2. Herida de Abandono</h2>
+          <p>
+            <span class="label">Origen:</span> Pérdida de un ser querido,
+            separación de los padres, padres ausentes emocional o físicamente.
+          </p>
+          <p>
+            <span class="label">Fruto:</span> Miedo a estar solo, dependencia
+            emocional, ansiedad por perder a los demás.
+          </p>
+          <p>
+            <span class="label">Reacción común:</span> Apegos excesivos o
+            relaciones tóxicas.
+          </p>
+          <p>
+            <span class="label">Sanidad:</span> Saber que
+            <strong>Dios nunca te dejará ni te desamparará</strong> (Hebreos
+            13:5).
+          </p>
+        </div>
+      </a>
 
       <div class="herida">
         <h2>3. Herida de Humillación</h2>
