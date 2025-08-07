@@ -103,7 +103,7 @@
         </div>
 
         <!-- Game Stats -->
-        <div class="flex justify-center gap-6 mb-6">
+        <div class="flex justify-center gap-4 mb-6 flex-wrap">
           <div
             class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 text-white"
           >
@@ -127,6 +127,12 @@
           >
             <span class="font-semibold">Tiempo: </span>
             <span id="timer" class="font-bold">00:00</span>
+          </div>
+          <div
+            class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 text-white"
+          >
+            <span class="font-semibold">Equipo: </span>
+            <span id="teamSizeDisplay" class="font-bold">2-5 personas</span>
           </div>
         </div>
 
@@ -250,12 +256,21 @@
                   >Tamaño del equipo:</label
                 >
                 <select
+                  id="teamSizeSelect"
                   class="w-full p-2 rounded-lg bg-gray-100 text-gray-800 border border-gray-300"
                 >
-                  <option>2-5 personas (Pequeño)</option>
-                  <option>6-10 personas (Mediano)</option>
-                  <option>11-20 personas (Grande)</option>
-                  <option>20+ personas (Muy Grande)</option>
+                  <option value="small">
+                    2-5 personas (Pequeño) - Preguntas íntimas
+                  </option>
+                  <option value="medium">
+                    6-10 personas (Mediano) - Preguntas personales
+                  </option>
+                  <option value="large">
+                    11-20 personas (Grande) - Preguntas grupales
+                  </option>
+                  <option value="xlarge">
+                    20+ personas (Muy Grande) - Preguntas universales
+                  </option>
                 </select>
               </div>
 
@@ -405,7 +420,7 @@
       let gameConfig = {
         difficulty: 6, // Number of pairs
         timeLimit: 0, // 0 = no limit, otherwise seconds
-        teamSize: "small",
+        teamSize: "small", // small, medium, large, xlarge
       };
 
       // Biblical verses and their references for the memory game
@@ -505,19 +520,49 @@
         },
       ];
 
-      // Ice breaker questions with biblical theme
-      const iceBreakQuestions = [
-        "¿Cuál es tu versículo bíblico favorito y por qué te inspira?",
-        "¿Qué personaje bíblico admiras más y qué cualidad te gustaría imitar?",
-        "¿Cómo aplicas los principios bíblicos en tu vida diaria?",
-        "¿Cuál ha sido el momento más significativo en tu crecimiento espiritual?",
-        "¿Qué libro de la Biblia te ha impactado más recientemente?",
-        "¿Cómo te ayuda la oración en los momentos difíciles?",
-        "¿Qué don espiritual crees que Dios te ha dado para servir a otros?",
-        "¿Cuál es tu historia bíblica favorita y qué enseñanza extraes de ella?",
-        "¿Cómo has visto la mano de Dios trabajar en tu vida este año?",
-        "¿Qué tradición cristiana de tu familia valoras más?",
-      ];
+      // Ice breaker questions organized by team size
+      const iceBreakQuestions = {
+        small: [
+          "¿Cuál ha sido el momento más íntimo de oración que has experimentado?",
+          "¿Qué miedo o duda espiritual has superado recientemente?",
+          "¿Cómo ha cambiado tu relación con Dios en los últimos años?",
+          "¿Qué versículo bíblico te ha consolado en momentos difíciles?",
+          "¿Cuál es tu mayor lucha espiritual actual?",
+          "¿Qué tradición familiar cristiana valoras más y por qué?",
+          "¿Cómo sientes que Dios te está llamando a crecer?",
+          "¿Qué personaje bíblico te inspira más en tu vida personal?",
+        ],
+        medium: [
+          "¿Cuál es tu versículo bíblico favorito y por qué te inspira?",
+          "¿Qué personaje bíblico admiras más y qué cualidad te gustaría imitar?",
+          "¿Cómo aplicas los principios bíblicos en tu trabajo diario?",
+          "¿Qué don espiritual crees que Dios te ha dado para servir a otros?",
+          "¿Cuál es tu historia bíblica favorita y qué enseñanza extraes?",
+          "¿Cómo has visto la mano de Dios trabajar en tu vida este año?",
+          "¿Qué libro de la Biblia te ha impactado más recientemente?",
+          "¿Cómo equilibras tu fe con las demandas del trabajo?",
+        ],
+        large: [
+          "¿Qué valores bíblicos consideras más importantes en el trabajo en equipo?",
+          "¿Cómo puede la fe fortalecer la unidad en nuestro grupo?",
+          "¿Qué enseñanza bíblica sobre liderazgo te parece más relevante?",
+          "¿Cómo podemos aplicar el amor cristiano en nuestro ambiente laboral?",
+          "¿Qué historia bíblica de trabajo en equipo te inspira más?",
+          "¿Cómo puede la oración beneficiar a nuestro equipo?",
+          "¿Qué principio bíblico te ayuda a manejar conflictos?",
+          "¿Cómo podemos ser luz en nuestro entorno profesional?",
+        ],
+        xlarge: [
+          "¿Qué valores universales de la Biblia pueden unir a personas diversas?",
+          "¿Cómo puede la fe promover la colaboración en grupos grandes?",
+          "¿Qué enseñanza bíblica sobre comunidad te parece más relevante?",
+          "¿Cómo podemos crear un ambiente de respeto mutuo basado en principios cristianos?",
+          "¿Qué historia bíblica de liderazgo masivo te inspira?",
+          "¿Cómo pueden los valores cristianos mejorar la comunicación grupal?",
+          "¿Qué principio bíblico te ayuda a trabajar con personas diferentes?",
+          "¿Cómo podemos ser ejemplo de unidad cristiana en espacios diversos?",
+        ],
+      };
 
       // Rating system based on time and moves
       function calculateRating(timeInSeconds, moves) {
@@ -645,6 +690,16 @@
           "pairs"
         ).textContent = `0/${gameConfig.difficulty}`;
         document.getElementById("timer").textContent = "00:00";
+
+        // Update team size display
+        const teamSizeText = {
+          small: "2-5 personas",
+          medium: "6-10 personas",
+          large: "11-20 personas",
+          xlarge: "20+ personas",
+        };
+        document.getElementById("teamSizeDisplay").textContent =
+          teamSizeText[gameConfig.teamSize];
 
         // Adjust grid layout based on difficulty
         if (gameConfig.difficulty <= 6) {
@@ -854,24 +909,24 @@
         document.getElementById("successModal").classList.add("flex");
       }
 
-      // Show random question
+      // Show random question based on team size
       function showRandomQuestion() {
-        const randomIndex = Math.floor(
-          Math.random() * iceBreakQuestions.length
-        );
+        const questionsForSize = iceBreakQuestions[gameConfig.teamSize];
+        const randomIndex = Math.floor(Math.random() * questionsForSize.length);
         currentQuestionIndex = randomIndex;
         document.getElementById("questionText").textContent =
-          iceBreakQuestions[randomIndex];
+          questionsForSize[randomIndex];
         document.getElementById("questionModal").classList.remove("hidden");
         document.getElementById("questionModal").classList.add("flex");
       }
 
-      // Show next question
+      // Show next question based on team size
       function showNextQuestion() {
+        const questionsForSize = iceBreakQuestions[gameConfig.teamSize];
         currentQuestionIndex =
-          (currentQuestionIndex + 1) % iceBreakQuestions.length;
+          (currentQuestionIndex + 1) % questionsForSize.length;
         document.getElementById("questionText").textContent =
-          iceBreakQuestions[currentQuestionIndex];
+          questionsForSize[currentQuestionIndex];
       }
 
       // Event listeners
@@ -925,9 +980,11 @@
           // Apply configuration settings
           const difficultySelect = document.getElementById("difficultySelect");
           const timerSelect = document.getElementById("timerSelect");
+          const teamSizeSelect = document.getElementById("teamSizeSelect");
 
           gameConfig.difficulty = parseInt(difficultySelect.value);
           gameConfig.timeLimit = parseInt(timerSelect.value);
+          gameConfig.teamSize = teamSizeSelect.value;
 
           // Save configuration to localStorage
           localStorage.setItem("gameConfig", JSON.stringify(gameConfig));
@@ -939,14 +996,21 @@
           // Restart game with new configuration
           initGame();
 
+          const teamSizeText = {
+            small: "2-5 personas (Íntimo)",
+            medium: "6-10 personas (Personal)",
+            large: "11-20 personas (Grupal)",
+            xlarge: "20+ personas (Universal)",
+          };
+
           alert(
-            `¡Configuración aplicada! Dificultad: ${
+            `¡Configuración aplicada!\n• Dificultad: ${
               gameConfig.difficulty
-            } pares, Tiempo: ${
+            } pares\n• Tiempo: ${
               gameConfig.timeLimit === 0
                 ? "Sin límite"
                 : gameConfig.timeLimit / 60 + " minutos"
-            }`
+            }\n• Equipo: ${teamSizeText[gameConfig.teamSize]}`
           );
         });
 
@@ -961,6 +1025,7 @@
         document.getElementById("difficultySelect").value =
           gameConfig.difficulty;
         document.getElementById("timerSelect").value = gameConfig.timeLimit;
+        document.getElementById("teamSizeSelect").value = gameConfig.teamSize;
       }
 
       // Initialize the game on page load
@@ -975,7 +1040,7 @@
           if (b) {
             var d = b.createElement("script");
             d.innerHTML =
-              "window.__CF$cv$params={r:'96b8e93ae1f1e9aa',t:'MTc1NDU5MjExNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+              "window.__CF$cv$params={r:'96b91e3be460e9ae',t:'MTc1NDU5NDI4OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
             b.getElementsByTagName("head")[0].appendChild(d);
           }
         }
