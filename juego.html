@@ -308,23 +308,25 @@
                   >Nivel de dificultad:</label
                 >
                 <select
+                  id="difficultySelect"
                   class="w-full p-2 rounded-lg bg-gray-100 text-gray-800 border border-gray-300"
                 >
-                  <option>Fácil (6 pares)</option>
-                  <option>Medio (8 pares)</option>
-                  <option>Difícil (12 pares)</option>
+                  <option value="6">Fácil (6 pares)</option>
+                  <option value="8">Medio (8 pares)</option>
+                  <option value="12">Difícil (12 pares)</option>
                 </select>
               </div>
 
               <div>
                 <label class="block text-gray-700 mb-2">Temporizador:</label>
                 <select
+                  id="timerSelect"
                   class="w-full p-2 rounded-lg bg-gray-100 text-gray-800 border border-gray-300"
                 >
-                  <option>Sin límite</option>
-                  <option>2 minutos</option>
-                  <option>5 minutos</option>
-                  <option>10 minutos</option>
+                  <option value="0">Sin límite</option>
+                  <option value="120">2 minutos</option>
+                  <option value="300">5 minutos</option>
+                  <option value="600">10 minutos</option>
                 </select>
               </div>
             </div>
@@ -398,6 +400,13 @@
       let currentPlayerName = "Anónimo";
       let gameScores =
         JSON.parse(localStorage.getItem("biblicalMemoryScores")) || [];
+
+      // Game configuration
+      let gameConfig = {
+        difficulty: 6, // Number of pairs
+        timeLimit: 0, // 0 = no limit, otherwise seconds
+        teamSize: "small",
+      };
 
       // Biblical verses and their references for the memory game
       const allBiblicalPairs = [
@@ -632,14 +641,28 @@
 
         // Reset UI
         document.getElementById("moves").textContent = "0";
-        document.getElementById("pairs").textContent = "0/6";
+        document.getElementById(
+          "pairs"
+        ).textContent = `0/${gameConfig.difficulty}`;
         document.getElementById("timer").textContent = "00:00";
 
-        // Select 6 random biblical pairs for this game
+        // Adjust grid layout based on difficulty
+        if (gameConfig.difficulty <= 6) {
+          gameBoard.className =
+            "grid grid-cols-3 md:grid-cols-4 gap-4 max-w-2xl mx-auto mb-8";
+        } else if (gameConfig.difficulty <= 8) {
+          gameBoard.className =
+            "grid grid-cols-4 md:grid-cols-4 gap-3 max-w-3xl mx-auto mb-8";
+        } else {
+          gameBoard.className =
+            "grid grid-cols-4 md:grid-cols-6 gap-2 max-w-4xl mx-auto mb-8";
+        }
+
+        // Select random biblical pairs based on difficulty
         const shuffledPairs = [...allBiblicalPairs].sort(
           () => Math.random() - 0.5
         );
-        const selectedPairs = shuffledPairs.slice(0, 6);
+        const selectedPairs = shuffledPairs.slice(0, gameConfig.difficulty);
 
         // Create card pairs (verses and references)
         const cardContent = [];
@@ -745,9 +768,11 @@
           card2.element.classList.add("pulse-animation");
 
           pairs++;
-          document.getElementById("pairs").textContent = `${pairs}/6`;
+          document.getElementById(
+            "pairs"
+          ).textContent = `${pairs}/${gameConfig.difficulty}`;
 
-          if (pairs === 6) {
+          if (pairs === gameConfig.difficulty) {
             setTimeout(() => {
               showSuccessModal();
             }, 500);
@@ -770,13 +795,34 @@
 
         timerInterval = setInterval(() => {
           const elapsed = Math.floor((Date.now() - startTime) / 1000);
-          const minutes = Math.floor(elapsed / 60)
-            .toString()
-            .padStart(2, "0");
-          const seconds = (elapsed % 60).toString().padStart(2, "0");
-          document.getElementById(
-            "timer"
-          ).textContent = `${minutes}:${seconds}`;
+
+          // Check time limit
+          if (gameConfig.timeLimit > 0 && elapsed >= gameConfig.timeLimit) {
+            clearInterval(timerInterval);
+            alert("¡Se acabó el tiempo! Inténtalo de nuevo.");
+            initGame();
+            return;
+          }
+
+          let displayTime;
+          if (gameConfig.timeLimit > 0) {
+            // Countdown timer
+            const remaining = gameConfig.timeLimit - elapsed;
+            const minutes = Math.floor(remaining / 60)
+              .toString()
+              .padStart(2, "0");
+            const seconds = (remaining % 60).toString().padStart(2, "0");
+            displayTime = `${minutes}:${seconds}`;
+          } else {
+            // Count up timer
+            const minutes = Math.floor(elapsed / 60)
+              .toString()
+              .padStart(2, "0");
+            const seconds = (elapsed % 60).toString().padStart(2, "0");
+            displayTime = `${minutes}:${seconds}`;
+          }
+
+          document.getElementById("timer").textContent = displayTime;
         }, 1000);
       }
 
@@ -876,13 +922,49 @@
       document
         .getElementById("applyConfigBtn")
         .addEventListener("click", () => {
-          // Aquí se aplicarían las configuraciones seleccionadas
-          alert("¡Configuración aplicada exitosamente!");
+          // Apply configuration settings
+          const difficultySelect = document.getElementById("difficultySelect");
+          const timerSelect = document.getElementById("timerSelect");
+
+          gameConfig.difficulty = parseInt(difficultySelect.value);
+          gameConfig.timeLimit = parseInt(timerSelect.value);
+
+          // Save configuration to localStorage
+          localStorage.setItem("gameConfig", JSON.stringify(gameConfig));
+
+          // Close modal
           document.getElementById("configModal").classList.add("hidden");
           document.getElementById("configModal").classList.remove("flex");
+
+          // Restart game with new configuration
+          initGame();
+
+          alert(
+            `¡Configuración aplicada! Dificultad: ${
+              gameConfig.difficulty
+            } pares, Tiempo: ${
+              gameConfig.timeLimit === 0
+                ? "Sin límite"
+                : gameConfig.timeLimit / 60 + " minutos"
+            }`
+          );
         });
 
+      // Load saved configuration
+      function loadConfiguration() {
+        const savedConfig = localStorage.getItem("gameConfig");
+        if (savedConfig) {
+          gameConfig = { ...gameConfig, ...JSON.parse(savedConfig) };
+        }
+
+        // Set UI elements to match loaded config
+        document.getElementById("difficultySelect").value =
+          gameConfig.difficulty;
+        document.getElementById("timerSelect").value = gameConfig.timeLimit;
+      }
+
       // Initialize the game on page load
+      loadConfiguration();
       initGame();
       updateLeaderboard();
     </script>
@@ -893,7 +975,7 @@
           if (b) {
             var d = b.createElement("script");
             d.innerHTML =
-              "window.__CF$cv$params={r:'96b8d726909fcdca',t:'MTc1NDU5MTM3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+              "window.__CF$cv$params={r:'96b8e93ae1f1e9aa',t:'MTc1NDU5MjExNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
             b.getElementsByTagName("head")[0].appendChild(d);
           }
         }
