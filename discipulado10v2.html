@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lección 10: Mayordomía Cristiana</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: "Inter", sans-serif; }
+    .modal-backdrop { backdrop-filter: blur(4px); }
+    .slide-in { animation: slideIn .3s ease-out; }
+    @keyframes slideIn {
+      from { opacity:0; transform: translateY(-20px) }
+      to   { opacity:1; transform: translateY(0) }
+    }
+    details summary { cursor: pointer; }
+    details > summary { list-style: none; }
+    details > summary::-webkit-details-marker { display:none; }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-emerald-900 via-teal-900 to-cyan-900 min-h-screen">
+  <div class="container mx-auto px-6 py-12">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl md:text-6xl font-bold text-white mb-2">📘 Lección 10</h1>
+      <h2 class="text-2xl md:text-3xl font-semibold text-emerald-200">Mayordomía Cristiana</h2>
+
+      <!-- Objetivos + Texto base -->
+      <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto mt-8">
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+          <h3 class="text-xl font-bold text-yellow-300 mb-3">🎯 OBJETIVOS</h3>
+          <ul class="text-emerald-100 space-y-2 text-left">
+            <li>• Entender el significado y propósito de la mayordomía cristiana.</li>
+            <li>• Asumir la responsabilidad de administrar bien los recursos dados por Dios.</li>
+          </ul>
+        </div>
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+          <h3 class="text-xl font-bold text-yellow-300 mb-3">📖 TEXTO BASE</h3>
+          <p class="text-yellow-200 italic text-lg mb-2">"Traed todos los diezmos al alfolí y haya alimento en mi casa; y probadme ahora en esto, dice Jehová de los ejércitos, si no os abriré las ventanas de los cielos, y derramaré sobre vosotros bendición hasta que sobreabunde."</p>
+          <p class="text-emerald-200 font-semibold">Malaquías 3:10</p>
+          <details class="bg-amber-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-amber-800">Malaquías 3:10 — Ventanas de los cielos</summary>
+            <div class="mt-2 text-amber-900">
+              Traed todos los diezmos al alfolí y haya alimento en mi casa; y probadme ahora en esto, dice Jehová de los ejércitos, si no os abriré las ventanas de los cielos, y derramaré sobre vosotros bendición hasta que sobreabunde.
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <p class="text-emerald-200 mt-8">Toca una tarjeta para ver el contenido y desplegar los pasajes bíblicos (RVR1960)</p>
+    </div>
+
+    <!-- Tarjetas -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      <button class="bg-white/10 rounded-2xl p-6 hover:bg-white/20 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-yellow-300" data-tema="intro">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-2xl">🧭</span></div>
+          <h3 class="text-xl font-semibold text-white mb-2">Introducción</h3>
+          <p class="text-emerald-100 text-sm">Discipulado y compromiso personal</p>
+        </div>
+      </button>
+
+      <button class="bg-white/10 rounded-2xl p-6 hover:bg-white/20 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-300" data-tema="quees">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-blue-400 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-2xl">📌</span></div>
+          <h3 class="text-xl font-semibold text-white mb-2">¿Qué es?</h3>
+          <p class="text-emerald-100 text-sm">1 Co 4:1–2 · Sal 24:1 · 1 P 4:10 · Mt 25:19–21</p>
+        </div>
+      </button>
+
+      <button class="bg-white/10 rounded-2xl p-6 hover:bg-white/20 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-300" data-tema="areas">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-indigo-400 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-2xl">🧩</span></div>
+          <h3 class="text-xl font-semibold text-white mb-2">Áreas</h3>
+          <p class="text-emerald-100 text-sm">Vida · Testimonio · Cuerpo · Tiempo · Talentos · Dones · Dinero</p>
+        </div>
+      </button>
+
+      <button class="bg-white/10 rounded-2xl p-6 hover:bg-white/20 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-rose-300" data-tema="diezmo">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-rose-400 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-2xl">💰</span></div>
+          <h3 class="text-xl font-semibold text-white mb-2">El Diezmo</h3>
+          <p class="text-emerald-100 text-sm">Def., propietario, propósito, sostén</p>
+        </div>
+      </button>
+
+      <button class="bg-white/10 rounded-2xl p-6 hover:bg-white/20 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-amber-300" data-tema="ofrenda">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-amber-400 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-2xl">🎁</span></div>
+          <h3 class="text-xl font-semibold text-white mb-2">La Ofrenda</h3>
+          <p class="text-emerald-100 text-sm">Generosidad · Alegría · Agrado · Convicción · Sacrificio</p>
+        </div>
+      </button>
+
+      <button class="bg-white/10 rounded-2xl p-6 hover:bg-white/20 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-teal-300" data-tema="conclusion">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-teal-400 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-2xl">✅</span></div>
+          <h3 class="text-xl font-semibold text-white mb-2">Conclusión</h3>
+          <p class="text-emerald-100 text-sm">Dios es Señor de todo · Fidelidad</p>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal accesible -->
+  <div id="modal" class="fixed inset-0 bg-black/50 modal-backdrop hidden items-center justify-center z-50 p-4"
+       role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[80vh] overflow-y-auto slide-in outline-none" tabindex="-1" id="modal-panel">
+      <div class="p-8">
+        <div class="flex justify-between items-start mb-6">
+          <h2 id="modal-title" class="text-3xl font-bold text-gray-800"></h2>
+          <button id="modal-close" class="text-gray-500 hover:text-gray-700 text-3xl font-bold" aria-label="Cerrar">×</button>
+        </div>
+        <div id="modal-content" class="text-gray-700 leading-relaxed"></div>
+        <div class="mt-8 text-center">
+          <button id="modal-close2" class="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 rounded-lg font-semibold">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const contenido = {
+      intro: {
+        titulo: "Introducción",
+        texto: `
+          <p>La mayordomía cristiana se entiende a la luz del <strong>discipulado</strong>. Seguir a Jesús implica un compromiso personal que define la calidad de nuestra administración ante Dios.</p>
+        `
+      },
+      quees: {
+        titulo: "¿Qué es la Mayordomía Cristiana?",
+        texto: `
+          <ul class="list-disc list-inside space-y-2">
+            <li><strong>Definición:</strong> Administrar adecuadamente lo que Dios nos ha dado; Dios es dueño de todo y pedirá cuentas.</li>
+          </ul>
+          <details class="bg-blue-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-blue-800">1 Corintios 4:1–2 — Hallados fieles</summary>
+            <div class="mt-2 text-blue-900">
+              1 Así, pues, téngannos los hombres por servidores de Cristo, y administradores de los misterios de Dios. 2 Ahora bien, se requiere de los administradores, que cada uno sea hallado fiel.
+            </div>
+          </details>
+          <details class="bg-blue-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-blue-800">Salmo 24:1 — De Jehová es la tierra</summary>
+            <div class="mt-2 text-blue-900">
+              1 De Jehová es la tierra y su plenitud; El mundo, y los que en él habitan.
+            </div>
+          </details>
+          <details class="bg-blue-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-blue-800">1 Pedro 4:10 — Buenos administradores de la gracia</summary>
+            <div class="mt-2 text-blue-900">
+              10 Cada uno según el don que ha recibido, minístrelo a los otros, como buenos administradores de la multiforme gracia de Dios.
+            </div>
+          </details>
+          <details class="bg-blue-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-blue-800">Mateo 25:19–21 — Cuentas y aprobación</summary>
+            <div class="mt-2 text-blue-900">
+              19 Después de mucho tiempo vino el señor de aquellos siervos, y arregló cuentas con ellos. 20 Y llegando el que había recibido cinco talentos, trajo otros cinco talentos, diciendo: Señor, cinco talentos me entregaste; aquí tienes, he ganado otros cinco talentos sobre ellos. 21 Y su señor le dijo: Bien, buen siervo y fiel; sobre poco has sido fiel, sobre mucho te pondré; entra en el gozo de tu señor.
+            </div>
+          </details>
+        `
+      },
+      areas: {
+        titulo: "Áreas de la Mayordomía",
+        texto: `
+          <h4 class="font-semibold">1) Nuestra vida</h4>
+          <details class="bg-indigo-50 p-4 rounded-lg mt-2">
+            <summary class="font-semibold text-indigo-800">1 Corintios 6:20 — Glorificad a Dios en vuestro cuerpo</summary>
+            <div class="mt-2 text-indigo-900">
+              20 Porque habéis sido comprados por precio; glorificad, pues, a Dios en vuestro cuerpo y en vuestro espíritu, los cuales son de Dios.
+            </div>
+          </details>
+          <details class="bg-indigo-50 p-4 rounded-lg mt-2">
+            <summary class="font-semibold text-indigo-800">1 Tesalonicenses 5:23 — Espíritu, alma y cuerpo irreprensibles</summary>
+            <div class="mt-2 text-indigo-900">
+              23 Y el mismo Dios de paz os santifique por completo; y todo vuestro ser, espíritu, alma y cuerpo, sea guardado irreprensible para la venida de nuestro Señor Jesucristo.
+            </div>
+          </details>
+
+          <h4 class="font-semibold mt-4">2) Testimonio cristiano</h4>
+          <details class="bg-indigo-50 p-4 rounded-lg mt-2">
+            <summary class="font-semibold text-indigo-800">Mateo 28:19–20 — Id y haced discípulos</summary>
+            <div class="mt-2 text-indigo-900">
+              19 Por tanto, id, y haced discípulos a todas las naciones, bautizándolos en el nombre del Padre, y del Hijo, y del Espíritu Santo; 20 enseñándoles que guarden todas las cosas que os he mandado; y he aquí yo estoy con vosotros todos los días, hasta el fin del mundo. Amén.
+            </div>
+          </details>
+          <details class="bg-indigo-50 p-4 rounded-lg mt-2">
+            <summary class="font-semibold text-indigo-800">Marcos 16:15 — Predicad el evangelio</summary>
+            <div class="mt-2 text-indigo-900">
+              15 Y les dijo: Id por todo el mundo y predicad el evangelio a toda criatura.
+            </div>
+          </details>
+
+          <h4 class="font-semibold mt-4">3) Nuestro cuerpo</h4>
+          <details class="bg-indigo-50 p-4 rounded-lg mt-2">
+            <summary class="font-semibold text-indigo-800">1 Corintios 3:16–17 — Templo del Espíritu</summary>
+            <div class="mt-2 text-indigo-900">
+              16 ¿No sabéis que sois templo de Dios, y que el Espíritu de Dios mora en vosotros? 17 Si alguno destruyere el templo de Dios, Dios le destruirá a él; porque el templo de Dios, el cual sois vosotros, santo es.
+            </div>
+          </details>
+
+          <h4 class="font-semibold mt-4">4) Tiempo</h4>
+          <details class="bg-indigo-50 p-4 rounded-lg mt-2">
+            <summary class="font-semibold text-indigo-800">Efesios 5:16–17 — Redimiendo el tiempo</summary>
+            <div class="mt-2 text-indigo-900">
+              16 aprovechando bien el tiempo, porque los días son malos. 17 Por tanto, no seáis insensatos, sino entendidos de cuál sea la voluntad del Señor.
+            </div>
+          </details>
+
+          <h4 class="font-semibold mt-4">5) Talentos</h4>
+          <details class="bg-indigo-50 p-4 rounded-lg mt-2">
+            <summary class="font-semibold text-indigo-800">Mateo 25:14–30 — Parábola de los talentos (resumen)</summary>
+            <div class="mt-2 text-indigo-900">
+              14 Porque el reino de los cielos es como un hombre que yéndose lejos, llamó a sus siervos y les entregó sus bienes... 30 Y al siervo inútil echadle en las tinieblas de afuera; allí será el lloro y el crujir de dientes.
+            </div>
+          </details>
+
+          <h4 class="font-semibold mt-4">6) Dones espirituales</h4>
+          <details class="bg-indigo-50 p-4 rounded-lg mt-2">
+            <summary class="font-semibold text-indigo-800">1 Corintios 12:4–11 — Diversidad de dones</summary>
+            <div class="mt-2 text-indigo-900">
+              4 Ahora bien, hay diversidad de dones, pero el Espíritu es el mismo. 5 Y hay diversidad de ministerios, pero el Señor es el mismo. 6 Y hay diversidad de operaciones, pero Dios, que hace todas las cosas en todos, es el mismo. 7 Pero a cada uno le es dada la manifestación del Espíritu para provecho. 8 Porque a éste es dada por el Espíritu palabra de sabiduría; a otro, palabra de ciencia según el mismo Espíritu; 9 a otro, fe por el mismo Espíritu; y a otro, dones de sanidades por el mismo Espíritu. 10 A otro, el hacer milagros; a otro, profecía; a otro, discernimiento de espíritus; a otro, diversos géneros de lenguas; y a otro, interpretación de lenguas. 11 Pero todas estas cosas las hace uno y el mismo Espíritu, repartiendo a cada uno en particular como él quiere.
+            </div>
+          </details>
+          <details class="bg-indigo-50 p-4 rounded-lg mt-2">
+            <summary class="font-semibold text-indigo-800">1 Corintios 12:28–30 — Dios puso en la iglesia...</summary>
+            <div class="mt-2 text-indigo-900">
+              28 Y a unos puso Dios en la iglesia, primeramente apóstoles, luego profetas, lo tercero maestros, luego los que hacen milagros, después los que sanan, los que ayudan, los que administran, los que tienen don de lenguas. 29 ¿Son todos apóstoles? ¿son todos profetas? ¿todos maestros? ¿hacen todos milagros? 30 ¿Tienen todos dones de sanidad? ¿hablan todos lenguas? ¿interpretan todos?
+            </div>
+          </details>
+          <details class="bg-indigo-50 p-4 rounded-lg mt-2">
+            <summary class="font-semibold text-indigo-800">Romanos 12:4–8 — Un cuerpo, diversos dones</summary>
+            <div class="mt-2 text-indigo-900">
+              4 De la manera que en un cuerpo tenemos muchos miembros, pero no todos los miembros tienen la misma función, 5 así nosotros, siendo muchos, somos un cuerpo en Cristo, y todos miembros los unos de los otros. 6 De manera que, teniendo diferentes dones, según la gracia que nos es dada, si el de profecía, úsese conforme a la medida de la fe; 7 o si de servicio, en servir; o el que enseña, en la enseñanza; 8 el que exhorta, en la exhortación; el que reparte, con liberalidad; el que preside, con solicitud; el que hace misericordia, con alegría.
+            </div>
+          </details>
+
+          <h4 class="font-semibold mt-4">7) Dinero y bienes materiales</h4>
+          <details class="bg-indigo-50 p-4 rounded-lg mt-2">
+            <summary class="font-semibold text-indigo-800">1 Crónicas 29:14 — Todo es tuyo, de lo recibido te damos</summary>
+            <div class="mt-2 text-indigo-900">
+              14 Porque ¿quién soy yo, y quién es mi pueblo, para que pudiésemos ofrecer voluntariamente cosas semejantes? Pues todo es tuyo, y de lo recibido de tu mano te damos.
+            </div>
+          </details>
+          <details class="bg-indigo-50 p-4 rounded-lg mt-2">
+            <summary class="font-semibold text-indigo-800">Proverbios 3:9 — Honra a Jehová con tus bienes</summary>
+            <div class="mt-2 text-indigo-900">
+              9 Honra a Jehová con tus bienes, Y con las primicias de todos tus frutos;
+            </div>
+          </details>
+        `
+      },
+      diezmo: {
+        titulo: "El Diezmo",
+        texto: `
+          <ul class="list-disc list-inside space-y-2">
+            <li><strong>¿Qué es?</strong> 10% de los ingresos.</li>
+            <li><strong>¿A quién pertenece?</strong> A Dios.</li>
+            <li><strong>¿Para qué?</strong> Bendición y sostén de la obra.</li>
+          </ul>
+          <details class="bg-rose-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-rose-800">Génesis 28:22 — De todo lo que me dieres, el diezmo apartaré</summary>
+            <div class="mt-2 text-rose-900">
+              22 Y esta piedra que he puesto por señal, será casa de Dios; y de todo lo que me dieres, el diezmo apartaré para ti.
+            </div>
+          </details>
+          <details class="bg-rose-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-rose-800">Levítico 27:30–32 — El diezmo es de Jehová</summary>
+            <div class="mt-2 text-rose-900">
+              30 Y el diezmo de la tierra, así de la simiente de la tierra como del fruto de los árboles, de Jehová es; es cosa dedicada a Jehová. 31 Y si alguno quisiere rescatar algo del diezmo, añadirá la quinta parte de su precio por ello. 32 Y todo diezmo de vacas o de ovejas, de todo lo que pasa bajo la vara, el diezmo será consagrado a Jehová.
+            </div>
+          </details>
+          <details class="bg-rose-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-rose-800">Malaquías 3:10–12 — Ventanas abiertas y reprender al devorador</summary>
+            <div class="mt-2 text-rose-900">
+              10 Traed todos los diezmos al alfolí y haya alimento en mi casa; y probadme ahora en esto, dice Jehová de los ejércitos, si no os abriré las ventanas de los cielos, y derramaré sobre vosotros bendición hasta que sobreabunde. 11 Reprenderé también por vosotros al devorador, y no os destruirá el fruto de la tierra, ni vuestra vid en el campo será estéril, dice Jehová de los ejércitos. 12 Y todas las naciones os dirán bienaventurados; porque seréis tierra deseable, dice Jehová de los ejércitos.
+            </div>
+          </details>
+          <details class="bg-rose-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-rose-800">Filipenses 4:15–16 — Participación en dar y recibir</summary>
+            <div class="mt-2 text-rose-900">
+              15 Y sabéis también vosotros, oh filipenses, que al principio de la predicación del evangelio, cuando partí de Macedonia, ninguna iglesia participó conmigo en razón de dar y recibir, sino vosotros solos; 16 pues aun a Tesalónica me enviasteis una y otra vez para mis necesidades.
+            </div>
+          </details>
+          <details class="bg-rose-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-rose-800">Malaquías 3:8 — ¿Robará el hombre a Dios?</summary>
+            <div class="mt-2 text-rose-900">
+              8 ¿Robará el hombre a Dios? Pues vosotros me habéis robado. Y dijisteis: ¿En qué te hemos robado? En vuestros diezmos y ofrendas.
+            </div>
+          </details>
+        `
+      },
+      ofrenda: {
+        titulo: "La Ofrenda",
+        texto: `
+          <p>Lo que damos en gratitud a Dios: dinero, bienes o servicio.</p>
+          <details class="bg-amber-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-amber-800">2 Corintios 9:6–7 — Dios ama al dador alegre</summary>
+            <div class="mt-2 text-amber-900">
+              6 Pero esto digo: El que siembra escasamente, también segará escasamente; y el que siembra generosamente, generosamente también segará. 7 Cada uno dé como propuso en su corazón: no con tristeza, ni por necesidad, porque Dios ama al dador alegre.
+            </div>
+          </details>
+          <details class="bg-amber-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-amber-800">1 Crónicas 29:9 — Ofrecieron voluntariamente con alegría</summary>
+            <div class="mt-2 text-amber-900">
+              9 Y se alegró el pueblo por haber contribuido voluntariamente; porque de todo corazón ofrecieron a Jehová voluntariamente; asimismo se alegró mucho el rey David.
+            </div>
+          </details>
+          <details class="bg-amber-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-amber-800">1 Crónicas 29:14 — De lo recibido de tu mano te damos</summary>
+            <div class="mt-2 text-amber-900">
+              14 Porque ¿quién soy yo, y quién es mi pueblo, para que pudiésemos ofrecer voluntariamente cosas semejantes? Pues todo es tuyo, y de lo recibido de tu mano te damos.
+            </div>
+          </details>
+          <details class="bg-amber-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-amber-800">Lucas 21:1–4 — La ofrenda de la viuda</summary>
+            <div class="mt-2 text-amber-900">
+              1 Levantando los ojos, vio a los ricos que echaban sus ofrendas en el arca de las ofrendas. 2 Vio también a una viuda muy pobre, que echaba allí dos blancas. 3 Y dijo: En verdad os digo, que esta viuda pobre echó más que todos. 4 Porque todos aquellos echaron para las ofrendas de Dios de lo que les sobra; mas ésta, de su pobreza, echó todo el sustento que tenía.
+            </div>
+          </details>
+        `
+      },
+      conclusion: {
+        titulo: "Conclusión",
+        texto: `
+          <p>Practicar la mayordomía trae bendición integral. No damos para recibir, sino porque <strong>Dios es el Señor de todo</strong> y merece lo mejor. Comienza hoy a ser un buen mayordomo y verás su fidelidad.</p>
+        `
+      }
+    };
+
+    // Accesibilidad y modal
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) {
+      const s = document.createElement('style'); s.innerHTML = '.slide-in{animation:none!important;}'; document.head.appendChild(s);
+    }
+    const modal = document.getElementById('modal');
+    const panel = document.getElementById('modal-panel');
+    const titleEl = document.getElementById('modal-title');
+    const contentEl = document.getElementById('modal-content');
+    const closeBtns = [document.getElementById('modal-close'), document.getElementById('modal-close2')];
+    let lastFocused = null;
+
+    function openModal(tema, triggerEl){
+      const datos = contenido[tema]; if(!datos) return;
+      lastFocused = triggerEl || document.activeElement;
+      titleEl.textContent = datos.titulo;
+      contentEl.innerHTML = datos.texto;
+      modal.classList.remove('hidden'); modal.classList.add('flex');
+      document.body.style.overflow = 'hidden'; panel.focus();
+      document.addEventListener('focus', focusTrap, true);
+    }
+    function closeModal(){
+      modal.classList.add('hidden'); modal.classList.remove('flex');
+      document.body.style.overflow = 'auto'; document.removeEventListener('focus', focusTrap, true);
+      if(lastFocused && lastFocused.focus) lastFocused.focus();
+    }
+    function focusTrap(e){ if(!modal.classList.contains('flex')) return; if(!panel.contains(e.target)){ e.stopPropagation(); panel.focus(); } }
+    modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && modal.classList.contains('flex')) closeModal(); });
+    closeBtns.forEach(b=>b.addEventListener('click', closeModal));
+    document.addEventListener('click', (e)=>{
+      const btn = e.target.closest('[data-tema]'); if(!btn) return;
+      openModal(btn.getAttribute('data-tema'), btn);
+    });
+  </script>
+</body>
+</html>

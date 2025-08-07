@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lección 09: Los Sacramentos y Ceremonias</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      .modal-backdrop {
+        backdrop-filter: blur(4px);
+      }
+      .slide-in {
+        animation: slideIn 0.3s ease-out;
+      }
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      details summary {
+        cursor: pointer;
+      }
+      details > summary {
+        list-style: none;
+      }
+      details > summary::-webkit-details-marker {
+        display: none;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 min-h-screen"
+  >
+    <div class="container mx-auto px-6 py-12">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl md:text-6xl font-bold text-white mb-2">
+          📘 Lección 09
+        </h1>
+        <h2 class="text-2xl md:text-3xl font-semibold text-blue-200">
+          Los Sacramentos y Ceremonias
+        </h2>
+
+        <!-- Objetivos + Texto base -->
+        <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto mt-8">
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+            <h3 class="text-xl font-bold text-yellow-300 mb-3">🎯 OBJETIVOS</h3>
+            <ul class="text-blue-200 space-y-2 text-left">
+              <li>
+                • Comprender cuáles son los sacramentos que practica la iglesia
+                evangélica.
+              </li>
+              <li>
+                • Comprender cuáles son las ceremonias que practica la iglesia
+                evangélica.
+              </li>
+            </ul>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+            <h3 class="text-xl font-bold text-yellow-300 mb-3">
+              📖 TEXTO BASE
+            </h3>
+            <p class="text-yellow-200 italic text-lg mb-2">
+              "Porque yo recibí del Señor lo que también os he enseñado: Que el
+              Señor Jesús, la noche que fue entregado, tomó pan"
+            </p>
+            <p class="text-blue-300 font-semibold">1 Corintios 11:23</p>
+          </div>
+        </div>
+
+        <p class="text-blue-300 mt-8">
+          Toca una tarjeta para ver el contenido y desplegar los pasajes
+          bíblicos (RVR1960)
+        </p>
+      </div>
+
+      <!-- Tarjetas -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <button
+          class="bg-white/10 rounded-2xl p-6 hover:bg-white/20 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-yellow-300"
+          data-tema="intro"
+        >
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <span class="text-2xl">📖</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-2">Introducción</h3>
+            <p class="text-blue-200 text-sm">
+              Únicos sacramentos instituidos por Cristo
+            </p>
+          </div>
+        </button>
+
+        <button
+          class="bg-white/10 rounded-2xl p-6 hover:bg-white/20 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-300"
+          data-tema="bautismo"
+        >
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-blue-400 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <span class="text-2xl">💧</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-2">
+              Bautismo en Agua
+            </h3>
+            <p class="text-blue-200 text-sm">
+              Def., simbolismo, fórmula, candidato, eficacia
+            </p>
+          </div>
+        </button>
+
+        <button
+          class="bg-white/10 rounded-2xl p-6 hover:bg-white/20 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-pink-300"
+          data-tema="santacena"
+        >
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-pink-400 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <span class="text-2xl">🍞</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-2">La Santa Cena</h3>
+            <p class="text-blue-200 text-sm">
+              Conmemoración · Instrucciones · Inspiración · Seguridad
+            </p>
+          </div>
+        </button>
+
+        <button
+          class="bg-white/10 rounded-2xl p-6 hover:bg-white/20 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-teal-300"
+          data-tema="beneficios"
+        >
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-teal-400 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <span class="text-2xl">🎁</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-2">
+              Beneficios (1 Co 11)
+            </h3>
+            <p class="text-blue-200 text-sm">Perdón · Sanidad · Comunión</p>
+          </div>
+        </button>
+
+        <button
+          class="bg-white/10 rounded-2xl p-6 hover:bg-white/20 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-cyan-300"
+          data-tema="presentacion"
+        >
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-cyan-400 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <span class="text-2xl">👶</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-2">
+              Presentación de Niños
+            </h3>
+            <p class="text-blue-200 text-sm">Gratitud y consagración</p>
+          </div>
+        </button>
+
+        <button
+          class="bg-white/10 rounded-2xl p-6 hover:bg-white/20 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-rose-300"
+          data-tema="matrimonio"
+        >
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-rose-400 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <span class="text-2xl">💒</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-2">Matrimonio</h3>
+            <p class="text-blue-200 text-sm">
+              Institución divina · Pacto sagrado
+            </p>
+          </div>
+        </button>
+
+        <button
+          class="bg-white/10 rounded-2xl p-6 hover:bg-white/20 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-300"
+          data-tema="sepultura"
+        >
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-gray-400 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <span class="text-2xl">🕊️</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-2">Sepultura</h3>
+            <p class="text-blue-200 text-sm">Consuelo y esperanza eterna</p>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal accesible -->
+    <div
+      id="modal"
+      class="fixed inset-0 bg-black/50 modal-backdrop hidden items-center justify-center z-50 p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+    >
+      <div
+        class="bg-white rounded-2xl max-w-4xl w-full max-h-[80vh] overflow-y-auto slide-in outline-none"
+        tabindex="-1"
+        id="modal-panel"
+      >
+        <div class="p-8">
+          <div class="flex justify-between items-start mb-6">
+            <h2 id="modal-title" class="text-3xl font-bold text-gray-800"></h2>
+            <button
+              id="modal-close"
+              class="text-gray-500 hover:text-gray-700 text-3xl font-bold"
+              aria-label="Cerrar"
+            >
+              ×
+            </button>
+          </div>
+          <div id="modal-content" class="text-gray-700 leading-relaxed"></div>
+          <div class="mt-8 text-center">
+            <button
+              id="modal-close2"
+              class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const contenido = {
+        intro: {
+          titulo: "Introducción",
+          texto: `
+          <p>La <strong>Santa Cena</strong> junto con el <strong>Bautismo</strong> son los únicos sacramentos instituidos por Jesucristo para su iglesia. La Cena no es solo simbólica: es un encuentro con Jesús por su Espíritu.</p>
+          <ul class="list-disc list-inside mt-4">
+            <li><strong>Bautismo:</strong> testimonio público del nuevo nacimiento, se celebra una sola vez.</li>
+            <li><strong>Santa Cena:</strong> símbolo del nuevo pacto, se celebra hasta que Él venga.</li>
+          </ul>
+          <div class="mt-4">
+            <details class="bg-yellow-50 p-4 rounded-lg">
+              <summary class="font-semibold text-yellow-800">1 Corintios 11:23 — Institución de la Cena</summary>
+              <div class="mt-2 text-yellow-900">
+                23 Porque yo recibí del Señor lo que también os he enseñado: Que el Señor Jesús, la noche que fue entregado, tomó pan; 24 y habiendo dado gracias, lo partió, y dijo: Tomad, comed; esto es mi cuerpo que por vosotros es partido; haced esto en memoria de mí. 25 Asimismo tomó también la copa, después de haber cenado, diciendo: Esta copa es el nuevo pacto en mi sangre; haced esto todas las veces que la bebiereis, en memoria de mí. 26 Así, pues, todas las veces que comiereis este pan, y bebiereis esta copa, la muerte del Señor anunciáis hasta que él venga.
+              </div>
+            </details>
+          </div>
+        `,
+        },
+
+        bautismo: {
+          titulo: "Bautismo en Agua (por inmersión)",
+          texto: `
+          <ul class="list-disc list-inside space-y-2">
+            <li><strong>Definición:</strong> “Bautizo” = inmersión; simboliza muerte, sepultura y resurrección.</li>
+          </ul>
+          <details class="bg-blue-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-blue-800">Romanos 6:4–6 — Muerte, sepultura y resurrección con Cristo</summary>
+            <div class="mt-2 text-blue-900">
+              4 Porque somos sepultados juntamente con él para muerte por el bautismo, a fin de que como Cristo resucitó de los muertos por la gloria del Padre, así también nosotros andemos en vida nueva. 5 Porque si fuimos plantados juntamente con él en la semejanza de su muerte, así también lo seremos en la de su resurrección; 6 sabiendo esto, que nuestro viejo hombre fue crucificado juntamente con él, para que el cuerpo del pecado sea destruido, a fin de que no sirvamos más al pecado.
+            </div>
+          </details>
+          <details class="bg-green-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-green-800">Efesios 4:22–24 — Despojar el viejo hombre y vestir el nuevo</summary>
+            <div class="mt-2 text-green-900">
+              22 En cuanto a la pasada manera de vivir, despojaos del viejo hombre, que está viciado conforme a los deseos engañosos, 23 y renovaos en el espíritu de vuestra mente, 24 y vestíos del nuevo hombre, creado según Dios en la justicia y santidad de la verdad.
+            </div>
+          </details>
+          <ul class="list-disc list-inside space-y-2 mt-4">
+            <li><strong>Fórmula:</strong> En el nombre del Padre, del Hijo y del Espíritu Santo.</li>
+          </ul>
+          <details class="bg-purple-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-purple-800">Mateo 28:19–20 — Mandato y presencia</summary>
+            <div class="mt-2 text-purple-900">
+              19 Por tanto, id, y haced discípulos a todas las naciones, bautizándolos en el nombre del Padre, y del Hijo, y del Espíritu Santo; 20 enseñándoles que guarden todas las cosas que os he mandado; y he aquí yo estoy con vosotros todos los días, hasta el fin del mundo. Amén.
+            </div>
+          </details>
+          <details class="bg-purple-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-purple-800">2 Corintios 13:14 — Bendición Trinitaria</summary>
+            <div class="mt-2 text-purple-900">
+              14 La gracia del Señor Jesucristo, el amor de Dios, y la comunión del Espíritu Santo sean con todos vosotros. Amén.
+            </div>
+          </details>
+          <details class="bg-gray-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-gray-800">Hechos 2:38 — Llamado al arrepentimiento</summary>
+            <div class="mt-2 text-gray-900">
+              38 Pedro les dijo: Arrepentíos, y bautícese cada uno de vosotros en el nombre de Jesucristo para perdón de los pecados; y recibiréis el don del Espíritu Santo.
+            </div>
+          </details>
+          <ul class="list-disc list-inside space-y-2 mt-4">
+            <li><strong>Candidato:</strong> Arrepentidos con fe viva (no niños).</li>
+            <li><strong>Eficacia:</strong> No salva; es obediencia y testimonio, identifica al creyente con la iglesia.</li>
+          </ul>
+        `,
+        },
+
+        santacena: {
+          titulo: "La Santa Cena",
+          texto: `
+          <p>Instituida por Jesús antes de su muerte. Pan y vino como memoria del sacrificio de Cristo; medio de gracia que motiva a la fidelidad.</p>
+
+          <h4 class="font-semibold mt-4">Elementos doctrinales</h4>
+          <ul class="list-disc list-inside space-y-2">
+            <li><strong>Conmemoración:</strong> “Haced esto en memoria de mí”.</li>
+          </ul>
+          <details class="bg-pink-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-pink-800">1 Corintios 11:24–25 — Pan y copa en memoria</summary>
+            <div class="mt-2 text-pink-900">
+              24 y habiendo dado gracias, lo partió, y dijo: Tomad, comed; esto es mi cuerpo que por vosotros es partido; haced esto en memoria de mí. 25 Asimismo tomó también la copa, después de haber cenado, diciendo: Esta copa es el nuevo pacto en mi sangre; haced esto todas las veces que la bebiereis, en memoria de mí.
+            </div>
+          </details>
+
+          <ul class="list-disc list-inside space-y-2 mt-4">
+            <li><strong>Instrucciones:</strong> Encarnación y Expiación.</li>
+          </ul>
+          <details class="bg-indigo-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-indigo-800">Juan 1:14 — La Palabra hecha carne</summary>
+            <div class="mt-2 text-indigo-900">
+              14 Y aquel Verbo fue hecho carne, y habitó entre nosotros (y vimos su gloria, gloria como del unigénito del Padre), lleno de gracia y de verdad.
+            </div>
+          </details>
+          <details class="bg-indigo-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-indigo-800">Juan 6:33 — Pan que da vida</summary>
+            <div class="mt-2 text-indigo-900">
+              33 Porque el pan de Dios es aquel que descendió del cielo y da vida al mundo.
+            </div>
+          </details>
+          <details class="bg-orange-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-orange-800">Hebreos 9:14 — Sangre que limpia la conciencia</summary>
+            <div class="mt-2 text-orange-900">
+              14 ¿cuánto más la sangre de Cristo, el cual mediante el Espíritu eterno se ofreció a sí mismo sin mancha a Dios, limpiará vuestras conciencias de obras muertas para que sirváis al Dios vivo?
+            </div>
+          </details>
+
+          <ul class="list-disc list-inside space-y-2 mt-4">
+            <li><strong>Inspiración:</strong> Participar con fe para reflejar su carácter.</li>
+            <li><strong>Seguridad:</strong> Dios acepta la sangre de Cristo; venimos confiando en su sacrificio.</li>
+          </ul>
+        `,
+        },
+
+        beneficios: {
+          titulo: "Beneficios (1 Corintios 11)",
+          texto: `
+          <ul class="list-disc list-inside space-y-2">
+            <li><strong>Perdón (v.28):</strong> examen, confesión y arrepentimiento.</li>
+            <li><strong>Sanidad (v.30):</strong> disciplina y salud espiritual.</li>
+            <li><strong>Comunión (v.33):</strong> unidad y mutua consideración.</li>
+          </ul>
+          <details class="bg-teal-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-teal-800">1 Corintios 11:28–30 — Prueba, discernimiento y disciplina</summary>
+            <div class="mt-2 text-teal-900">
+              28 Por tanto, pruébese cada uno a sí mismo, y coma así del pan, y beba de la copa. 29 Porque el que come y bebe indignamente, sin discernir el cuerpo del Señor, juicio come y bebe para sí. 30 Por lo cual hay muchos enfermos y debilitados entre vosotros, y muchos duermen.
+            </div>
+          </details>
+          <details class="bg-teal-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-teal-800">1 Corintios 11:33 — Esperaos unos a otros</summary>
+            <div class="mt-2 text-teal-900">
+              33 Así que, hermanos míos, cuando os reunís a comer, esperaos unos a otros.
+            </div>
+          </details>
+        `,
+        },
+
+        presentacion: {
+          titulo: "Presentación de Niños al Señor",
+          texto: `
+          <p>Acto de gratitud y consagración: los padres desean que sus hijos crezcan bajo la Palabra y se comprometen a ser ejemplo.</p>
+          <details class="bg-cyan-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-cyan-800">Lucas 2:21–32 — Jesús presentado en el templo</summary>
+            <div class="mt-2 text-cyan-900">
+              21 A los ocho días circuncidaron al niño, y le pusieron por nombre Jesús, el mismo nombre que el ángel le había dicho a María antes que ella estuviera encinta. 22 Y cuando se cumplieron los días de la purificación de ellos, conforme a la ley de Moisés, le trajeron a Jerusalén para presentarle al Señor 23 (como está escrito en la ley del Señor: Todo varón que abriere la matriz será llamado santo al Señor), 24 y para ofrecer conforme a lo que se dice en la ley del Señor: Un par de tórtolas, o dos palominos. 25 Y he aquí había en Jerusalén un hombre llamado Simeón, y este hombre, justo y piadoso, esperaba la consolación de Israel; y el Espíritu Santo estaba sobre él. 26 Y le había sido revelado por el Espíritu Santo, que no vería la muerte antes que viese al Ungido del Señor. 27 Y movido por el Espíritu, vino al templo. Y cuando los padres del niño Jesús lo trajeron al templo, para hacer por él conforme al rito de la ley, 28 él le tomó en sus brazos, y bendijo a Dios, diciendo: 29 Ahora, Señor, despides a tu siervo en paz, conforme a tu palabra; 30 porque han visto mis ojos tu salvación, 31 la cual has preparado en presencia de todos los pueblos; 32 luz para revelación a los gentiles, y gloria de tu pueblo Israel.
+            </div>
+          </details>
+          <details class="bg-cyan-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-cyan-800">Marcos 10:13–16 — “Dejad a los niños venir a mí”</summary>
+            <div class="mt-2 text-cyan-900">
+              13 Y le presentaban niños para que los tocase; y los discípulos reprendían a los que los presentaban. 14 Viéndolo Jesús, se indignó, y les dijo: Dejad a los niños venir a mí, y no se lo impidáis; porque de los tales es el reino de Dios. 15 De cierto os digo, que el que no reciba el reino de Dios como un niño, no entrará en él. 16 Y tomándolos en los brazos, poniendo las manos sobre ellos, los bendecía.
+            </div>
+          </details>
+        `,
+        },
+
+        matrimonio: {
+          titulo: "Solemnización del Matrimonio",
+          texto: `
+          <ul class="list-disc list-inside space-y-2">
+            <li><strong>Instituido por Dios</strong> y <strong>confirmado por Cristo</strong>. Pacto sagrado y bendición.</li>
+          </ul>
+          <details class="bg-rose-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-rose-800">Génesis 2:18, 24 — Ayuda idónea y una sola carne</summary>
+            <div class="mt-2 text-rose-900">
+              18 Y dijo Jehová Dios: No es bueno que el hombre esté solo; le haré ayuda idónea para él. … 24 Por tanto, dejará el hombre a su padre y a su madre, y se unirá a su mujer, y serán una sola carne.
+            </div>
+          </details>
+          <details class="bg-rose-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-rose-800">Mateo 19:5–6 — Lo que Dios juntó</summary>
+            <div class="mt-2 text-rose-900">
+              5 y dijo: Por esto el hombre dejará padre y madre, y se unirá a su mujer, y los dos serán una sola carne? 6 Así que no son ya más dos, sino una sola carne; por tanto, lo que Dios juntó, no lo separe el hombre.
+            </div>
+          </details>
+          <details class="bg-rose-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-rose-800">Juan 2:12 — Contexto posterior a las bodas de Caná</summary>
+            <div class="mt-2 text-rose-900">
+              12 Después de esto descendieron a Capernaum, él, su madre, sus hermanos y sus discípulos; y estuvieron allí no muchos días.
+            </div>
+          </details>
+          <details class="bg-rose-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-rose-800">Hebreos 13:4 — Honroso sea el matrimonio</summary>
+            <div class="mt-2 text-rose-900">
+              4 Honroso sea en todos el matrimonio, y el lecho sin mancilla; pero a los fornicarios y a los adúlteros los juzgará Dios.
+            </div>
+          </details>
+          <details class="bg-rose-50 p-4 rounded-lg mt-3">
+            <summary class="font-semibold text-rose-800">Proverbios 18:22 — El que halla esposa halla el bien</summary>
+            <div class="mt-2 text-rose-900">
+              22 El que halla esposa halla el bien, Y alcanza la benevolencia de Jehová.
+            </div>
+          </details>
+        `,
+        },
+
+        sepultura: {
+          titulo: "Sepultura de los Muertos",
+          texto: `
+          <p>Acompañar, consolar y dar testimonio de la esperanza de vida eterna en Cristo. La decisión por Cristo se toma en vida.</p>
+        `,
+        },
+      };
+
+      // Accesibilidad y modal
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+      if (reduceMotion) {
+        const s = document.createElement("style");
+        s.innerHTML = ".slide-in{animation:none!important;}";
+        document.head.appendChild(s);
+      }
+      const modal = document.getElementById("modal");
+      const panel = document.getElementById("modal-panel");
+      const titleEl = document.getElementById("modal-title");
+      const contentEl = document.getElementById("modal-content");
+      const closeBtns = [
+        document.getElementById("modal-close"),
+        document.getElementById("modal-close2"),
+      ];
+      let lastFocused = null;
+
+      function openModal(tema, triggerEl) {
+        const datos = contenido[tema];
+        if (!datos) return;
+        lastFocused = triggerEl || document.activeElement;
+        titleEl.textContent = datos.titulo;
+        contentEl.innerHTML = datos.texto;
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        document.body.style.overflow = "hidden";
+        panel.focus();
+        document.addEventListener("focus", focusTrap, true);
+      }
+      function closeModal() {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        document.body.style.overflow = "auto";
+        document.removeEventListener("focus", focusTrap, true);
+        if (lastFocused && lastFocused.focus) lastFocused.focus();
+      }
+      function focusTrap(e) {
+        if (!modal.classList.contains("flex")) return;
+        if (!panel.contains(e.target)) {
+          e.stopPropagation();
+          panel.focus();
+        }
+      }
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("flex"))
+          closeModal();
+      });
+      closeBtns.forEach((b) => b.addEventListener("click", closeModal));
+      document.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-tema]");
+        if (!btn) return;
+        openModal(btn.getAttribute("data-tema"), btn);
+      });
+    </script>
+  </body>
+</html>
