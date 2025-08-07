@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lección 09: Los Sacramentos y Ceremonias</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      .modal-backdrop {
+        backdrop-filter: blur(4px);
+      }
+      .slide-in {
+        animation: slideIn 0.3s ease-out;
+      }
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 min-h-screen"
+  >
+    <div class="container mx-auto px-6 py-12">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl md:text-6xl font-bold text-white mb-2">
+          📘 Lección 09
+        </h1>
+        <h2 class="text-2xl md:text-3xl font-semibold text-blue-200">
+          Los Sacramentos y Ceremonias
+        </h2>
+
+        <!-- Objetivos + Texto base -->
+        <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto mt-8">
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+            <h3 class="text-xl font-bold text-yellow-300 mb-3">🎯 OBJETIVOS</h3>
+            <ul class="text-blue-200 space-y-2 text-left">
+              <li>
+                • Comprender cuáles son los sacramentos que practica la iglesia
+                evangélica.
+              </li>
+              <li>
+                • Comprender cuáles son las ceremonias que practica la iglesia
+                evangélica.
+              </li>
+            </ul>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+            <h3 class="text-xl font-bold text-yellow-300 mb-3">
+              📖 TEXTO BASE
+            </h3>
+            <p class="text-yellow-200 italic text-lg mb-2">
+              "Porque yo recibí del Señor lo que también os he enseñado: Que el
+              Señor Jesús, la noche que fue entregado, tomó pan"
+            </p>
+            <p class="text-blue-300 font-semibold">1 Corintios 11:23</p>
+          </div>
+        </div>
+
+        <p class="text-blue-300 mt-8">
+          Toca una tarjeta para ver el contenido del resumen
+        </p>
+      </div>
+
+      <!-- Tarjetas -->
+      <div
+        id="grid"
+        class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
+      >
+        <!-- Se generan abajo por JS si quieres; aquí dejo manual para control fino -->
+        <button
+          class="bg-white/10 rounded-2xl p-6 hover:bg-white/20 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-yellow-300"
+          data-tema="intro"
+        >
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <span class="text-2xl">📖</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-2">Introducción</h3>
+            <p class="text-blue-200 text-sm">
+              Únicos sacramentos instituidos por Cristo
+            </p>
+          </div>
+        </button>
+
+        <button
+          class="bg-white/10 rounded-2xl p-6 hover:bg-white/20 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-300"
+          data-tema="bautismo"
+        >
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-blue-400 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <span class="text-2xl">💧</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-2">
+              Bautismo en Agua
+            </h3>
+            <p class="text-blue-200 text-sm">
+              Def., simbolismo, fórmula, candidato, eficacia
+            </p>
+          </div>
+        </button>
+
+        <button
+          class="bg-white/10 rounded-2xl p-6 hover:bg-white/20 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-pink-300"
+          data-tema="santacena"
+        >
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-pink-400 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <span class="text-2xl">🍞</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-2">La Santa Cena</h3>
+            <p class="text-blue-200 text-sm">
+              Conmemoración, instrucciones, inspiración, seguridad
+            </p>
+          </div>
+        </button>
+
+        <button
+          class="bg-white/10 rounded-2xl p-6 hover:bg-white/20 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-teal-300"
+          data-tema="beneficios"
+        >
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-teal-400 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <span class="text-2xl">🎁</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-2">
+              Beneficios (1 Co 11)
+            </h3>
+            <p class="text-blue-200 text-sm">Perdón · Sanidad · Comunión</p>
+          </div>
+        </button>
+
+        <button
+          class="bg-white/10 rounded-2xl p-6 hover:bg-white/20 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-cyan-300"
+          data-tema="presentacion"
+        >
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-cyan-400 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <span class="text-2xl">👶</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-2">
+              Presentación de Niños
+            </h3>
+            <p class="text-blue-200 text-sm">Gratitud y consagración</p>
+          </div>
+        </button>
+
+        <button
+          class="bg-white/10 rounded-2xl p-6 hover:bg-white/20 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-rose-300"
+          data-tema="matrimonio"
+        >
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-rose-400 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <span class="text-2xl">💒</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-2">Matrimonio</h3>
+            <p class="text-blue-200 text-sm">
+              Institución divina · Pacto sagrado
+            </p>
+          </div>
+        </button>
+
+        <button
+          class="bg-white/10 rounded-2xl p-6 hover:bg-white/20 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-300"
+          data-tema="sepultura"
+        >
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-gray-400 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <span class="text-2xl">🕊️</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-2">Sepultura</h3>
+            <p class="text-blue-200 text-sm">Consuelo y esperanza eterna</p>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal accesible -->
+    <div
+      id="modal"
+      class="fixed inset-0 bg-black/50 modal-backdrop hidden items-center justify-center z-50 p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+    >
+      <div
+        class="bg-white rounded-2xl max-w-4xl w-full max-h-[80vh] overflow-y-auto slide-in outline-none"
+        tabindex="-1"
+        id="modal-panel"
+      >
+        <div class="p-8">
+          <div class="flex justify-between items-start mb-6">
+            <h2 id="modal-title" class="text-3xl font-bold text-gray-800"></h2>
+            <button
+              id="modal-close"
+              class="text-gray-500 hover:text-gray-700 text-3xl font-bold"
+              aria-label="Cerrar"
+            >
+              ×
+            </button>
+          </div>
+          <div id="modal-content" class="text-gray-700 leading-relaxed"></div>
+          <div class="mt-8 text-center">
+            <button
+              id="modal-close2"
+              class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Contenido desde tu resumen (fiel al texto doctrinal)
+      const contenido = {
+        intro: {
+          titulo: "Introducción",
+          texto: `
+          <p>La <strong>Santa Cena</strong> junto con el <strong>Bautismo</strong> son los únicos sacramentos instituidos por Jesucristo para su iglesia. La Cena no es solo simbólica: es un encuentro con Jesús por su Espíritu.</p>
+          <ul class="list-disc list-inside mt-4">
+            <li><strong>Bautismo</strong>: testimonio público del nuevo nacimiento, se celebra una sola vez.</li>
+            <li><strong>Santa Cena</strong>: símbolo del nuevo pacto, se celebra hasta que Él venga.</li>
+          </ul>
+        `,
+        },
+        bautismo: {
+          titulo: "Bautismo en Agua (por inmersión)",
+          texto: `
+          <ul class="list-disc list-inside space-y-2">
+            <li><strong>Definición:</strong> “Bautizo” = inmersión; simboliza muerte, sepultura y resurrección (Ro 6:4–6; Ef 4:22–24).</li>
+            <li><strong>Fórmula:</strong> En el nombre del Padre, del Hijo y del Espíritu Santo (Mt 28:19; 2 Co 13:14). Hechos 2:38 no es fórmula.</li>
+            <li><strong>Candidato:</strong> Arrepentidos con fe viva. No incluye niños (no ejercen fe personal).</li>
+            <li><strong>Eficacia:</strong> No salva; es obediencia y testimonio, identificando al creyente con la iglesia.</li>
+          </ul>
+        `,
+        },
+        santacena: {
+          titulo: "La Santa Cena",
+          texto: `
+          <p>Instituida por Jesús antes de su muerte. Pan y vino como memoria del sacrificio de Cristo; medio de gracia que motiva a la fidelidad.</p>
+          <h4 class="font-semibold mt-4">Elementos doctrinales</h4>
+          <ul class="list-disc list-inside space-y-2">
+            <li><strong>Conmemoración:</strong> “Haced esto en memoria de mí” (1 Co 11:24).</li>
+            <li><strong>Instrucciones:</strong> Encarnación (Jn 1:14; 6:33) y Expiación (1 Co 11:24-25).</li>
+            <li><strong>Pan:</strong> Cuerpo de Cristo partido para dar vida.</li>
+            <li><strong>Copa:</strong> Sangre derramada que limpia y vivifica.</li>
+            <li><strong>Inspiración:</strong> Participar con fe para reflejar su carácter.</li>
+            <li><strong>Seguridad:</strong> Dios acepta la sangre de Cristo (He 9:14); venimos confiando en su sacrificio.</li>
+          </ul>
+        `,
+        },
+        beneficios: {
+          titulo: "Beneficios (1 Corintios 11)",
+          texto: `
+          <ul class="list-disc list-inside space-y-2">
+            <li><strong>Perdón (v.28):</strong> examen, confesión y arrepentimiento.</li>
+            <li><strong>Sanidad (v.30):</strong> evita juicio/disciplinas; salud espiritual.</li>
+            <li><strong>Comunión (v.33):</strong> unidad y mutua consideración.</li>
+          </ul>
+        `,
+        },
+        presentacion: {
+          titulo: "Presentación de Niños al Señor",
+          texto: `
+          <p>Acto de gratitud y consagración.</p>
+          <ul class="list-disc list-inside space-y-2 mt-2">
+            <li>Padres desean que crezcan bajo la Palabra y se comprometen como ejemplo.</li>
+            <li>Fundamento: presentación de Jesús (Lc 2:21–32) y llamado de Jesús (Mr 10:13–16).</li>
+          </ul>
+        `,
+        },
+        matrimonio: {
+          titulo: "Solemnización del Matrimonio",
+          texto: `
+          <ul class="list-disc list-inside space-y-2">
+            <li><strong>Instituido por Dios</strong> (Gn 2:18,24) y <strong>confirmado por Cristo</strong> (Mt 19:5–6; Jn 2:12).</li>
+            <li><strong>Pacto sagrado</strong> (Mal 2:13,16). Bendición cuando se contrae con sinceridad (He 13:4; Pr 18:22).</li>
+            <li>Reconoce a Dios como dueño del nuevo hogar.</li>
+          </ul>
+        `,
+        },
+        sepultura: {
+          titulo: "Sepultura de los Muertos",
+          texto: `
+          <ul class="list-disc list-inside space-y-2">
+            <li>Acompañar, consolar y dar testimonio de la esperanza de vida eterna en Cristo.</li>
+            <li>La decisión por Cristo es en vida; después de la muerte no hay nuevas oportunidades.</li>
+          </ul>
+        `,
+        },
+      };
+
+      // Accesibilidad y modal
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+      if (reduceMotion) {
+        const s = document.createElement("style");
+        s.innerHTML = ".slide-in{animation:none!important;}";
+        document.head.appendChild(s);
+      }
+      const modal = document.getElementById("modal");
+      const panel = document.getElementById("modal-panel");
+      const titleEl = document.getElementById("modal-title");
+      const contentEl = document.getElementById("modal-content");
+      const closeBtns = [
+        document.getElementById("modal-close"),
+        document.getElementById("modal-close2"),
+      ];
+      let lastFocused = null;
+
+      function openModal(tema, triggerEl) {
+        const datos = contenido[tema];
+        if (!datos) return;
+        lastFocused = triggerEl || document.activeElement;
+        titleEl.textContent = datos.titulo;
+        contentEl.innerHTML = datos.texto;
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        document.body.style.overflow = "hidden";
+        panel.focus();
+        document.addEventListener("focus", focusTrap, true);
+      }
+      function closeModal() {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        document.body.style.overflow = "auto";
+        document.removeEventListener("focus", focusTrap, true);
+        if (lastFocused && lastFocused.focus) lastFocused.focus();
+      }
+      function focusTrap(e) {
+        if (!modal.classList.contains("flex")) return;
+        if (!panel.contains(e.target)) {
+          e.stopPropagation();
+          panel.focus();
+        }
+      }
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("flex"))
+          closeModal();
+      });
+      closeBtns.forEach((b) => b.addEventListener("click", closeModal));
+      document.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-tema]");
+        if (!btn) return;
+        openModal(btn.getAttribute("data-tema"), btn);
+      });
+    </script>
+  </body>
+</html>
