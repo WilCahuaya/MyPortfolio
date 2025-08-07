@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Juego de Memoria - Rompe Hielos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+
+      .card-flip {
+        transform-style: preserve-3d;
+        transition: transform 0.6s;
+      }
+
+      .card-flip.flipped {
+        transform: rotateY(180deg);
+      }
+
+      .card-front,
+      .card-back {
+        backface-visibility: hidden;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+
+      .card-back {
+        transform: rotateY(180deg);
+      }
+
+      .pulse-animation {
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      .bounce-in {
+        animation: bounceIn 0.5s ease-out;
+      }
+
+      @keyframes bounceIn {
+        0% {
+          transform: scale(0.3);
+          opacity: 0;
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        70% {
+          transform: scale(0.9);
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 min-h-screen"
+  >
+    <div class="container mx-auto px-4 py-8">
+      <!-- Header -->
+      <div class="text-center mb-8">
+        <h1
+          class="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg"
+        >
+          📖 Memoria Bíblica - Rompe Hielos
+        </h1>
+        <p class="text-xl text-white/90 mb-6">
+          ¡Conecta versículos con sus citas bíblicas y fortalece tu fe en
+          comunidad!
+        </p>
+
+        <!-- Player Name Input -->
+        <div class="mb-6">
+          <div
+            class="bg-white/20 backdrop-blur-sm rounded-lg px-6 py-4 max-w-md mx-auto"
+          >
+            <label class="block text-white font-semibold mb-2"
+              >Nombre del Jugador:</label
+            >
+            <input
+              type="text"
+              id="playerName"
+              placeholder="Ingresa tu nombre"
+              class="w-full p-3 rounded-lg bg-white/90 text-gray-800 font-semibold text-center border-2 border-white/50 focus:border-yellow-400 focus:outline-none"
+            />
+          </div>
+        </div>
+
+        <!-- Game Stats -->
+        <div class="flex justify-center gap-6 mb-6">
+          <div
+            class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 text-white"
+          >
+            <span class="font-semibold">Jugador: </span>
+            <span id="currentPlayer" class="font-bold">Anónimo</span>
+          </div>
+          <div
+            class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 text-white"
+          >
+            <span class="font-semibold">Movimientos: </span>
+            <span id="moves" class="font-bold">0</span>
+          </div>
+          <div
+            class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 text-white"
+          >
+            <span class="font-semibold">Pares: </span>
+            <span id="pairs" class="font-bold">0/6</span>
+          </div>
+          <div
+            class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 text-white"
+          >
+            <span class="font-semibold">Tiempo: </span>
+            <span id="timer" class="font-bold">00:00</span>
+          </div>
+        </div>
+
+        <div class="flex gap-4 justify-center">
+          <button
+            id="resetBtn"
+            class="bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
+          >
+            🔄 Nuevo Juego
+          </button>
+          <button
+            id="configBtn"
+            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
+          >
+            ⚙️ Configuración
+          </button>
+        </div>
+      </div>
+
+      <!-- Game Board -->
+      <div
+        id="gameBoard"
+        class="grid grid-cols-3 md:grid-cols-4 gap-4 max-w-2xl mx-auto mb-8"
+      >
+        <!-- Cards will be generated here -->
+      </div>
+
+      <!-- Success Modal -->
+      <div
+        id="successModal"
+        class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center z-50"
+      >
+        <div
+          class="bg-white rounded-2xl p-8 max-w-md mx-4 text-center bounce-in"
+        >
+          <div class="text-6xl mb-4">🎉</div>
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">
+            ¡Felicitaciones!
+          </h2>
+          <div id="gameResults" class="mb-6 p-4 bg-gray-100 rounded-lg">
+            <div class="text-lg font-bold text-gray-800 mb-2" id="winnerName">
+              Jugador
+            </div>
+            <div class="text-sm text-gray-600">
+              <div>
+                ⏱️ Tiempo: <span id="finalTime" class="font-bold">00:00</span>
+              </div>
+              <div>
+                🎯 Movimientos: <span id="finalMoves" class="font-bold">0</span>
+              </div>
+              <div id="ratingDisplay" class="text-lg font-bold mt-2">
+                ⭐ Calificación: Excelente
+              </div>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-6">
+            ¡Ahora es momento de las preguntas para romper el hielo!
+          </p>
+          <button
+            id="showQuestionBtn"
+            class="bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-3 px-6 rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300"
+          >
+            Ver Pregunta 🗣️
+          </button>
+        </div>
+      </div>
+
+      <!-- Question Modal -->
+      <div
+        id="questionModal"
+        class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center z-50"
+      >
+        <div class="bg-white rounded-2xl p-8 max-w-lg mx-4 text-center">
+          <div class="text-4xl mb-4">💭</div>
+          <h3 class="text-2xl font-bold text-gray-800 mb-4">
+            Pregunta para Romper el Hielo
+          </h3>
+          <p
+            id="questionText"
+            class="text-lg text-gray-700 mb-6 leading-relaxed"
+          ></p>
+          <div class="flex gap-4 justify-center">
+            <button
+              id="nextQuestionBtn"
+              class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300"
+            >
+              Siguiente Pregunta
+            </button>
+            <button
+              id="closeQuestionBtn"
+              class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Configuration Modal -->
+      <div
+        id="configModal"
+        class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center z-50"
+      >
+        <div
+          class="bg-white rounded-2xl p-8 max-w-4xl mx-4 max-h-[90vh] overflow-y-auto"
+        >
+          <div class="text-center mb-6">
+            <div class="text-4xl mb-2">⚙️</div>
+            <h2 class="text-3xl font-bold text-gray-800">
+              Personalización del Juego
+            </h2>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="space-y-4">
+              <h3 class="text-lg font-semibold text-gray-800">
+                Configuración del Equipo
+              </h3>
+              <div>
+                <label class="block text-gray-700 mb-2"
+                  >Tamaño del equipo:</label
+                >
+                <select
+                  class="w-full p-2 rounded-lg bg-gray-100 text-gray-800 border border-gray-300"
+                >
+                  <option>2-5 personas (Pequeño)</option>
+                  <option>6-10 personas (Mediano)</option>
+                  <option>11-20 personas (Grande)</option>
+                  <option>20+ personas (Muy Grande)</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-gray-700 mb-2"
+                  >Categorías de emojis preferidas:</label
+                >
+                <div class="space-y-2">
+                  <label class="flex items-center text-gray-700">
+                    <input type="checkbox" class="mr-2" checked /> Emociones
+                    😊😢😡
+                  </label>
+                  <label class="flex items-center text-gray-700">
+                    <input type="checkbox" class="mr-2" /> Animales 🐶🐱🐸
+                  </label>
+                  <label class="flex items-center text-gray-700">
+                    <input type="checkbox" class="mr-2" /> Comida 🍕🍔🍰
+                  </label>
+                  <label class="flex items-center text-gray-700">
+                    <input type="checkbox" class="mr-2" /> Deportes ⚽🏀🎾
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <h3 class="text-lg font-semibold text-gray-800">
+                Temas de Preguntas
+              </h3>
+              <div class="space-y-2">
+                <label class="flex items-center text-gray-700">
+                  <input type="checkbox" class="mr-2" checked /> Crecimiento
+                  profesional
+                </label>
+                <label class="flex items-center text-gray-700">
+                  <input type="checkbox" class="mr-2" checked /> Intereses
+                  personales
+                </label>
+                <label class="flex items-center text-gray-700">
+                  <input type="checkbox" class="mr-2" checked /> Dinámica del
+                  equipo
+                </label>
+                <label class="flex items-center text-gray-700">
+                  <input type="checkbox" class="mr-2" /> Metas y aspiraciones
+                </label>
+              </div>
+
+              <div>
+                <label class="block text-gray-700 mb-2"
+                  >Nivel de dificultad:</label
+                >
+                <select
+                  class="w-full p-2 rounded-lg bg-gray-100 text-gray-800 border border-gray-300"
+                >
+                  <option>Fácil (6 pares)</option>
+                  <option>Medio (8 pares)</option>
+                  <option>Difícil (12 pares)</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-gray-700 mb-2">Temporizador:</label>
+                <select
+                  class="w-full p-2 rounded-lg bg-gray-100 text-gray-800 border border-gray-300"
+                >
+                  <option>Sin límite</option>
+                  <option>2 minutos</option>
+                  <option>5 minutos</option>
+                  <option>10 minutos</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex gap-4 justify-center mt-8">
+            <button
+              id="applyConfigBtn"
+              class="bg-gradient-to-r from-orange-400 to-red-500 hover:from-orange-500 hover:to-red-600 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105"
+            >
+              Aplicar Configuración
+            </button>
+            <button
+              id="closeConfigBtn"
+              class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Leaderboard Section -->
+      <div class="max-w-4xl mx-auto mb-8">
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+          <h2 class="text-2xl font-bold text-white mb-6 text-center">
+            🏆 Tabla de Clasificación
+          </h2>
+          <div id="leaderboard" class="space-y-3">
+            <div class="text-center text-white/70 italic">
+              ¡Completa un juego para aparecer en la clasificación!
+            </div>
+          </div>
+          <div class="text-center mt-4">
+            <button
+              id="clearLeaderboard"
+              class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300"
+            >
+              🗑️ Limpiar Clasificación
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ice Breaker Questions Section -->
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-8">
+          <h2 class="text-2xl font-bold text-white mb-4 text-center">
+            🗣️ Preguntas para Romper el Hielo
+          </h2>
+          <button
+            id="randomQuestionBtn"
+            class="w-full bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105"
+          >
+            Obtener Pregunta Aleatoria
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Game variables
+      let cards = [];
+      let flippedCards = [];
+      let moves = 0;
+      let pairs = 0;
+      let gameStarted = false;
+      let startTime = null;
+      let timerInterval = null;
+      let currentQuestionIndex = 0;
+      let currentPlayerName = "Anónimo";
+      let gameScores =
+        JSON.parse(localStorage.getItem("biblicalMemoryScores")) || [];
+
+      // Biblical verses and their references for the memory game
+      const allBiblicalPairs = [
+        {
+          verse:
+            "Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito",
+          reference: "Juan 3:16",
+        },
+        {
+          verse: "Todo lo puedo en Cristo que me fortalece",
+          reference: "Filipenses 4:13",
+        },
+        {
+          verse: "Jehová es mi pastor; nada me faltará",
+          reference: "Salmos 23:1",
+        },
+        {
+          verse: "Confía en Jehová de todo tu corazón",
+          reference: "Proverbios 3:5",
+        },
+        {
+          verse: "El amor es sufrido, es benigno; el amor no tiene envidia",
+          reference: "1 Corintios 13:4",
+        },
+        {
+          verse: "Mas buscad primeramente el reino de Dios",
+          reference: "Mateo 6:33",
+        },
+        {
+          verse: "Porque por gracia sois salvos por medio de la fe",
+          reference: "Efesios 2:8",
+        },
+        {
+          verse:
+            "Y sabemos que a los que aman a Dios, todas las cosas les ayudan a bien",
+          reference: "Romanos 8:28",
+        },
+        {
+          verse: "No temas, porque yo estoy contigo",
+          reference: "Isaías 41:10",
+        },
+        {
+          verse: "Venid a mí todos los que estáis trabajados y cargados",
+          reference: "Mateo 11:28",
+        },
+        {
+          verse: "Lámpara es a mis pies tu palabra, y lumbrera a mi camino",
+          reference: "Salmos 119:105",
+        },
+        {
+          verse: "Porque mis pensamientos no son vuestros pensamientos",
+          reference: "Isaías 55:8",
+        },
+        {
+          verse: "Estad quietos, y conoced que yo soy Dios",
+          reference: "Salmos 46:10",
+        },
+        {
+          verse: "Porque donde están dos o tres congregados en mi nombre",
+          reference: "Mateo 18:20",
+        },
+        {
+          verse: "El que habita al abrigo del Altísimo",
+          reference: "Salmos 91:1",
+        },
+        {
+          verse: "Jehová peleará por vosotros, y vosotros estaréis tranquilos",
+          reference: "Éxodo 14:14",
+        },
+        {
+          verse: "Mas el fruto del Espíritu es amor, gozo, paz",
+          reference: "Gálatas 5:22",
+        },
+        {
+          verse: "Porque yo sé los pensamientos que tengo acerca de vosotros",
+          reference: "Jeremías 29:11",
+        },
+        {
+          verse: "En el principio era el Verbo, y el Verbo era con Dios",
+          reference: "Juan 1:1",
+        },
+        {
+          verse: "Pedid, y se os dará; buscad, y hallaréis",
+          reference: "Mateo 7:7",
+        },
+        { verse: "Jehová te bendiga, y te guarde", reference: "Números 6:24" },
+        {
+          verse:
+            "Porque el Señor tu Dios está contigo por dondequiera que vayas",
+          reference: "Josué 1:9",
+        },
+        { verse: "Clama a mí, y yo te responderé", reference: "Jeremías 33:3" },
+        {
+          verse: "Fíate de Jehová de todo tu corazón",
+          reference: "Proverbios 3:5-6",
+        },
+      ];
+
+      // Ice breaker questions with biblical theme
+      const iceBreakQuestions = [
+        "¿Cuál es tu versículo bíblico favorito y por qué te inspira?",
+        "¿Qué personaje bíblico admiras más y qué cualidad te gustaría imitar?",
+        "¿Cómo aplicas los principios bíblicos en tu vida diaria?",
+        "¿Cuál ha sido el momento más significativo en tu crecimiento espiritual?",
+        "¿Qué libro de la Biblia te ha impactado más recientemente?",
+        "¿Cómo te ayuda la oración en los momentos difíciles?",
+        "¿Qué don espiritual crees que Dios te ha dado para servir a otros?",
+        "¿Cuál es tu historia bíblica favorita y qué enseñanza extraes de ella?",
+        "¿Cómo has visto la mano de Dios trabajar en tu vida este año?",
+        "¿Qué tradición cristiana de tu familia valoras más?",
+      ];
+
+      // Rating system based on time and moves
+      function calculateRating(timeInSeconds, moves) {
+        let score = 1000;
+
+        // Deduct points for time (1 point per second after 30 seconds)
+        if (timeInSeconds > 30) {
+          score -= timeInSeconds - 30;
+        }
+
+        // Deduct points for moves (10 points per move after 12 moves)
+        if (moves > 12) {
+          score -= (moves - 12) * 10;
+        }
+
+        // Ensure minimum score
+        score = Math.max(score, 100);
+
+        // Determine rating
+        if (score >= 900)
+          return {
+            rating: "⭐⭐⭐ Maestro Bíblico",
+            score,
+            color: "text-yellow-600",
+          };
+        if (score >= 800)
+          return { rating: "⭐⭐ Excelente", score, color: "text-green-600" };
+        if (score >= 700)
+          return { rating: "⭐ Muy Bueno", score, color: "text-blue-600" };
+        if (score >= 600)
+          return { rating: "👍 Bueno", score, color: "text-purple-600" };
+        return { rating: "📖 Principiante", score, color: "text-gray-600" };
+      }
+
+      // Save score to leaderboard
+      function saveScore(playerName, timeInSeconds, moves, rating) {
+        const newScore = {
+          name: playerName,
+          time: timeInSeconds,
+          moves: moves,
+          rating: rating.rating,
+          score: rating.score,
+          date: new Date().toLocaleDateString(),
+        };
+
+        gameScores.push(newScore);
+        gameScores.sort((a, b) => b.score - a.score);
+        gameScores = gameScores.slice(0, 10); // Keep only top 10
+
+        localStorage.setItem(
+          "biblicalMemoryScores",
+          JSON.stringify(gameScores)
+        );
+        updateLeaderboard();
+      }
+
+      // Update leaderboard display
+      function updateLeaderboard() {
+        const leaderboard = document.getElementById("leaderboard");
+
+        if (gameScores.length === 0) {
+          leaderboard.innerHTML =
+            '<div class="text-center text-white/70 italic">¡Completa un juego para aparecer en la clasificación!</div>';
+          return;
+        }
+
+        leaderboard.innerHTML = gameScores
+          .map((score, index) => {
+            const medal =
+              index === 0
+                ? "🥇"
+                : index === 1
+                ? "🥈"
+                : index === 2
+                ? "🥉"
+                : `${index + 1}.`;
+            const timeFormatted = `${Math.floor(score.time / 60)}:${(
+              score.time % 60
+            )
+              .toString()
+              .padStart(2, "0")}`;
+
+            return `
+                    <div class="bg-white/20 backdrop-blur-sm rounded-lg p-4 flex justify-between items-center">
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl">${medal}</span>
+                            <div>
+                                <div class="text-white font-bold">${score.name}</div>
+                                <div class="text-white/80 text-sm">${score.rating}</div>
+                            </div>
+                        </div>
+                        <div class="text-right text-white/90 text-sm">
+                            <div>⏱️ ${timeFormatted}</div>
+                            <div>🎯 ${score.moves} movimientos</div>
+                            <div class="font-bold">${score.score} pts</div>
+                        </div>
+                    </div>
+                `;
+          })
+          .join("");
+      }
+
+      // Update player name
+      function updatePlayerName() {
+        const nameInput = document.getElementById("playerName");
+        const playerDisplay = document.getElementById("currentPlayer");
+
+        currentPlayerName = nameInput.value.trim() || "Anónimo";
+        playerDisplay.textContent = currentPlayerName;
+      }
+
+      // Initialize game
+      function initGame() {
+        const gameBoard = document.getElementById("gameBoard");
+        gameBoard.innerHTML = "";
+        cards = [];
+        flippedCards = [];
+        moves = 0;
+        pairs = 0;
+        gameStarted = false;
+
+        // Reset UI
+        document.getElementById("moves").textContent = "0";
+        document.getElementById("pairs").textContent = "0/6";
+        document.getElementById("timer").textContent = "00:00";
+
+        // Select 6 random biblical pairs for this game
+        const shuffledPairs = [...allBiblicalPairs].sort(
+          () => Math.random() - 0.5
+        );
+        const selectedPairs = shuffledPairs.slice(0, 6);
+
+        // Create card pairs (verses and references)
+        const cardContent = [];
+        selectedPairs.forEach((pair) => {
+          cardContent.push({
+            text: pair.verse,
+            type: "verse",
+            matchId: pair.reference,
+          });
+          cardContent.push({
+            text: pair.reference,
+            type: "reference",
+            matchId: pair.reference,
+          });
+        });
+        cardContent.sort(() => Math.random() - 0.5);
+
+        // Create cards
+        cardContent.forEach((content, index) => {
+          const card = createCard(content, index);
+          cards.push(card);
+          gameBoard.appendChild(card.element);
+        });
+
+        // Clear timer
+        if (timerInterval) {
+          clearInterval(timerInterval);
+          timerInterval = null;
+        }
+      }
+
+      // Create individual card
+      function createCard(content, index) {
+        const cardElement = document.createElement("div");
+        cardElement.className = "relative w-full aspect-square cursor-pointer";
+
+        const isVerse = content.type === "verse";
+        const backColor = isVerse
+          ? "from-green-400 to-teal-500"
+          : "from-blue-400 to-indigo-500";
+        const textSize = isVerse ? "text-xs" : "text-sm";
+        const icon = isVerse ? "📖" : "📍";
+
+        cardElement.innerHTML = `
+                <div class="card-flip w-full h-full">
+                    <div class="card-front absolute inset-0 bg-gradient-to-br from-purple-400 to-pink-500 rounded-xl flex items-center justify-center shadow-lg border-2 border-white/30">
+                        <div class="text-3xl">${icon}</div>
+                    </div>
+                    <div class="card-back absolute inset-0 bg-gradient-to-br ${backColor} rounded-xl flex items-center justify-center shadow-lg border-2 border-white/30 p-2">
+                        <div class="${textSize} font-bold text-white text-center leading-tight">${content.text}</div>
+                    </div>
+                </div>
+            `;
+
+        const card = {
+          element: cardElement,
+          content: content,
+          index: index,
+          isFlipped: false,
+          isMatched: false,
+        };
+
+        cardElement.addEventListener("click", () => flipCard(card));
+
+        return card;
+      }
+
+      // Flip card logic
+      function flipCard(card) {
+        if (card.isFlipped || card.isMatched || flippedCards.length >= 2)
+          return;
+
+        if (!gameStarted) {
+          startGame();
+        }
+
+        card.isFlipped = true;
+        card.element.querySelector(".card-flip").classList.add("flipped");
+        flippedCards.push(card);
+
+        if (flippedCards.length === 2) {
+          moves++;
+          document.getElementById("moves").textContent = moves;
+
+          setTimeout(() => {
+            checkMatch();
+          }, 1000);
+        }
+      }
+
+      // Check for matches
+      function checkMatch() {
+        const [card1, card2] = flippedCards;
+
+        if (
+          card1.content.matchId === card2.content.matchId &&
+          card1.content.type !== card2.content.type
+        ) {
+          // Match found (verse matches with its reference)
+          card1.isMatched = true;
+          card2.isMatched = true;
+          card1.element.classList.add("pulse-animation");
+          card2.element.classList.add("pulse-animation");
+
+          pairs++;
+          document.getElementById("pairs").textContent = `${pairs}/6`;
+
+          if (pairs === 6) {
+            setTimeout(() => {
+              showSuccessModal();
+            }, 500);
+          }
+        } else {
+          // No match
+          card1.isFlipped = false;
+          card2.isFlipped = false;
+          card1.element.querySelector(".card-flip").classList.remove("flipped");
+          card2.element.querySelector(".card-flip").classList.remove("flipped");
+        }
+
+        flippedCards = [];
+      }
+
+      // Start game timer
+      function startGame() {
+        gameStarted = true;
+        startTime = Date.now();
+
+        timerInterval = setInterval(() => {
+          const elapsed = Math.floor((Date.now() - startTime) / 1000);
+          const minutes = Math.floor(elapsed / 60)
+            .toString()
+            .padStart(2, "0");
+          const seconds = (elapsed % 60).toString().padStart(2, "0");
+          document.getElementById(
+            "timer"
+          ).textContent = `${minutes}:${seconds}`;
+        }, 1000);
+      }
+
+      // Show success modal
+      function showSuccessModal() {
+        if (timerInterval) {
+          clearInterval(timerInterval);
+        }
+
+        const finalTimeInSeconds = Math.floor((Date.now() - startTime) / 1000);
+        const rating = calculateRating(finalTimeInSeconds, moves);
+
+        // Update modal content
+        document.getElementById("winnerName").textContent = currentPlayerName;
+        document.getElementById("finalTime").textContent =
+          document.getElementById("timer").textContent;
+        document.getElementById("finalMoves").textContent = moves;
+        document.getElementById(
+          "ratingDisplay"
+        ).textContent = `⭐ ${rating.rating}`;
+        document.getElementById(
+          "ratingDisplay"
+        ).className = `text-lg font-bold mt-2 ${rating.color}`;
+
+        // Save score
+        saveScore(currentPlayerName, finalTimeInSeconds, moves, rating);
+
+        document.getElementById("successModal").classList.remove("hidden");
+        document.getElementById("successModal").classList.add("flex");
+      }
+
+      // Show random question
+      function showRandomQuestion() {
+        const randomIndex = Math.floor(
+          Math.random() * iceBreakQuestions.length
+        );
+        currentQuestionIndex = randomIndex;
+        document.getElementById("questionText").textContent =
+          iceBreakQuestions[randomIndex];
+        document.getElementById("questionModal").classList.remove("hidden");
+        document.getElementById("questionModal").classList.add("flex");
+      }
+
+      // Show next question
+      function showNextQuestion() {
+        currentQuestionIndex =
+          (currentQuestionIndex + 1) % iceBreakQuestions.length;
+        document.getElementById("questionText").textContent =
+          iceBreakQuestions[currentQuestionIndex];
+      }
+
+      // Event listeners
+      document.getElementById("resetBtn").addEventListener("click", initGame);
+      document
+        .getElementById("randomQuestionBtn")
+        .addEventListener("click", showRandomQuestion);
+      document
+        .getElementById("showQuestionBtn")
+        .addEventListener("click", () => {
+          document.getElementById("successModal").classList.add("hidden");
+          document.getElementById("successModal").classList.remove("flex");
+          showRandomQuestion();
+        });
+      document
+        .getElementById("nextQuestionBtn")
+        .addEventListener("click", showNextQuestion);
+      document
+        .getElementById("closeQuestionBtn")
+        .addEventListener("click", () => {
+          document.getElementById("questionModal").classList.add("hidden");
+          document.getElementById("questionModal").classList.remove("flex");
+        });
+      document
+        .getElementById("playerName")
+        .addEventListener("input", updatePlayerName);
+      document
+        .getElementById("clearLeaderboard")
+        .addEventListener("click", () => {
+          if (
+            confirm("¿Estás seguro de que quieres limpiar la clasificación?")
+          ) {
+            gameScores = [];
+            localStorage.removeItem("biblicalMemoryScores");
+            updateLeaderboard();
+          }
+        });
+      document.getElementById("configBtn").addEventListener("click", () => {
+        document.getElementById("configModal").classList.remove("hidden");
+        document.getElementById("configModal").classList.add("flex");
+      });
+      document
+        .getElementById("closeConfigBtn")
+        .addEventListener("click", () => {
+          document.getElementById("configModal").classList.add("hidden");
+          document.getElementById("configModal").classList.remove("flex");
+        });
+      document
+        .getElementById("applyConfigBtn")
+        .addEventListener("click", () => {
+          // Aquí se aplicarían las configuraciones seleccionadas
+          alert("¡Configuración aplicada exitosamente!");
+          document.getElementById("configModal").classList.add("hidden");
+          document.getElementById("configModal").classList.remove("flex");
+        });
+
+      // Initialize the game on page load
+      initGame();
+      updateLeaderboard();
+    </script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'96b8d726909fcdca',t:'MTc1NDU5MTM3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
