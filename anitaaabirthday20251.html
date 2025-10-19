@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Para Ti ♥</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@200;300;400&family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --pearl: #faf8f3;
+        --pearl-dark: #f0ebe0;
+        --champagne: #f7e7ce;
+        --gold: #c9a961;
+        --deep-gold: #b8964f;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        background: radial-gradient(
+          ellipse at top,
+          var(--pearl) 0%,
+          var(--pearl-dark) 50%,
+          var(--champagne) 100%
+        );
+        color: #2c2c2c;
+        overflow-x: hidden;
+        cursor: none;
+      }
+
+      .custom-cursor {
+        position: fixed;
+        width: 20px;
+        height: 20px;
+        border: 2px solid var(--gold);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 10000;
+        transform: translate(-50%, -50%);
+        transition: width 0.3s, height 0.3s;
+        mix-blend-mode: difference;
+      }
+
+      .custom-cursor.hover {
+        width: 50px;
+        height: 50px;
+        background: rgba(201, 169, 97, 0.1);
+      }
+
+      #shimmer-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0.4;
+      }
+
+      #welcome-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(
+          135deg,
+          var(--pearl) 0%,
+          var(--champagne) 100%
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        transition: opacity 2s ease, visibility 2s ease;
+      }
+
+      #welcome-screen.hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .welcome-ornament {
+        width: 150px;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+        margin-bottom: 40px;
+        opacity: 0;
+        animation: fadeIn 1.5s ease forwards;
+      }
+
+      .welcome-text {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2rem;
+        font-weight: 300;
+        letter-spacing: 8px;
+        color: #555;
+        text-transform: uppercase;
+        opacity: 0;
+        animation: fadeIn 2s ease 0.5s forwards;
+      }
+
+      .welcome-name {
+        font-family: "Great Vibes", cursive;
+        font-size: 6rem;
+        color: var(--gold);
+        margin: 30px 0;
+        opacity: 0;
+        animation: fadeInScale 2s ease 1.5s forwards;
+        text-shadow: 0 0 40px rgba(201, 169, 97, 0.3);
+      }
+
+      .welcome-divider {
+        width: 60px;
+        height: 60px;
+        border: 2px solid var(--gold);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        animation: fadeIn 1.5s ease 2.5s forwards;
+      }
+
+      .welcome-divider::before {
+        content: "♥";
+        font-size: 2rem;
+        color: var(--gold);
+        animation: pulse 2s ease 3.5s infinite;
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeInScale {
+        from {
+          transform: scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+      }
+
+      .container {
+        position: relative;
+        z-index: 2;
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 100px 40px;
+        opacity: 0;
+        transition: opacity 2s ease;
+      }
+
+      .container.visible {
+        opacity: 1;
+      }
+
+      .music-control {
+        position: fixed;
+        bottom: 50px;
+        right: 50px;
+        z-index: 100;
+        width: 70px;
+        height: 70px;
+        background: rgba(255, 255, 255, 0.95);
+        border: 2px solid var(--gold);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s ease;
+        backdrop-filter: blur(20px);
+      }
+
+      .music-control:hover {
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 15px 50px rgba(201, 169, 97, 0.4);
+      }
+
+      .music-control::before {
+        content: "♪";
+        font-size: 32px;
+        color: var(--gold);
+        animation: musicNote 2s ease infinite;
+      }
+
+      .music-control.paused::before {
+        content: "▶";
+        animation: none;
+      }
+
+      @keyframes musicNote {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-5px);
+        }
+      }
+
+      .main-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 4rem;
+        font-weight: 300;
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+        letter-spacing: 4px;
+      }
+
+      .main-title::after {
+        content: "";
+        display: block;
+        width: 200px;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+        margin: 30px auto;
+      }
+
+      .subtitle {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1rem;
+        font-weight: 200;
+        text-align: center;
+        color: #666;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 80px;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 60px;
+        margin-bottom: 120px;
+      }
+
+      .photo-card {
+        position: relative;
+        overflow: visible;
+        opacity: 0;
+        transform: translateY(80px);
+        animation: fadeInUp 1s ease forwards;
+        cursor: pointer;
+      }
+
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .photo-frame {
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.9),
+          rgba(247, 231, 206, 0.8)
+        );
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+      }
+
+      .photo-frame::before {
+        content: "";
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        border: 1px solid var(--gold);
+        opacity: 0.5;
+        transition: all 0.5s ease;
+      }
+
+      .photo-card:hover .photo-frame {
+        transform: translateY(-15px);
+        box-shadow: 0 30px 80px rgba(201, 169, 97, 0.25);
+      }
+
+      .photo-card:hover .photo-frame::before {
+        top: 5px;
+        left: 5px;
+        right: 5px;
+        bottom: 5px;
+        opacity: 1;
+      }
+
+      .photo-wrapper {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f5f5f5;
+      }
+
+      .photo-card img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: contain;
+        transition: transform 0.5s ease;
+        filter: brightness(0.95) contrast(1.05);
+      }
+
+      .photo-card:hover img {
+        transform: scale(1.08);
+      }
+
+      .photo-caption {
+        position: absolute;
+        bottom: -60px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.1rem;
+        color: #666;
+        font-style: italic;
+        opacity: 0;
+        transition: all 0.5s ease;
+      }
+
+      .photo-card:hover .photo-caption {
+        opacity: 1;
+        bottom: -50px;
+      }
+
+      .zoom-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(250, 248, 243, 0.98);
+        backdrop-filter: blur(20px);
+        z-index: 2000;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .zoom-modal.active {
+        display: flex;
+        opacity: 1;
+      }
+
+      .zoom-container {
+        max-width: 90%;
+        max-height: 90%;
+        position: relative;
+        animation: zoomIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      @keyframes zoomIn {
+        from {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .zoom-frame {
+        padding: 30px;
+        background: white;
+        box-shadow: 0 30px 100px rgba(0, 0, 0, 0.2);
+        position: relative;
+      }
+
+      .zoom-frame::before {
+        content: "";
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        border: 2px solid var(--gold);
+      }
+
+      .zoom-modal img {
+        max-width: 100%;
+        max-height: 80vh;
+        display: block;
+      }
+
+      .zoom-close {
+        position: absolute;
+        top: -50px;
+        right: -50px;
+        width: 50px;
+        height: 50px;
+        background: white;
+        border: 2px solid var(--gold);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 24px;
+        color: var(--gold);
+      }
+
+      .zoom-close:hover {
+        transform: rotate(90deg) scale(1.1);
+        background: var(--gold);
+        color: white;
+      }
+
+      .zoom-caption {
+        text-align: center;
+        margin-top: 20px;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.3rem;
+        color: #666;
+        font-style: italic;
+      }
+
+      .final-message {
+        text-align: center;
+        padding: 120px 40px;
+        opacity: 0;
+        transform: scale(0.9);
+        transition: all 1.5s ease;
+      }
+
+      .final-message.visible {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .final-ornament {
+        width: 200px;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+        margin: 0 auto 50px;
+      }
+
+      .final-text {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 3.5rem;
+        font-weight: 300;
+        color: #333;
+        margin-bottom: 30px;
+        letter-spacing: 3px;
+      }
+
+      .final-subtitle {
+        font-family: "Great Vibes", cursive;
+        font-size: 2.5rem;
+        color: var(--gold);
+        text-shadow: 0 0 30px rgba(201, 169, 97, 0.3);
+      }
+
+      @media (max-width: 768px) {
+        body {
+          cursor: auto;
+        }
+        .custom-cursor {
+          display: none;
+        }
+        .welcome-name {
+          font-size: 4rem;
+        }
+        .main-title {
+          font-size: 2.5rem;
+        }
+        .gallery {
+          grid-template-columns: 1fr;
+          gap: 50px;
+        }
+        .final-text {
+          font-size: 2rem;
+        }
+        .zoom-close {
+          top: 10px;
+          right: 10px;
+        }
+        .music-control {
+          width: 60px;
+          height: 60px;
+          bottom: 30px;
+          right: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="shimmer-canvas"></canvas>
+    <div class="custom-cursor" id="custom-cursor"></div>
+
+    <div id="welcome-screen">
+      <div class="welcome-ornament"></div>
+      <div class="welcome-text">Para Ti</div>
+      <div class="welcome-name">Mi Anitaaa</div>
+      <div class="welcome-divider"></div>
+    </div>
+
+    <audio id="background-music" loop>
+      <source
+        src="https://www.bensound.com/bensound-music/bensound-memories.mp3"
+        type="audio/mpeg"
+      />
+    </audio>
+
+    <div class="music-control" id="music-control"></div>
+
+    <div class="zoom-modal" id="zoom-modal">
+      <div class="zoom-container">
+        <div class="zoom-frame">
+          <div class="zoom-close" id="zoom-close">×</div>
+          <img id="zoom-image" src="" alt="" />
+        </div>
+        <div class="zoom-caption" id="zoom-caption"></div>
+      </div>
+    </div>
+
+    <div class="container" id="main-container">
+      <h1 class="main-title">Momentos Hermosos</h1>
+      <p class="subtitle">Un año de recuerdos inolvidables</p>
+      <div class="gallery" id="gallery"></div>
+      <div class="final-message" id="final-message">
+        <div class="final-ornament"></div>
+        <div class="final-text">Gracias por ser parte de mi vida</div>
+        <div class="final-subtitle">Cada momento contigo es hermoso ♥</div>
+        <div class="final-text">Feliz Cumpleaños</div>
+      </div>
+    </div>
+
+    <script>
+      const photos = [
+        {
+          src: "anita2025/Anita01.jpeg",
+          caption: "Feliz por el breack jejejeje",
+          alt: "Momento 1",
+        },
+        {
+          src: "anita2025/Anita03.jpeg",
+          caption: "Anita, Analy y Yamilet",
+          alt: "Momento 3",
+        },
+        {
+          src: "anita2025/Anita04.jpeg",
+          caption: "Yo de niñaaaaa",
+          alt: "Momento 4",
+        },
+        {
+          src: "anita2025/Anita05.jpeg",
+          caption: "No puedo respirar aiudaaaa",
+          alt: "Momento 5",
+        },
+        {
+          src: "anita2025/Anita06.jpeg",
+          caption: "Que estara diciendo la mis Anitaaa",
+          alt: "Momento 6",
+        },
+        {
+          src: "anita2025/Anita07.jpeg",
+          caption: "Ministerio de señoritas",
+          alt: "Momento 7",
+        },
+        {
+          src: "anita2025/Anita08.jpeg",
+          caption: "Bonitaaa e Inteligenteee",
+          alt: "Momento 8",
+        },
+        {
+          src: "anita2025/Anita09.jpeg",
+          caption: "Ya me llene",
+          alt: "Momento 9",
+        },
+        {
+          src: "anita2025/Anita10.jpeg",
+          caption: "Muy bonitaaa",
+          alt: "Momento 10",
+        },
+        {
+          src: "anita2025/Anita11.jpeg",
+          caption: "Jesus se durmio, despiertanleeee",
+          alt: "Momento 11",
+        },
+        {
+          src: "anita2025/Anita12.jpeg",
+          caption: "Graduación de discipulado",
+          alt: "Momento 12",
+        },
+        {
+          src: "anita2025/Anita13.jpeg",
+          caption: "Voy a llamar lista, Atentoos",
+          alt: "Momento 13",
+        },
+        {
+          src: "anita2025/Anita14.jpeg",
+          caption: "Doctora Anita",
+          alt: "Momento 14",
+        },
+        {
+          src: "anita2025/Anita15.jpeg",
+          caption: "Que es este carton chicas AAA",
+          alt: "Momento 15",
+        },
+        {
+          src: "anita2025/Anita16.jpeg",
+          caption: "Vamos a orar cierren sus ojos",
+          alt: "Momento 16",
+        },
+        {
+          src: "anita2025/Anita17.jpeg",
+          caption: "Estoy cansadaaaa",
+          alt: "Momento 17",
+        },
+        {
+          src: "anita2025/Anita18.jpeg",
+          caption: "Cansada pero feliz de tocar el bajo",
+          alt: "Momento 18",
+        },
+        {
+          src: "anita2025/Anita19.jpeg",
+          caption: "Escuela dominical",
+          alt: "Momento 19",
+        },
+        {
+          src: "anita2025/Anita20.jpeg",
+          caption: "Mayopampaaaa",
+          alt: "Momento 20",
+        },
+        {
+          src: "anita2025/Anita21.jpeg",
+          caption: "Misioneeees, feliz de presentarmee",
+          alt: "Momento 21",
+        },
+        {
+          src: "anita2025/Anita22.jpeg",
+          caption: "Me diverti muchoooo",
+          alt: "Momento 22",
+        },
+        {
+          src: "anita2025/Anita23.jpeg",
+          caption: "Mis Anita y Mis Sarita con los presentes del dia del padre",
+          alt: "Momento 23",
+        },
+        {
+          src: "anita2025/Anita24.jpeg",
+          caption: "Feliz de ser paje, me encantooo",
+          alt: "Momento 24",
+        },
+        {
+          src: "anita2025/Anita25.jpeg",
+          caption:
+            "Mis Anita y Mis Paola con los presentes del dia de la madre",
+          alt: "Momento 25",
+        },
+        {
+          src: "anita2025/Anita26.jpeg",
+          caption: "Ministerio de Musica Emanuel",
+          alt: "Momento 26",
+        },
+
+        {
+          src: "anita2025/Anita28.jpeg",
+          caption: "Miren mi cabello",
+          alt: "Momento 28",
+        },
+        {
+          src: "anita2025/Anita29.jpeg",
+          caption:
+            "Ingreso a la iglesia con luchito en el matrmonio de mi tia Sandra y Antonio",
+          alt: "Momento 29",
+        },
+        {
+          src: "anita2025/Anita30.jpeg",
+          caption: "  Mi pastor diciendo Jojojojo",
+          alt: "Momento 30",
+        },
+        {
+          src: "anita2025/Anita31.jpeg",
+          caption: "Bonitaaa",
+          alt: "Momento 31",
+        },
+        {
+          src: "anita2025/Anita32.jpeg",
+          caption: "Chicas sonrian",
+          alt: "Momento 32",
+        },
+        {
+          src: "anita2025/Anita33.jpeg",
+          caption: "Ganamos primer puesto",
+          alt: "Momento 33",
+        },
+        {
+          src: "anita2025/Anita34.jpeg",
+          caption: "Campamento de jovenes",
+          alt: "Momento 34",
+        },
+        {
+          src: "anita2025/Anita35.jpeg",
+          caption: "Feliz día de la mujer",
+          alt: "Momento 35",
+        },
+        {
+          src: "anita2025/Anita36.jpeg",
+          caption: "Feliz cumpleaños pastor Beltran",
+          alt: "Momento 36",
+        },
+        {
+          src: "anita2025/Anita37.jpeg",
+          caption: "Feliz Aniversario Jevenes en Acción",
+          alt: "Momento 37",
+        },
+        {
+          src: "anita2025/Anita38.jpeg",
+          caption: "Recuerdo hermoso, competencia de TikTok",
+          alt: "Momento 38",
+        },
+        {
+          src: "anita2025/Anita39.jpeg",
+          caption: "Capacitación, EBDV una aventura de Fe",
+          alt: "Momento 39",
+        },
+        {
+          src: "anita2025/Anita40.jpeg",
+          caption: "Escuela Dominical",
+          alt: "Momento 40",
+        },
+        {
+          src: "anita2025/Anita42.jpeg",
+          caption: "Amo a estos niños",
+          alt: "Momento 42",
+        },
+        {
+          src: "anita2025/Anita46.jpeg",
+          caption: "Espera alcalde voy a tomar foto",
+          alt: "Momento 43",
+        },
+        {
+          src: "anita2025/Anita44.jpeg",
+          caption: "Encontre esta foto y quise compartirlo, mi papá un amor",
+          alt: "Momento 44",
+        },
+        {
+          src: "anita2025/Anita45.jpeg",
+          caption: "Luis sonrieee, te amo mami",
+          alt: "Momento 45",
+        },
+        {
+          src: "anita2025/Anita47.jpeg",
+          caption: "Graduacion de mi primo",
+          alt: "Momento 47",
+        },
+        {
+          src: "anita2025/Anita48.jpeg",
+          caption:
+            "Yo de limpiando lo que ensuciaron y mi papá poniendo en su estado ash",
+          alt: "Momento 48",
+        },
+        {
+          src: "anita2025/Anita49.jpeg",
+          caption: "Feliz cumpleaños Willl",
+          alt: "Momento 49",
+        },
+        {
+          src: "anita2025/Anita50.jpeg",
+          caption: "Campamento de adolescentes",
+          alt: "Momento 50",
+        },
+      ];
+
+      const gallery = document.getElementById("gallery");
+      photos.forEach((photo, i) => {
+        const card = document.createElement("div");
+        card.className = "photo-card";
+        card.dataset.caption = photo.caption;
+        card.style.animationDelay = `${(i % 20) * 0.05}s`;
+        card.innerHTML = `<div class="photo-frame"><div class="photo-wrapper"><img src="${photo.src}" alt="${photo.alt}" loading="lazy"></div></div><div class="photo-caption">${photo.caption}</div>`;
+        gallery.appendChild(card);
+      });
+
+      const cursor = document.getElementById("custom-cursor");
+      let mX = 0,
+        mY = 0,
+        cX = 0,
+        cY = 0;
+      document.addEventListener("mousemove", (e) => {
+        mX = e.clientX;
+        mY = e.clientY;
+      });
+      function animCursor() {
+        cX += (mX - cX) * 0.15;
+        cY += (mY - cY) * 0.15;
+        cursor.style.left = cX + "px";
+        cursor.style.top = cY + "px";
+        requestAnimationFrame(animCursor);
+      }
+      animCursor();
+
+      document
+        .querySelectorAll(".photo-card, .music-control, .zoom-close")
+        .forEach((el) => {
+          el.addEventListener("mouseenter", () =>
+            cursor.classList.add("hover")
+          );
+          el.addEventListener("mouseleave", () =>
+            cursor.classList.remove("hover")
+          );
+        });
+
+      const ws = document.getElementById("welcome-screen");
+      const mc = document.getElementById("main-container");
+      const bm = document.getElementById("background-music");
+      const mctl = document.getElementById("music-control");
+      setTimeout(() => {
+        ws.classList.add("hidden");
+        setTimeout(() => {
+          mc.classList.add("visible");
+          bm.play().catch((e) => console.log("Autoplay bloqueado"));
+        }, 500);
+      }, 5000);
+
+      let playing = true;
+      mctl.addEventListener("click", () => {
+        if (playing) {
+          bm.pause();
+          mctl.classList.add("paused");
+        } else {
+          bm.play();
+          mctl.classList.remove("paused");
+        }
+        playing = !playing;
+      });
+
+      const canvas = document.getElementById("shimmer-canvas");
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      const parts = [];
+      class Particle {
+        constructor() {
+          this.reset();
+          this.y = Math.random() * canvas.height;
+        }
+        reset() {
+          this.x = Math.random() * canvas.width;
+          this.y = -10;
+          this.s = Math.random() * 2 + 0.5;
+          this.sy = Math.random() * 0.5 + 0.2;
+          this.o = Math.random() * 0.5 + 0.2;
+          this.t = Math.random() * 0.02 + 0.01;
+        }
+        update() {
+          this.y += this.sy;
+          this.o += this.t;
+          if (this.o >= 0.7 || this.o <= 0.2) this.t *= -1;
+          if (this.y > canvas.height) this.reset();
+        }
+        draw() {
+          ctx.save();
+          ctx.globalAlpha = this.o;
+          ctx.fillStyle = "#c9a961";
+          ctx.shadowBlur = 20;
+          ctx.shadowColor = "#c9a961";
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.s, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
+      }
+      for (let i = 0; i < 50; i++) parts.push(new Particle());
+      function animShim() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        parts.forEach((p) => {
+          p.update();
+          p.draw();
+        });
+        requestAnimationFrame(animShim);
+      }
+      animShim();
+      window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+
+      const zm = document.getElementById("zoom-modal");
+      const zi = document.getElementById("zoom-image");
+      const zc = document.getElementById("zoom-caption");
+      const zclose = document.getElementById("zoom-close");
+      document.querySelectorAll(".photo-card").forEach((card) => {
+        card.addEventListener("click", () => {
+          const img = card.querySelector("img");
+          zi.src = img.src;
+          zc.textContent = card.dataset.caption;
+          zm.classList.add("active");
+          document.body.style.overflow = "hidden";
+        });
+      });
+      function closeZ() {
+        zm.classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+      zclose.addEventListener("click", closeZ);
+      zm.addEventListener("click", (e) => {
+        if (e.target === zm) closeZ();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeZ();
+      });
+
+      const fm = document.getElementById("final-message");
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.3 }
+      );
+      obs.observe(fm);
+
+      let tick = false;
+      window.addEventListener("scroll", () => {
+        if (!tick) {
+          window.requestAnimationFrame(() => {
+            const s = window.pageYOffset;
+            document.querySelectorAll(".photo-card img").forEach((img, i) => {
+              const d = i % 2 === 0 ? 1 : -1;
+            });
+            tick = false;
+          });
+          tick = true;
+        }
+      });
+    </script>
+  </body>
+</html>
